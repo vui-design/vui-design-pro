@@ -16,10 +16,10 @@
 		</vui-card>
 
 		<complex-filter
+			class="margin-top-20"
 			v-model="filter.value"
 			v-bind:data="filter.data"
 			v-on:change="handleFilterChange"
-			class="margin-top-20"
 		/>
 
 		<vui-card v-bind:bordered="false" class="margin-top-20">

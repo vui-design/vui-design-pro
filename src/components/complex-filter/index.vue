@@ -50,9 +50,9 @@
 				var state = {};
 
 				Object.keys(value).forEach(key => {
-					state[key] = [
-						...value[key]
-					];
+					let selected = value[key];
+
+					state[key] = [...selected];
 				});
 
 				return state;
@@ -70,13 +70,13 @@
 	.complex-filter { border-radius:2px; overflow:hidden; }
 
 	.complex-filter-group { position:relative; display:flex; align-items:flex-start; }
-	.complex-filter-group-header { display:flex; align-items:center; width:120px; padding:6px 0; color:#262626; line-height:28px; }
-	.complex-filter-group-header .label { flex:1; display:flex; padding:0 16px; }
+	.complex-filter-group-header { display:flex; align-items:center; width:120px; padding:6px 0; }
+	.complex-filter-group-header .label { flex:1; display:block; height:28px; padding:0 16px; overflow:hidden; white-space:nowrap; text-overflow:ellipsis; color:#262626; line-height:28px; }
 	.complex-filter-group-body { flex:1; padding:6px 0; overflow:hidden; }
-	.complex-filter-group-body .vui-row { overflow:hidden; }
-	.complex-filter-group-body .complex-filter-group-option { display:flex; padding:6px 0; }
+	.complex-filter-group-body .vui-row { height:28px; overflow:hidden; transition:all 0.2s; }
+	.complex-filter-group-body .complex-filter-group-option { display:flex; padding:6px 0; overflow:hidden; white-space:nowrap; text-overflow:ellipsis; }
 	.complex-filter-group-footer { display:flex; padding:6px 0; line-height:28px; }
-	.complex-filter-group-footer .btn-more { flex:1; display:flex; align-items:center; padding:0 16px; }
+	.complex-filter-group-footer .btn-more { flex:1; display:block; align-items:center; height:28px; padding:0 16px; }
 	.complex-filter-group-footer .btn-more .vui-icon { margin-left:4px; transform:scale(0.6); }
 
 	.complex-filter-group + .complex-filter-group { margin-top:1px; }

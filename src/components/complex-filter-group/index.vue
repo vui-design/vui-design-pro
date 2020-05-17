@@ -95,7 +95,6 @@
 				let a = [...value];
 				let b = data.options.map(option => option.value);
 
-				// 选项被全部选中时，需要将全部按钮选中
 				if (isArrayEqual(a.sort(), b.sort())) {
 					a.unshift(0);
 				}
