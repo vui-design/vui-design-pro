@@ -154,8 +154,6 @@
 
 						if (state.indexOf(0) > -1) {
 							state = state.filter(item => item !== 0);
-
-							this.state = state;
 						}
 
 						this.state = state;
