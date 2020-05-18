@@ -47,7 +47,7 @@
 		},
 		methods: {
 			getDerivedValueFromProps(value) {
-				var state = {};
+				let state = {};
 
 				Object.keys(value).forEach(key => {
 					let selected = value[key];

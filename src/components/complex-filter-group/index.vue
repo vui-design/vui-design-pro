@@ -153,12 +153,12 @@
 						let state = this.state.filter(item => item !== value);
 
 						if (state.indexOf(0) > -1) {
-							this.state = state.filter(item => item !== 0);
-						}
-						else {
+							state = state.filter(item => item !== 0);
+
 							this.state = state;
 						}
 
+						this.state = state;
 						this.$emit("input", this.data.value, state);
 						this.$emit("change", this.data.value, state);
 					}
