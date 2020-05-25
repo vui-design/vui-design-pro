@@ -22,7 +22,7 @@
 			</vui-menu>
 		</vui-sider>
 
-		<vui-layout class="vui-design-pro-main">
+		<vui-layout class="vui-design-pro-main" v-bind:class="collapsed ? 'vui-design-pro-main-collapsed' : ''">
 			<vui-header class="vui-design-pro-header" theme="light">
 				<vui-button class="btn-trigger" type="primary" size="small" v-bind:icon="collapsed ? 'menu-unfold' : 'menu-fold'" v-on:click="handleCollapse" />
 				<vui-breadcrumb class="breadcrumb">
