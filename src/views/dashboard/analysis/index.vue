@@ -1,5 +1,5 @@
 <template>
-	<div style="padding: 20px;">
+	<div>
 		<DashboardAnalysisStatistics />
 		<DashboardAnalysisSalesAndPageview />
 		<vui-row class="margin-top-20" :gutter="20">

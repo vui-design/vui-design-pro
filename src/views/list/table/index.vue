@@ -1,81 +1,97 @@
 <template>
-	<div class="padding-20">
+	<vui-fullscreen v-model="page.fullscreen" class="vdp-view-list-table">
 		<vui-card v-bind:bordered="false">
 			<vui-form ref="searcher" layout="inline">
 				<vui-form-item>
-					<vui-input v-model="searcher.a" placeholder="请输入..." />
+					<vui-input v-model="searcher.name" placeholder="请输入规则名称" />
 				</vui-form-item>
 				<vui-form-item>
-					<vui-input v-model="searcher.b" placeholder="请输入..." />
+					<vui-input v-model="searcher.description" placeholder="请输入描述" />
 				</vui-form-item>
 				<vui-form-item>
-					<vui-button type="primary" v-on:click="handleSearch">查询</vui-button>
-					<vui-button class="margin-left-10" v-on:click="handleResetSearch">重置</vui-button>
+					<vui-button v-on:click="handleResetSearch">重置</vui-button>
+					<vui-button type="primary" class="margin-left-10" v-on:click="handleSearch">查询</vui-button>
 				</vui-form-item>
 			</vui-form>
 		</vui-card>
 
-		<complex-filter
+		<vc-filter
 			class="margin-top-20"
 			v-model="filter.value"
-			v-bind:data="filter.data"
+			v-bind:options="filter.options"
 			v-on:change="handleFilterChange"
 		/>
 
-		<vui-card v-bind:bordered="false" class="margin-top-20">
-			<vui-table v-bind:loading="list.loading" v-bind:columns="list.columns" v-bind:data="list.data" getRowKey="id">
-				<template slot="state" slot-scope="{ row, index }">
+		<vui-card v-bind:bordered="false" class="margin-top-20" headerStyle="padding: 16px 16px 16px 20px;" bodyStyle="padding: 0;" title="查询表格">
+			<vui-action-group slot="extra" size="small">
+				<vui-space key="1" v-bind:gutter="0">
+					<vui-button type="text" v-bind:icon="page.fullscreen ? 'fullscreen-exit' : 'fullscreen'" v-on:click="handleFullscreen" />
+					<vui-button type="text" icon="refresh" v-on:click="handleRefresh" />
+				</vui-space>
+				<vui-button key="2" icon="download" v-on:click="handleExport">导出</vui-button>
+				<vui-button key="3" type="primary" icon="plus">新增</vui-button>
+				<vui-dropdown key="4" v-if="selectedTotalRows > 0">
+					<vui-button type="primary" icon="list-settings">批量操作</vui-button>
+					<vui-dropdown-menu slot="menu">
+						<vui-dropdown-menu-item name="remove" title="批量删除" />
+						<vui-dropdown-menu-item name="approve" title="批量审批" />
+					</vui-dropdown-menu>
+				</vui-dropdown>
+			</vui-action-group>
+			<vui-alert type="warning" banner showIcon>
+				<template>已选择 <em style="color: #faad14; font-weight: 600;">{{selectedTotalRows}}</em> 项，服务调用次数总计 <em>{{selectedTotalTimes}}</em> 万</template>
+			</vui-alert>
+			<vui-table ref="table" rowKey="id" v-bind="list" v-on:rowSelect="handleRowSelect">
+				<template slot="count" slot-scope="{ row, rowIndex }">{{row.count}} 万</template>
+				<template slot="state" slot-scope="{ row, rowIndex }">
 					<vui-badge v-if="row.state == 1" status="default" text="未启用" />
 					<vui-badge v-else-if="row.state == 2" status="success" text="已上线" />
 					<vui-badge v-else-if="row.state == 3" status="processing" text="运行中" />
 					<vui-badge v-else-if="row.state == 4" status="error" text="关闭" />
 				</template>
-				<template slot="action" slot-scope="{ row, index }">
-					<vui-action-list>
-						<a href="javascript:;">编辑</a>
-						<a href="javascript:;">删除</a>
-					</vui-action-list>
+				<template slot="action" slot-scope="{ row, rowIndex }">
+					<vui-action-group>
+						<a href="javascript:;" v-on:ok="handleEdit(row)">编辑</a>
+						<vui-popconfirm v-on:ok="handleRemove(row)" placement="top-end" title="确定要删除当前记录嘛？">
+							<a href="javascript:;">删除</a>
+						</vui-popconfirm>
+					</vui-action-group>
 				</template>
 			</vui-table>
-			<vui-pagination
-					class="margin-top-20"
-					align="right"
-					showPageSizer
-					v-bind:total="pagination.total"
-					v-bind:page="pagination.page"
-					v-bind:pageSize="pagination.pageSize"
-					v-on:change="handleChangePage"
-					v-on:changePageSize="handleChangePageSize"
-				/>
+			<div class="padding-20">
+				<vui-pagination align="right" showPageSizer v-bind="pagination" v-on:change="handleChangePage" v-on:changePageSize="handleChangePageSize" />
+			</div>
 		</vui-card>
-	</div>
+	</vui-fullscreen>
 </template>
 
 <script>
-	import ComplexFilter from "src/components/complex-filter";
+	import VcFilter from "src/components/filter";
 
 	export default {
 		components: {
-			ComplexFilter
+			VcFilter
 		},
 		data() {
 			return {
-				searcher: {
-					a: "",
-					b: ""
+				page: {
+					fullscreen: false
 				},
-
+				searcher: {
+					name: "",
+					description: ""
+				},
 				filter: {
 					value: {
-						brand: [1, 2],
+						brand: [1, 2, 5, 7],
 						android: [2, 3, 4, 6],
-						ios: [1],
-						ratio: [4, 6]
+						ios: [1, 5],
+						ratio: [2, 4, 6]
 					},
-					data: [
+					options: [
 						{
 							label: "品牌",
-							value: "brand",
+							key: "brand",
 							options: [
 								{ value: 1, label: "Apple" },
 								{ value: 2, label: "谷歌" },
@@ -95,7 +111,7 @@
 						},
 						{
 							label: "Android系统",
-							value: "android",
+							key: "android",
 							options: [
 								{ value: 1, label: "11" },
 								{ value: 2, label: "10" },
@@ -112,7 +128,7 @@
 						},
 						{
 							label: "iOS系统",
-							value: "ios",
+							key: "ios",
 							options: [
 								{ value: 1, label: "13.4.1" },
 								{ value: 2, label: "13.4" },
@@ -126,7 +142,7 @@
 						},
 						{
 							label: "分辨率",
-							value: "ratio",
+							key: "ratio",
 							options: [
 								{ value: 1, label: "3120*1440" },
 								{ value: 2, label: "2960*1440" },
@@ -140,69 +156,79 @@
 						}
 					]
 				},
-
 				pagination: {
 					total: 0,
 					page: 1,
 					pageSize: 20
 				},
-
 				list: {
 					loading: false,
 					columns: [
-						{ key: "id", dataIndex: "id", width: 60, align: "center", title: "ID"},
 						{ key: "name", dataIndex: "name", title: "规则名称" },
 						{ key: "description", dataIndex: "description", title: "描述" },
-						{ key: "count", dataIndex: "count", title: "服务调用次数" },
+						{ key: "count", dataIndex: "count", slot: "count", title: "服务调用次数" },
 						{ key: "state", dataIndex: "state", slot: "state", title: "状态" },
 						{ key: "datetime", dataIndex: "datetime", title: "上次调度时间" },
-						{ key: "action", width: 120, align: "center", slot: "action", title: "操作" }
+						{ key: "action", width: 120, slot: "action", title: "操作" }
 					],
+					rowSelection: {
+						width: 60,
+						multiple: true,
+						value: []
+					},
 					data: []
 				}
 			};
+		},
+
+		computed: {
+			selectedTotalRows() {
+				return this.list.rowSelection.value.length;
+			},
+			selectedTotalTimes() {
+				let rows = this.list.rowSelection.value;
+				let value = 0;
+
+				this.list.data.forEach(row => {
+					if (rows.indexOf(row.id) === -1) {
+						return;
+					}
+
+					value += row.count;
+				});
+
+				return value;
+			}
 		},
 
 		methods: {
 			getList() {
 				let payload = {
 					...this.searcher,
-					...this.pagination
+					page: this.pagination.page,
+					pageSize: this.pagination.pageSize
 				};
 
 				this.list.loading = true;
-				// 模拟请求
-				setTimeout(() => {
+				this.$store.dispatch("example/getListTableDatasource", payload).then(data => {
 					this.list.loading = false;
-					this.list.data = [
-						{ id: 1, name: "TradeCode 1", description: "这是一段描述", count: "660万", state: 4, datetime: "2017-07-01 08:00:00" },
-						{ id: 2, name: "TradeCode 2", description: "这是一段描述", count: "229 万", state: 2, datetime: "2017-07-01 08:00:00" },
-						{ id: 3, name: "TradeCode 3", description: "这是一段描述", count: "60 万", state: 3, datetime: "2017-07-01 08:00:00" },
-						{ id: 4, name: "TradeCode 4", description: "这是一段描述", count: "110 万", state: 4, datetime: "2017-07-01 08:00:00" },
-						{ id: 5, name: "TradeCode 5", description: "这是一段描述", count: "578 万", state: 3, datetime: "2017-07-01 08:00:00" },
-						{ id: 6, name: "TradeCode 6", description: "这是一段描述", count: "696 万", state: 4, datetime: "2017-07-01 08:00:00" },
-						{ id: 7, name: "TradeCode 7", description: "这是一段描述", count: "996 万", state: 3, datetime: "2017-07-01 08:00:00" },
-						{ id: 8, name: "TradeCode 8", description: "这是一段描述", count: "835 万", state: 4, datetime: "2017-07-01 08:00:00" },
-						{ id: 9, name: "TradeCode 9", description: "这是一段描述", count: "223 万", state: 3, datetime: "2017-07-01 08:00:00" },
-						{ id: 10, name: "TradeCode 10", description: "这是一段描述", count: "73 万", state: 4, datetime: "2017-07-01 08:00:00" }
-					];
-					this.pagination.total = 100;
-				}, 500);
-			},
-
-			handleSearch() {
-				this.pagination.page = 1;
-				this.getList();
+					this.list.data = data.content;
+					this.pagination.total = data.total;
+				}).catch(e => {
+					this.list.loading = false;
+				});
 			},
 			handleResetSearch(name) {
 				this.$refs.searcher.reset();
 				this.getList();
 			},
-
-			handleFilterChange(value) {
-				console.log(value);
+			handleSearch() {
+				this.pagination.page = 1;
+				this.getList();
 			},
-
+			handleFilterChange(value) {
+				console.log(JSON.parse(JSON.stringify(value)));
+			},
 			handleChangePage(page) {
 				this.pagination.page = page;
 				this.getList();
@@ -210,6 +236,30 @@
 			handleChangePageSize(pageSize) {
 				this.pagination.pageSize = pageSize;
 				this.getList();
+			},
+			handleRowSelect(value) {
+				this.list.rowSelection.value = value;
+			},
+			handleFullscreen() {
+				this.page.fullscreen = !this.page.fullscreen;
+			},
+			handleRefresh() {
+				this.getList();
+			},
+			handleExport() {
+				this.$refs.table.export({
+					original: false,
+					filename: "表格名称"
+				});
+			},
+			handleAdd() {
+				console.log("add");
+			},
+			handleEdit(row) {
+				console.log(JSON.parse(JSON.stringify(row)));
+			},
+			handleRemove(row) {
+				console.log(JSON.parse(JSON.stringify(row)));
 			}
 		},
 
@@ -218,3 +268,8 @@
 		}
 	};
 </script>
+
+<style>
+	.vdp-view-list-table {  }
+	.vdp-view-list-table.vui-fullscreen-on { background-color:#f4f6f8; padding:20px; }
+</style>

@@ -4,11 +4,11 @@ import VuiDesignZhCN from "vui-design/dist/locale/zh-CN";
 import VuiDesignEnUS from "vui-design/dist/locale/en-US";
 import LocaleZhCN from "./lang/zh-CN";
 import LocaleEnUS from "./lang/en-US";
-import { getDefaultLanguage } from "src/utils";
+import utils from "src/utils";
 
 Vue.use(VueI18n);
 
-const language = getDefaultLanguage();
+const language = utils.getLanguage();
 const messages = {
 	"zh-CN": Object.assign(VuiDesignZhCN, LocaleZhCN),
 	"en-US": Object.assign(VuiDesignEnUS, LocaleEnUS)

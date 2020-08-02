@@ -1,9 +1,9 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
-import authorization from "src/utils/authorization";
-import { setPageTitle, isMatchedWhiteList, checkAuthority } from "src/utils";
+import routes from "src/routes";
 import store from "src/store";
-import routes from "./routes";
+import utils from "src/utils";
+import authorization from "src/utils/authorization";
 
 Vue.use(VueRouter);
 
@@ -13,8 +13,8 @@ const router =  new VueRouter({
 	routes
 });
 
-const runNextWithRoles = (to, roles, next) => {
-	if (checkAuthority(to, roles)) {
+const runNextWithPermissions = (to, permissions, next) => {
+	if (utils.checkAuthority(to.meta.authority, permissions)) {
 		next();
 	}
 	else {
@@ -42,14 +42,14 @@ router.beforeEach((to, from, next) => {
 		}
 		// 非登录页面根据用户角色进行跳转
 		else {
-			const roles = store.state.user.roles;
+			const permissions = store.state.user.permissions;
 
-			if (roles && roles.length) {
-				runNextWithRoles(to, roles, next);
+			if (permissions && permissions.length) {
+				runNextWithPermissions(to, permissions, next);
 			}
 			else {
 				store.dispatch("user/getUserInfo").then(data => {
-					runNextWithRoles(to, data.roles, next);
+					runNextWithPermissions(to, data.permissions, next);
 				}).catch(() => {
 					store.dispatch("user/clearToken").then(() => {
 						next({
@@ -64,7 +64,7 @@ router.beforeEach((to, from, next) => {
 	// 未登陆
 	else {
 		// 如果当前路由存在于访问白名单中，直接进入
-		if (isMatchedWhiteList(to)) {
+		if (utils.compareWhiteList(to)) {
 			next();
 		}
 		// 其它页面重定向到登录页面
@@ -79,11 +79,8 @@ router.beforeEach((to, from, next) => {
 });
 
 router.afterEach((to, from) => {
-	// 更新文档标题
-	setPageTitle(to);
-
-	// 更新 store 中的面包屑数据
-	store.dispatch("app/setBreadcrumb", to);
+	// 更新网页标题
+	utils.setPageTitle(to);
 });
 
 export default router;

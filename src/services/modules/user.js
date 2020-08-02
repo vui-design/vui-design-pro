@@ -1,29 +1,24 @@
 import axios from "src/utils/axios";
 
 export const login = payload => {
-	return axios({
-		method: "POST",
-		url: "/user/login",
-		data: payload
-	});
+	return axios.post("/user/login", payload);
+};
+
+export const getDetails = () => {
+	return axios.get("/user/getDetails");
+};
+
+export const getPermissions = () => {
+	return axios.get("/user/getPermissions");
 };
 
 export const logout = () => {
-	return axios({
-		method: "POST",
-		url: "/user/logout",
-	});
-};
-
-export const getUserInfo = () => {
-	return axios({
-		method: "GET",
-		url: "/user/getUserInfo"
-	});
+	return axios.post("/user/logout");
 };
 
 export default {
 	login,
-	logout,
-	getUserInfo
+	getDetails,
+	getPermissions,
+	logout
 };

@@ -1,7 +1,5 @@
 <template>
-	<div style="padding: 20px;">
-		monitor
-	</div>
+	<div>监控页</div>
 </template>
 
 <script>

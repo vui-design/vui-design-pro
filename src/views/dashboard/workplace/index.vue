@@ -1,7 +1,5 @@
 <template>
-	<div style="padding: 20px;">
-		监控页
-	</div>
+	<div>工作台</div>
 </template>
 
 <script>

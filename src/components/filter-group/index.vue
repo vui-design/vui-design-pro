@@ -1,25 +1,25 @@
 <template>
-	<div class="complex-filter-group">
-		<div class="complex-filter-group-header">
+	<div class="ui-filter-group">
+		<div class="ui-filter-group-header">
 			<label class="label">{{data.label}}</label>
 		</div>
-		<div class="complex-filter-group-body">
-			<vui-row v-bind:gutter="20" v-bind:style="{height: collapse ? '28px' : 'auto'}">
+		<div class="ui-filter-group-body">
+			<vui-row v-bind:gutter="20" v-bind:class="collapsed ? 'collapsed' : ''">
 				<vui-col key="0" v-bind:xs="12" v-bind:sm="8" v-bind:md="6" v-bind:lg="4" v-bind:xl="3" v-bind:xxl="2">
-					<div class="complex-filter-group-option">
-						<vui-checkbox v-bind:value="0" v-bind:checked="state.indexOf(0) > -1" v-on:change="checked => handleChange(checked, 0)">全部</vui-checkbox>
+					<div class="ui-filter-group-option">
+						<vui-checkbox v-bind:value="0" v-bind:indeterminate="indeterminate" v-bind:checked="state.indexOf(0) > -1" v-on:change="checked => handleChange(checked, 0)">全部</vui-checkbox>
 					</div>
 				</vui-col>
 				<vui-col v-for="(option, index) in data.options" v-bind:key="option.value" v-bind:xs="12" v-bind:sm="8" v-bind:md="6" v-bind:lg="4" v-bind:xl="3" v-bind:xxl="2">
-					<div class="complex-filter-group-option">
+					<div class="ui-filter-group-option">
 						<vui-checkbox v-bind:value="option.value" v-bind:checked="state.indexOf(option.value) > -1" v-on:change="checked => handleChange(checked, option.value)">{{option.label}}</vui-checkbox>
 					</div>
 				</vui-col>
 			</vui-row>
 		</div>
-		<div class="complex-filter-group-footer">
+		<div class="ui-filter-group-footer">
 			<a href="javascript:;" class="btn-more link-default" v-on:click="handleCollapse">
-				<template v-if="collapse">更多<vui-icon type="chevron-down" /></template>
+				<template v-if="collapsed">展开<vui-icon type="chevron-down" /></template>
 				<template v-else>收起<vui-icon type="chevron-up" /></template>
 			</a>
 		</div>
@@ -27,7 +27,7 @@
 </template>
 
 <script>
-	const isArrayEqual = function(array, other) {
+	const isArrayEqualed = function(array, other) {
 		let i;
 		let length;
 
@@ -65,18 +65,25 @@
 			}
 		},
 		data() {
-			let state = this.getDerivedValueFromProps(this.value, this.data);
+			let state = this.getDerivedStateFromProps(this.value, this.data);
 
 			return {
-				collapse: true,
+				collapsed: true,
 				state
 			};
+		},
+		computed: {
+			indeterminate() {
+				let state = this.state.filter(value => value !== 0);
+
+				return state.length > 0;
+			}
 		},
 		watch: {
 			value: {
 				deep: true,
 				handler(value) {
-					let state = this.getDerivedValueFromProps(value, this.data);
+					let state = this.getDerivedStateFromProps(value, this.data);
 
 					this.state = state;
 				}
@@ -84,25 +91,25 @@
 			data: {
 				deep: true,
 				handler(value) {
-					let state = this.getDerivedValueFromProps(this.value, value);
+					let state = this.getDerivedStateFromProps(this.value, value);
 
 					this.state = state;
 				}
 			}
 		},
 		methods: {
-			getDerivedValueFromProps(value, data) {
-				let a = [...value];
-				let b = data.options.map(option => option.value);
+			getDerivedStateFromProps(value, data) {
+				let state = [...value];
+				let options = data.options.map(option => option.value);
 
-				if (isArrayEqual(a.sort(), b.sort())) {
-					a.unshift(0);
+				if (isArrayEqualed(state.sort(), options.sort())) {
+					state.unshift(0);
 				}
 
-				return a;
+				return state;
 			},
 			handleCollapse() {
-				this.collapse = !this.collapse;
+				this.collapsed = !this.collapsed;
 			},
 			handleChange(checked, value) {
 				let options = this.data.options.map(option => option.value);
@@ -112,8 +119,8 @@
 						let state = options;
 
 						this.state = [0].concat(state);
-						this.$emit("input", this.data.value, state);
-						this.$emit("change", this.data.value, state);
+						this.$emit("input", this.data.key, state);
+						this.$emit("change", this.data.key, state);
 					}
 					else {
 						let isExsited = this.state.indexOf(value) > -1;
@@ -124,15 +131,15 @@
 
 						let state = [...this.state, value];
 
-						if (isArrayEqual(state.sort(), options.sort())) {
+						if (isArrayEqualed(state.sort(), options.sort())) {
 							this.state = [0].concat(state);
 						}
 						else {
 							this.state = state;
 						}
 
-						this.$emit("input", this.data.value, state);
-						this.$emit("change", this.data.value, state);
+						this.$emit("input", this.data.key, state);
+						this.$emit("change", this.data.key, state);
 					}
 				}
 				else {
@@ -140,8 +147,8 @@
 						let state = [];
 
 						this.state = state;
-						this.$emit("input", this.data.value, state);
-						this.$emit("change", this.data.value, state);
+						this.$emit("input", this.data.key, state);
+						this.$emit("change", this.data.key, state);
 					}
 					else {
 						let isNotExsited = this.state.indexOf(value) === -1;
@@ -157,8 +164,8 @@
 						}
 
 						this.state = state;
-						this.$emit("input", this.data.value, state);
-						this.$emit("change", this.data.value, state);
+						this.$emit("input", this.data.key, state);
+						this.$emit("change", this.data.key, state);
 					}
 				}
 			}
