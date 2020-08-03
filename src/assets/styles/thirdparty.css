@@ -1,0 +1,23 @@
+/* G2 图表 tooltip 提示 */
+.g2-tooltip { position:absolute; top:0; left:0; border-radius:2px !important; box-shadow:0 1px 8px rgba(0,0,0,0.15) !important; background-color:rgba(255,255,255,0.95); padding:10px !important; color:#565656; font-size:12px; line-height:20px; }
+.g2-tooltip .g2-tooltip-title { font-size:14px; }
+.g2-tooltip .g2-tooltip-list-item { display:flex; align-items:center; margin:0 !important; }
+.g2-tooltip .g2-tooltip-list-item + .g2-tooltip-list-item { margin-top:4px !important; }
+.g2-tooltip .g2-tooltip-list-item-marker { display:block; width:6px; height:6px; border-radius:50%; margin-right:8px; }
+.g2-tooltip .g2-tooltip-list-item-key { flex:1; display:block; }
+.g2-tooltip .g2-tooltip-list-item-value { display:block; margin-left:24px; }
+.g2-tooltip .g2-tooltip-group {  }
+.g2-tooltip .g2-tooltip-group + .g2-tooltip-group { margin-top:8px; }
+.g2-tooltip .g2-tooltip-group-title { font-size:14px; }
+.g2-tooltip .g2-tooltip-group-content { display:flex; align-items:center; margin-top:4px; }
+.g2-tooltip .g2-tooltip-group-content-marker { display:block; width:6px; height:6px; border-radius:50%; margin-right:8px; }
+.g2-tooltip .g2-tooltip-group-content-key { flex:1; display:block; }
+.g2-tooltip .g2-tooltip-group-content-value { display:block; margin-left:24px; }
+
+/* G2 图表（饼状图） legend 提示 */
+.g2-pie-legend { position:absolute; top:50% !important; left:auto !important; right:0 !important; width:auto !important; max-width:100px !important; height:auto !important; max-height:260px !important; overflow:auto !important; transform:translateY(-50%); }
+.g2-pie-legend-list { list-style:none; margin:0; padding:0; text-align:left; }
+.g2-pie-legend-list-item { cursor:pointer; display:flex !important; align-items:center !important; margin:0 !important; font-size:12px !important; line-height:1 !important; }
+.g2-pie-legend-list-item .g2-pie-legend-marker { display:block !important; width:6px !important; height:6px !important; border-radius:50% !important; margin-right:8px !important; }
+.g2-pie-legend-list-item .g2-pie-legend-text { flex:1; display:block; overflow:hidden; white-space:nowrap; text-overflow:ellipsis; }
+.g2-pie-legend-list-item + .g2-pie-legend-list-item { margin-top:10px !important; }

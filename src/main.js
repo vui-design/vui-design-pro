@@ -1,4 +1,10 @@
+// Vui Design 组件样式
 import "vui-design/dist/style/vui-design.css";
+// 第三方组件样式重写
+import "./assets/styles/thirdparty.css";
+// 系统自身公共样式
+import "./assets/styles/index.css";
+
 import Vue from "vue";
 import VuiDesign from "vui-design";
 import Viser from "viser-vue";

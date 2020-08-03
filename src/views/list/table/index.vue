@@ -1,5 +1,5 @@
 <template>
-	<vui-fullscreen v-model="page.fullscreen" class="vdp-view-list-table">
+	<vui-fullscreen v-model="page.fullscreen" class="vui-pro-view-list-table">
 		<vui-card v-bind:bordered="false">
 			<vui-form ref="searcher" layout="inline">
 				<vui-form-item>
@@ -15,7 +15,7 @@
 			</vui-form>
 		</vui-card>
 
-		<vc-filter
+		<vui-pro-filter
 			class="margin-top-20"
 			v-model="filter.value"
 			v-bind:options="filter.options"
@@ -24,13 +24,21 @@
 
 		<vui-card v-bind:bordered="false" class="margin-top-20" headerStyle="padding: 16px 16px 16px 20px;" bodyStyle="padding: 0;" title="查询表格">
 			<vui-action-group slot="extra" size="small">
-				<vui-space key="1" v-bind:gutter="0">
-					<vui-button type="text" v-bind:icon="page.fullscreen ? 'fullscreen-exit' : 'fullscreen'" v-on:click="handleFullscreen" />
-					<vui-button type="text" icon="refresh" v-on:click="handleRefresh" />
+				<vui-space key="1">
+					<vui-tooltip v-bind:content="page.fullscreen ? '退出全屏' : '全屏'">
+						<a href="javascript:;" class="link-default" style="font-size: 16px;" v-on:click="handleFullscreen">
+							<vui-icon v-bind:type="page.fullscreen ? 'fullscreen-exit' : 'fullscreen'" />
+						</a>
+					</vui-tooltip>
+					<vui-tooltip content="刷新">
+						<a href="javascript:;" class="link-default" style="font-size: 16px;" v-on:click="handleRefresh">
+							<vui-icon type="refresh" />
+						</a>
+					</vui-tooltip>
 				</vui-space>
 				<vui-button key="2" icon="download" v-on:click="handleExport">导出</vui-button>
 				<vui-button key="3" type="primary" icon="plus">新增</vui-button>
-				<vui-dropdown key="4" v-if="selectedTotalRows > 0">
+				<vui-dropdown key="4" v-if="selectedTotalItems > 0">
 					<vui-button type="primary" icon="list-settings">批量操作</vui-button>
 					<vui-dropdown-menu slot="menu">
 						<vui-dropdown-menu-item name="remove" title="批量删除" />
@@ -38,8 +46,8 @@
 					</vui-dropdown-menu>
 				</vui-dropdown>
 			</vui-action-group>
-			<vui-alert type="warning" banner showIcon>
-				<template>已选择 <em style="color: #faad14; font-weight: 600;">{{selectedTotalRows}}</em> 项，服务调用次数总计 <em>{{selectedTotalTimes}}</em> 万</template>
+			<vui-alert type="warning" banner showIcon style="border-bottom: 1px solid #f0f0f0">
+				<template>已选择 <em style="color: #faad14; font-weight: 600;">{{selectedTotalItems}}</em> 项，服务调用次数总计 <em>{{selectedTotalTimes}}</em> 万</template>
 			</vui-alert>
 			<vui-table ref="table" rowKey="id" v-bind="list" v-on:rowSelect="handleRowSelect">
 				<template slot="count" slot-scope="{ row, rowIndex }">{{row.count}} 万</template>
@@ -59,6 +67,7 @@
 				</template>
 			</vui-table>
 			<div class="padding-20">
+				<div style="float: left; line-height: 34px;">共 <em>{{pagination.total}}</em> 条</div>
 				<vui-pagination align="right" showPageSizer v-bind="pagination" v-on:change="handleChangePage" v-on:changePageSize="handleChangePageSize" />
 			</div>
 		</vui-card>
@@ -66,11 +75,11 @@
 </template>
 
 <script>
-	import VcFilter from "src/components/filter";
+	import VuiProFilter from "src/components/filter";
 
 	export default {
 		components: {
-			VcFilter
+			VuiProFilter
 		},
 		data() {
 			return {
@@ -182,7 +191,7 @@
 		},
 
 		computed: {
-			selectedTotalRows() {
+			selectedTotalItems() {
 				return this.list.rowSelection.value.length;
 			},
 			selectedTotalTimes() {
@@ -270,6 +279,6 @@
 </script>
 
 <style>
-	.vdp-view-list-table {  }
-	.vdp-view-list-table.vui-fullscreen-on { background-color:#f4f6f8; padding:20px; }
+	.vui-pro-view-list-table {  }
+	.vui-pro-view-list-table.vui-fullscreen-on { background-color:#f4f6f8; padding:20px; }
 </style>

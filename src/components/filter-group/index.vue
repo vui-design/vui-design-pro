@@ -1,23 +1,23 @@
 <template>
-	<div class="ui-filter-group">
-		<div class="ui-filter-group-header">
+	<div class="vui-pro-filter-group">
+		<div class="vui-pro-filter-group-header">
 			<label class="label">{{data.label}}</label>
 		</div>
-		<div class="ui-filter-group-body">
+		<div class="vui-pro-filter-group-body">
 			<vui-row v-bind:gutter="20" v-bind:class="collapsed ? 'collapsed' : ''">
 				<vui-col key="0" v-bind:xs="12" v-bind:sm="8" v-bind:md="6" v-bind:lg="4" v-bind:xl="3" v-bind:xxl="2">
-					<div class="ui-filter-group-option">
+					<div class="vui-pro-filter-group-option">
 						<vui-checkbox v-bind:value="0" v-bind:indeterminate="indeterminate" v-bind:checked="state.indexOf(0) > -1" v-on:change="checked => handleChange(checked, 0)">全部</vui-checkbox>
 					</div>
 				</vui-col>
 				<vui-col v-for="(option, index) in data.options" v-bind:key="option.value" v-bind:xs="12" v-bind:sm="8" v-bind:md="6" v-bind:lg="4" v-bind:xl="3" v-bind:xxl="2">
-					<div class="ui-filter-group-option">
+					<div class="vui-pro-filter-group-option">
 						<vui-checkbox v-bind:value="option.value" v-bind:checked="state.indexOf(option.value) > -1" v-on:change="checked => handleChange(checked, option.value)">{{option.label}}</vui-checkbox>
 					</div>
 				</vui-col>
 			</vui-row>
 		</div>
-		<div class="ui-filter-group-footer">
+		<div class="vui-pro-filter-group-footer">
 			<a href="javascript:;" class="btn-more link-default" v-on:click="handleCollapse">
 				<template v-if="collapsed">展开<vui-icon type="chevron-down" /></template>
 				<template v-else>收起<vui-icon type="chevron-up" /></template>

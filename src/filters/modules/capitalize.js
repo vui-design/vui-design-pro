@@ -1,9 +1,9 @@
 export default value => {
 	if (!value) {
-		return "";
+		return value;
 	}
 
-	value = value.toString();
+	value = String(value);
 
 	return value.charAt(0).toUpperCase() + value.slice(1);
 };

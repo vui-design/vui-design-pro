@@ -1,6 +1,6 @@
 <template>
-	<div class="ui-filter">
-		<vc-filter-group
+	<div class="vui-pro-filter">
+		<vui-pro-filter-group
 			v-for="(item, index) in options"
 			v-bind:key="item.key"
 			v-bind:class="index % 2 == 0 ? 'even' : 'odd'"
@@ -12,11 +12,11 @@
 </template>
 
 <script>
-	import VcFilterGroup from "../filter-group";
+	import VuiProFilterGroup from "../filter-group";
 
 	export default {
 		components: {
-			VcFilterGroup
+			VuiProFilterGroup
 		},
 		props: {
 			value: {
@@ -67,20 +67,20 @@
 </script>
 
 <style>
-	.ui-filter { border-radius:2px; overflow:hidden; }
+	.vui-pro-filter { border-radius:2px; overflow:hidden; }
 
-	.ui-filter-group { position:relative; display:flex; align-items:flex-start; }
-	.ui-filter-group-header { display:flex; align-items:center; width:120px; padding:8px 0; }
-	.ui-filter-group-header .label { flex:1; display:block; height:32px; padding:0 16px; overflow:hidden; white-space:nowrap; text-overflow:ellipsis; color:#262626; line-height:32px; }
-	.ui-filter-group-body { flex:1; padding:8px 0; overflow:hidden; }
-	.ui-filter-group-body .vui-row { height:auto; overflow:hidden; transition:all 0.2s; }
-	.ui-filter-group-body .vui-row.collapsed { height:32px; }
-	.ui-filter-group-body .ui-filter-group-option { display:flex; padding:8px 0; overflow:hidden; white-space:nowrap; text-overflow:ellipsis; }
-	.ui-filter-group-footer { display:flex; padding:8px 0; line-height:32px; }
-	.ui-filter-group-footer .btn-more { flex:1; display:block; align-items:center; height:32px; padding:0 16px; }
-	.ui-filter-group-footer .btn-more .vui-icon { margin-left:4px; transform:scale(0.6); }
+	.vui-pro-filter-group { position:relative; display:flex; align-items:flex-start; }
+	.vui-pro-filter-group-header { display:flex; align-items:center; width:120px; padding:8px 0; }
+	.vui-pro-filter-group-header .label { flex:1; display:block; height:32px; padding:0 16px; overflow:hidden; white-space:nowrap; text-overflow:ellipsis; color:#262626; line-height:32px; }
+	.vui-pro-filter-group-body { flex:1; padding:8px 0; overflow:hidden; }
+	.vui-pro-filter-group-body .vui-row { height:auto; overflow:hidden; transition:all 0.2s; }
+	.vui-pro-filter-group-body .vui-row.collapsed { height:32px; }
+	.vui-pro-filter-group-body .vui-pro-filter-group-option { display:flex; padding:8px 0; overflow:hidden; white-space:nowrap; text-overflow:ellipsis; }
+	.vui-pro-filter-group-footer { display:flex; padding:8px 0; line-height:32px; }
+	.vui-pro-filter-group-footer .btn-more { flex:1; display:block; align-items:center; height:32px; padding:0 16px; }
+	.vui-pro-filter-group-footer .btn-more .vui-icon { margin-left:4px; transform:scale(0.6); }
 
-	.ui-filter-group + .ui-filter-group { margin-top:1px; }
-	.ui-filter-group.even { background-color:#fff; }
-	.ui-filter-group.odd { background-color:#fafafa; }
+	.vui-pro-filter-group + .vui-pro-filter-group { margin-top:1px; }
+	.vui-pro-filter-group.even { background-color:#fff; }
+	.vui-pro-filter-group.odd { background-color:#fafafa; }
 </style>

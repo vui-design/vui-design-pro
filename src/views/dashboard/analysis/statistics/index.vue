@@ -1,32 +1,32 @@
 <template>
-	<vui-row :gutter="20">
-		<vui-col :span="6">
-			<DashboardAnalysisStatistic1 />
+	<vui-row v-bind:gutter="20">
+		<vui-col v-bind:span="6">
+			<vui-pro-dashboard-analysis-statistic1 />
 		</vui-col>
-		<vui-col :span="6">
-			<DashboardAnalysisStatistic2 />
+		<vui-col v-bind:span="6">
+			<vui-pro-dashboard-analysis-statistic2 />
 		</vui-col>
-		<vui-col :span="6">
-			<DashboardAnalysisStatistic3 />
+		<vui-col v-bind:span="6">
+			<vui-pro-dashboard-analysis-statistic3 />
 		</vui-col>
-		<vui-col :span="6">
-			<DashboardAnalysisStatistic4 />
+		<vui-col v-bind:span="6">
+			<vui-pro-dashboard-analysis-statistic4 />
 		</vui-col>
 	</vui-row>
 </template>
 
 <script>
-	import DashboardAnalysisStatistic1 from "./src/statistic1";
-	import DashboardAnalysisStatistic2 from "./src/statistic2";
-	import DashboardAnalysisStatistic3 from "./src/statistic3";
-	import DashboardAnalysisStatistic4 from "./src/statistic4";
+	import VuiProDashboardAnalysisStatistic1 from "./src/statistic1";
+	import VuiProDashboardAnalysisStatistic2 from "./src/statistic2";
+	import VuiProDashboardAnalysisStatistic3 from "./src/statistic3";
+	import VuiProDashboardAnalysisStatistic4 from "./src/statistic4";
 
 	export default {
 		components: {
-			DashboardAnalysisStatistic1,
-			DashboardAnalysisStatistic2,
-			DashboardAnalysisStatistic3,
-			DashboardAnalysisStatistic4
+			VuiProDashboardAnalysisStatistic1,
+			VuiProDashboardAnalysisStatistic2,
+			VuiProDashboardAnalysisStatistic3,
+			VuiProDashboardAnalysisStatistic4
 		}
 	};
 </script>

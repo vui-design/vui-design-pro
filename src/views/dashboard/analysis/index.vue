@@ -1,30 +1,30 @@
 <template>
 	<div>
-		<DashboardAnalysisStatistics />
-		<DashboardAnalysisSalesAndPageview />
-		<vui-row class="margin-top-20" :gutter="20">
-			<vui-col :span="12">
-				<DashboardAnalysisPopularSearch />
+		<vui-pro-dashboard-analysis-statistics />
+		<vui-pro-dashboard-analysis-sales-pageview />
+		<vui-row class="margin-top-20" v-bind:gutter="20">
+			<vui-col v-bind:span="12">
+				<vui-pro-dashboard-analysis-popular-search />
 			</vui-col>
-			<vui-col :span="12">
-				<DashboardAnalysisSalesCategoryPercentage />
+			<vui-col v-bind:span="12">
+				<vui-pro-dashboard-analysis-sales-category-percentage />
 			</vui-col>
 		</vui-row>
 	</div>
 </template>
 
 <script>
-	import DashboardAnalysisStatistics from "./statistics";
-	import DashboardAnalysisSalesAndPageview from "./sales-and-pageview";
-	import DashboardAnalysisPopularSearch from "./popular-search";
-	import DashboardAnalysisSalesCategoryPercentage from "./sales-category-percentage";
+	import VuiProDashboardAnalysisStatistics from "./statistics";
+	import VuiProDashboardAnalysisSalesPageview from "./sales-pageview";
+	import VuiProDashboardAnalysisPopularSearch from "./popular-search";
+	import VuiProDashboardAnalysisSalesCategoryPercentage from "./sales-category-percentage";
 
 	export default {
 		components: {
-			DashboardAnalysisStatistics,
-			DashboardAnalysisSalesAndPageview,
-			DashboardAnalysisPopularSearch,
-			DashboardAnalysisSalesCategoryPercentage
+			VuiProDashboardAnalysisStatistics,
+			VuiProDashboardAnalysisSalesPageview,
+			VuiProDashboardAnalysisPopularSearch,
+			VuiProDashboardAnalysisSalesCategoryPercentage
 		}
 	};
 </script>
