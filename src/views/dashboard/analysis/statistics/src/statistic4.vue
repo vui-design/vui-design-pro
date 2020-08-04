@@ -1,82 +1,162 @@
 <template>
-	<vui-card :bordered="false">
-		<vui-statistic title="运营活动效果" suffix="%" :value="90">
+	<vui-card v-bind:bordered="false">
+		<vui-statistic v-bind:value="90" suffix="%" title="运营活动效果">
 			<vui-tooltip slot="extra" content="指标说明">
 				<vui-icon type="info" />
 			</vui-tooltip>
+			<div slot="footer">
+				<v-chart v-bind="chartSettings.root">
+					<v-tooltip v-bind="chartSettings.tooltip" />
+					<v-view v-for="(item, itemIndex) in chartSettings.views" v-bind:key="itemIndex" v-bind="item.view">
+						<v-coord v-bind="item.coord" />
+						<v-interval v-bind="item.interval" />
+						<v-point v-bind="item.point" />
+						<v-guide v-for="(guide, guideIndex) in item.guides" v-bind:key="guideIndex" v-bind="guide" />
+					</v-view>
+				</v-chart>
+			</div>
 		</vui-statistic>
-		<div style="margin-top: 15px; overflow: hidden; font-size: 0;">
-			<v-chart :forceFit="true" :height="50" :padding="0" :data="data" :scale="scale">
-				<v-tooltip :showTitle="false" :crosshairs="false" />
-				<v-view v-for="(item, i) in data" :key="i" :data="[item]" :scale="getScale(item, i)">
-					<v-coord type="rect" direction="LB" />
-					<v-interval position="title*actual" color="#1ab394" :size="10" />
-					<v-point position="title*target" color="#09192a" shape="line" :size="10" :v-style="{lineWidth: 2}" />
-					<v-guide type="region" :start="getGuide(item, 0, 'start')" :end="getGuide(item, 0, 'end')" :v-style="{fill: '#ffa39e', fillOpacity: 0.25}"/>
-					<v-guide type="region" :start="getGuide(item, 1, 'start')" :end="getGuide(item, 1, 'end')" :v-style="{fill: '#ffd591', fillOpacity: 0.25}"/>
-					<v-guide type="region" :start="getGuide(item, 2, 'start')" :end="getGuide(item, 2, 'end')" :v-style="{fill: '#a7e8b4', fillOpacity: 0.25}"/>
-				</v-view>
-			</v-chart>
-		</div>
-		<vui-divider dashed style="margin: 15px 0;" />
+		<vui-divider dashed style="margin: 16px 0;" />
 		<div style="line-height: 1;">
-			<span>周同比 12% <vui-icon type="arrow-up" color="#ed5565" :size="12" /></span>
-			<span>日同比 11% <vui-icon type="arrow-down" color="#5cb85c" :size="12" /></span>
+			<div style="display: inline-block;">周同比 <vui-ratio v-bind:value="12" /></div>
+			<div style="display: inline-block; margin-left: 16px;">日同比 <vui-ratio v-bind:value="-10" /></div>
 		</div>
 	</vui-card>
 </template>
 
 <script>
+	const getViewScale = item => {
+		const ranges = item.ranges;
+
+		return [
+			{ dataKey: "target", min: 0, max: ranges[2], nice: false },
+			{ dataKey: "actual", min: 0, max: ranges[2], nice: false }
+		];
+	};
+
+	const getViewGuide = (viewData, guideIndex, position) => {
+		const ranges = viewData.ranges;
+		const guide = [
+			{
+				start: [-1, 0],
+				end:[1, ranges[0]]
+			},
+			{
+				start: [-1, ranges[0]],
+				end: [1, ranges[1]]
+			},
+			{
+				start: [-1, ranges[1]],
+				end: [1, ranges[2]]
+			}
+		];
+
+		return guide[guideIndex][position];
+	};
+
+	const getChartSettings = dataSource => {
+		const root = {
+			key: new Date().getTime(),
+			forceFit: true,
+			height: 50,
+			padding: [0, 0, 0, 0],
+			scale: [
+				{ dataKey: "target" },
+				{ dataKey: "actual" }
+			],
+			data: dataSource
+		};
+
+		let views = [];
+
+		dataSource.forEach((item, itemIndex) => {
+			const view = {
+				data: [item],
+				scale: getViewScale(item)
+			};
+
+			const coord = {
+				type: "rect",
+				direction: "LB"
+			};
+
+			const interval = {
+				position: "title*actual",
+				color: "#1ab394",
+				size: 10
+			};
+
+			const point = {
+				position: "title*target",
+				color: "#09192a",
+				shape: "line",
+				size: 10,
+				vStyle: {
+					lineWidth: 2
+				}
+			};
+
+			let guides = ["#ffa39e", "#ffd591", "#a7e8b4"];
+
+			guides = guides.map((guide, guideIndex) => {
+				return {
+					type: "region",
+					start: getViewGuide(item, guideIndex, "start"),
+					end: getViewGuide(item, guideIndex, "end"),
+					vStyle: {
+						fill: guide,
+						fillOpacity: 0.25
+					}
+				};
+			});
+
+			return views.push({
+				view,
+				coord,
+				interval,
+				point,
+				guides
+			});
+		});
+
+		const tooltip = {
+			showTitle: false,
+			crosshairs: false,
+			useHtml: true,
+			htmlContent(title, items) {
+				let template = "";
+
+				template += "<div class=\"g2-tooltip\">";
+				template += "<ul class=\"g2-tooltip-list\">";
+				items.forEach(item => {
+					template += "<li class=\"g2-tooltip-list-item\">";
+					template += "<i class=\"g2-tooltip-list-item-marker\" style=\"background-color: " + item.color + ";\"></i>";
+					template += "<label class=\"g2-tooltip-list-item-key\">" + item.name + "</label>";
+					template += "<label class=\"g2-tooltip-list-item-value\">" + item.value + "</label>";
+					template += "</li>";
+				});
+				template += "</ul>";
+				template += "</div>";
+
+				return template;
+			}
+		};
+
+		return { root, views, tooltip };
+	};
+
 	export default {
 		data() {
 			return {
-				data:  [
-					{ "title": "Activity effect", "subtitle": "Activity effect", ranges: [50, 75, 100], target: 80, actual: 90 }
-				],
-				scale: [
-					{ dataKey: "target" },
-					{ dataKey: "actual" }
-				]
+				chartSettings: getChartSettings([])
 			};
 		},
-		methods: {
-			getScale(item, i) {
-				const ranges = item.ranges;
+		created() {
+			const dataSource = [
+				{ "title": "Activity effect", "subtitle": "Activity effect", ranges: [50, 75, 100], target: 80, actual: 90 }
+			];
 
-				return [
-					{
-						dataKey: "target",
-						min: 0,
-						max: ranges[2],
-						nice: false
-					},
-					{
-						dataKey: "actual",
-						min: 0,
-						max: ranges[2],
-						nice: false
-					}
-				];
-			},
-			getGuide(viewData, guideIndex, position) {
-				const ranges = viewData.ranges;
-				const guide = [
-					{
-						start: [-1, 0],
-						end:[1, ranges[0]]
-					},
-					{
-						start: [-1, ranges[0]],
-						end: [1, ranges[1]]
-					},
-					{
-						start: [-1, ranges[1]],
-						end: [1, ranges[2]]
-					}
-				];
-
-				return guide[guideIndex][position];
-			},
+			this.chartSettings = getChartSettings(dataSource);
 		}
 	};
 </script>

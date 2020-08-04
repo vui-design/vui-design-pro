@@ -50,7 +50,7 @@
 				<template>已选择 <em style="color: #faad14; font-weight: 600;">{{selectedTotalItems}}</em> 项，服务调用次数总计 <em>{{selectedTotalTimes}}</em> 万</template>
 			</vui-alert>
 			<vui-table ref="table" rowKey="id" v-bind="list" v-on:rowSelect="handleRowSelect">
-				<template slot="count" slot-scope="{ row, rowIndex }">{{row.count}} 万</template>
+				<template slot="count" slot-scope="{ row, rowIndex }">{{row.count | numerical}} 万</template>
 				<template slot="state" slot-scope="{ row, rowIndex }">
 					<vui-badge v-if="row.state == 1" status="default" text="未启用" />
 					<vui-badge v-else-if="row.state == 2" status="success" text="已上线" />
@@ -175,9 +175,9 @@
 					columns: [
 						{ key: "name", dataIndex: "name", title: "规则名称" },
 						{ key: "description", dataIndex: "description", title: "描述" },
-						{ key: "count", dataIndex: "count", slot: "count", title: "服务调用次数" },
+						{ key: "count", dataIndex: "count", sorter: true, slot: "count", title: "服务调用次数" },
 						{ key: "state", dataIndex: "state", slot: "state", title: "状态" },
-						{ key: "datetime", dataIndex: "datetime", title: "上次调度时间" },
+						{ key: "datetime", dataIndex: "datetime", sorter: true, title: "上次调度时间" },
 						{ key: "action", width: 120, slot: "action", title: "操作" }
 					],
 					rowSelection: {

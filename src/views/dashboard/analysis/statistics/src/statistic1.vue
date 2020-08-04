@@ -1,28 +1,28 @@
 <template>
 	<vui-card v-bind:bordered="false">
-		<vui-statistic v-bind:value="total" prefix="￥" title="总销售额">
+		<vui-statistic v-bind:value="246260" prefix="￥" title="总销售额">
 			<vui-tooltip slot="extra" content="指标说明">
 				<vui-icon type="info" />
 			</vui-tooltip>
 			<div slot="footer">
-				<v-chart v-bind="chartSettings.view">
+				<v-chart v-bind="chartSettings.root">
 					<v-area v-bind="chartSettings.geom" />
 					<v-tooltip v-bind="chartSettings.tooltip" />
 				</v-chart>
 			</div>
 		</vui-statistic>
 		<vui-divider dashed style="margin: 16px 0;" />
-		<div style="line-height: 1;">日销售额 ￥{{average | numerical}}</div>
+		<div style="line-height: 1;">日销售额 ￥{{1234 | numerical}}</div>
 	</vui-card>
 </template>
 
 <script>
 	const getChartSettings = dataSource => {
-		const view = {
+		const root = {
 			key: new Date().getTime(),
 			forceFit: true,
 			height: 50,
-			padding: 0,
+			padding: [0, 0, 0, 0],
 			scale: [
 				{ dataKey: "date", type: "time" },
 				{ dataKey: "value", min: 0 }
@@ -34,30 +34,40 @@
 			position: "date*value",
 			shape: "smooth",
 			opacity: 1,
-			size: 2,
 			color: "#2d8cf0"
 		};
 
 		const tooltip = {
 			showTitle: false,
 			crosshairs: false,
-			itemTpl: `
-				<li data-index={index} class="g2-tooltip-list-item">
-					<i class="g2-tooltip-list-item-marker" style="background-color: {color};"></i>
-					<span class="g2-tooltip-list-item-key">{title}</span>
-					<span class="g2-tooltip-list-item-value">{value}</span>
-				</li>
-			`
+			useHtml: true,
+			htmlContent(title, items) {
+				let template = "";
+
+				template += "<div class=\"g2-tooltip\">";
+				template += "<ul class=\"g2-tooltip-list\">";
+				items.forEach(item => {
+					const data = item.point._origin;
+
+					template += "<li class=\"g2-tooltip-list-item\">";
+					template += "<i class=\"g2-tooltip-list-item-marker\" style=\"background-color: " + item.color + ";\"></i>";
+					template += "<label class=\"g2-tooltip-list-item-key\">" + data.date + "</label>";
+					template += "<label class=\"g2-tooltip-list-item-value\">" + data.value + "</label>";
+					template += "</li>";
+				});
+				template += "</ul>";
+				template += "</div>";
+
+				return template;
+			}
 		};
 
-		return { view, geom, tooltip };
+		return { root, geom, tooltip };
 	};
 
 	export default {
 		data() {
 			return {
-				total: 246260,
-				average: 1234,
 				chartSettings: getChartSettings([])
 			};
 		},

@@ -1,41 +1,41 @@
 <template>
 	<vui-card v-bind:bordered="false" title="线上热门搜索">
-		<vui-row v-bind:gutter="40">
+		<vui-row v-bind:gutter="20">
 			<vui-col v-bind:span="12">
 				<vui-statistic v-bind:value="12345" title="搜索用户数">
 					<vui-tooltip slot="extra" content="指标说明">
 						<vui-icon type="info" />
 					</vui-tooltip>
+					<div slot="footer">
+						<v-chart v-bind:forceFit="true" v-bind:height="50" v-bind:padding="0" v-bind:data="chart1Options.data" v-bind:scale="chart1Options.scale">
+							<v-tooltip v-bind:showTitle="false" v-bind:crosshairs="false" v-bind:itemTpl="getTooltipItemTemplate()" />
+							<v-area position="date*value" shape="smooth" color="#2d8cf0" v-bind:opacity="0.5" />
+							<v-line position="date*value" shape="smooth" color="#2d8cf0" v-bind:opacity="1" v-bind:size="2" />
+						</v-chart>
+					</div>
 				</vui-statistic>
-				<div style="margin-top: 15px; overflow: hidden; font-size: 0;">
-					<v-chart v-bind:forceFit="true" v-bind:height="50" v-bind:padding="0" v-bind:data="chart1Options.data" v-bind:scale="chart1Options.scale">
-						<v-tooltip v-bind:showTitle="false" v-bind:crosshairs="false" v-bind:itemTpl="getTooltipItemTemplate()" />
-						<v-area position="date*value" shape="smooth" color="#2d8cf0" v-bind:opacity="0.5" />
-						<v-line position="date*value" shape="smooth" color="#2d8cf0" v-bind:opacity="1" v-bind:size="2" />
-					</v-chart>
-				</div>
 			</vui-col>
 			<vui-col v-bind:span="12">
-				<vui-statistic title="人均搜索次数" v-bind:value="2.8">
+				<vui-statistic v-bind:value="2.8" title="人均搜索次数">
 					<vui-tooltip slot="extra" content="指标说明">
 						<vui-icon type="info" />
 					</vui-tooltip>
+					<div slot="footer">
+						<v-chart v-bind:forceFit="true" v-bind:height="50" v-bind:padding="0" v-bind:data="chart1Options.data" v-bind:scale="chart1Options.scale">
+							<v-tooltip v-bind:showTitle="false" v-bind:crosshairs="false" v-bind:itemTpl="getTooltipItemTemplate()" />
+							<v-area position="date*value" shape="smooth" color="#2d8cf0" v-bind:opacity="0.5" />
+							<v-line position="date*value" shape="smooth" color="#2d8cf0" v-bind:opacity="1" v-bind:size="2" />
+						</v-chart>
+					</div>
 				</vui-statistic>
-				<div style="margin-top: 15px; overflow: hidden; font-size: 0;">
-					<v-chart v-bind:forceFit="true" v-bind:height="50" v-bind:padding="0" v-bind:data="chart1Options.data" v-bind:scale="chart1Options.scale">
-						<v-tooltip v-bind:showTitle="false" v-bind:crosshairs="false" v-bind:itemTpl="getTooltipItemTemplate()" />
-						<v-area position="date*value" shape="smooth" color="#2d8cf0" v-bind:opacity="0.5" />
-						<v-line position="date*value" shape="smooth" color="#2d8cf0" v-bind:opacity="1" v-bind:size="2" />
-					</v-chart>
-				</div>
 			</vui-col>
 		</vui-row>
-		<vui-table v-bind:columns="dataTableOptions.columns" v-bind:data="dataTableOptions.data" class="margin-top-20" getRowKey="id">
-			<template slot="no" slot-scope="{ row, index }">{{index + 1}}</template>
-			<template slot="gain" slot-scope="{ row, index }">
-				<span style="margin-right: 10px;">{{row.gain}}</span>
-				<vui-icon v-if="row.trend === 'up'" type="arrow-up" v-bind:size="12" color="#ed5565" />
-				<vui-icon v-else type="arrow-down" v-bind:size="12" color="#5cb85c" />
+		<vui-table v-bind:columns="dataTableOptions.columns" v-bind:data="dataTableOptions.data" class="margin-top-20" rowKey="id">
+			<template slot="total" slot-scope="{ row, rowIndex }">
+				{{row.total | numerical}}
+			</template>
+			<template slot="ratio" slot-scope="{ row, rowIndex }">
+				<vui-ratio v-bind:value="row.ratio" />
 			</template>
 		</vui-table>
 	</vui-card>
@@ -95,17 +95,17 @@
 				},
 				dataTableOptions: {
 					columns: [
-						{ key: "no", width: 80, slot: "no", title: "排名" },
+						{ key: "rank", dataIndex: "rank", width: 80, title: "排名" },
 						{ key: "keyword", dataIndex: "keyword", title: "搜索关键词" },
-						{ key: "total", dataIndex: "total", sorter: true, title: "用户数" },
-						{ key: "gain", dataIndex: "gain", sorter: true, slot: "gain", title: "周涨幅" }
+						{ key: "total", dataIndex: "total", sorter: true, slot: "total", title: "用户数" },
+						{ key: "ratio", dataIndex: "ratio", sorter: true, slot: "ratio", title: "周涨幅" }
 					],
 					data: [
-						{ id: 1, keyword: "搜索关键词1", total: 988, gain: "22%", trend: "up" },
-						{ id: 2, keyword: "搜索关键词2", total: 962, gain: "11%", trend: "up" },
-						{ id: 3, keyword: "搜索关键词3", total: 718, gain: "44%", trend: "down" },
-						{ id: 4, keyword: "搜索关键词4", total: 656, gain: "11%", trend: "up" },
-						{ id: 5, keyword: "搜索关键词5", total: 888, gain: "50%", trend: "down" }
+						{ id: 1, rank: 1, keyword: "搜索关键词1", total: 988, ratio: 22 },
+						{ id: 2, rank: 2, keyword: "搜索关键词2", total: 962, ratio: 11 },
+						{ id: 3, rank: 3, keyword: "搜索关键词3", total: 718, ratio: -44 },
+						{ id: 4, rank: 4, keyword: "搜索关键词4", total: 656, ratio: 11 },
+						{ id: 5, rank: 5, keyword: "搜索关键词5", total: 888, ratio: -50 }
 					]
 				}
 			};
