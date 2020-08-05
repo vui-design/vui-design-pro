@@ -1,11 +1,13 @@
 <template>
-	<div class="vdp-result-warning">
-		<vui-result v-bind:status="status" v-bind:title="title" v-bind:description="description">
-			<template slot="extra">
-				<vui-button type="primary" to="/">返回首页</vui-button>
-			</template>
-		</vui-result>
-	</div>
+	<vui-card v-bind:bordered="false" shadow="always" bodyStyle="padding: 0;">
+		<div class="vdp-result-warning">
+			<vui-result v-bind:status="status" v-bind:title="title" v-bind:description="description">
+				<template slot="extra">
+					<vui-button type="primary" to="/">返回首页</vui-button>
+				</template>
+			</vui-result>
+		</div>
+	</vui-card>
 </template>
 
 <script>
@@ -21,5 +23,5 @@
 </script>
 
 <style>
-	.vdp-result-warning { min-height:calc(100vh - 104px); border-radius:2px; background-color:#fff; }
+	.vdp-result-warning { min-height:calc(100vh - 104px); }
 </style>

@@ -1,7 +1,7 @@
 <template>
-	<vui-card v-bind:bordered="false">
+	<vui-card v-bind:bordered="false" shadow="always">
 		<vui-statistic v-bind:value="666666" title="访问量">
-			<vui-tooltip slot="extra" content="指标说明">
+			<vui-tooltip slot="extra" style="display: block;" content="指标说明">
 				<vui-icon type="info" />
 			</vui-tooltip>
 			<div slot="footer">

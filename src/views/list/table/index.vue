@@ -1,6 +1,6 @@
 <template>
 	<vui-fullscreen v-model="page.fullscreen" class="vui-pro-view-list-table">
-		<vui-card v-bind:bordered="false">
+		<vui-card v-bind:bordered="false" shadow="always">
 			<vui-form ref="searcher" layout="inline">
 				<vui-form-item>
 					<vui-input v-model="searcher.name" placeholder="请输入规则名称" />
@@ -22,7 +22,7 @@
 			v-on:change="handleFilterChange"
 		/>
 
-		<vui-card v-bind:bordered="false" class="margin-top-20" headerStyle="padding: 16px 16px 16px 20px;" bodyStyle="padding: 0;" title="查询表格">
+		<vui-card v-bind:bordered="false" shadow="always" class="margin-top-20" headerStyle="padding: 16px 16px 16px 20px;" bodyStyle="padding: 0;" title="查询表格">
 			<vui-action-group slot="extra" size="small">
 				<vui-space key="1">
 					<vui-tooltip v-bind:content="page.fullscreen ? '退出全屏' : '全屏'">

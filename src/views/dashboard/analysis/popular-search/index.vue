@@ -1,14 +1,14 @@
 <template>
-	<vui-card v-bind:bordered="false" title="线上热门搜索">
+	<vui-card v-bind:bordered="false" shadow="always" title="线上热门搜索">
 		<vui-row v-bind:gutter="20">
 			<vui-col v-bind:span="12">
 				<vui-statistic v-bind:value="12345" title="搜索用户数">
-					<vui-tooltip slot="extra" content="指标说明">
+					<vui-tooltip slot="extra" style="display: block;" content="指标说明">
 						<vui-icon type="info" />
 					</vui-tooltip>
 					<div slot="footer">
-						<v-chart v-bind:forceFit="true" v-bind:height="50" v-bind:padding="0" v-bind:data="chart1Options.data" v-bind:scale="chart1Options.scale">
-							<v-tooltip v-bind:showTitle="false" v-bind:crosshairs="false" v-bind:itemTpl="getTooltipItemTemplate()" />
+						<v-chart v-bind:forceFit="true" v-bind:height="50" v-bind:padding="0" v-bind:scale="chart1.scale" v-bind:data="chart1.data">
+							<v-tooltip v-bind:showTitle="false" v-bind:crosshairs="false" v-bind:useHtml="true" v-bind:htmlContent="getChartTooltipTemplate" />
 							<v-area position="date*value" shape="smooth" color="#2d8cf0" v-bind:opacity="0.5" />
 							<v-line position="date*value" shape="smooth" color="#2d8cf0" v-bind:opacity="1" v-bind:size="2" />
 						</v-chart>
@@ -17,12 +17,12 @@
 			</vui-col>
 			<vui-col v-bind:span="12">
 				<vui-statistic v-bind:value="2.8" title="人均搜索次数">
-					<vui-tooltip slot="extra" content="指标说明">
+					<vui-tooltip slot="extra" style="display: block;" content="指标说明">
 						<vui-icon type="info" />
 					</vui-tooltip>
 					<div slot="footer">
-						<v-chart v-bind:forceFit="true" v-bind:height="50" v-bind:padding="0" v-bind:data="chart1Options.data" v-bind:scale="chart1Options.scale">
-							<v-tooltip v-bind:showTitle="false" v-bind:crosshairs="false" v-bind:itemTpl="getTooltipItemTemplate()" />
+						<v-chart v-bind:forceFit="true" v-bind:height="50" v-bind:padding="0" v-bind:scale="chart2.scale" v-bind:data="chart2.data">
+							<v-tooltip v-bind:showTitle="false" v-bind:crosshairs="false" v-bind:useHtml="true" v-bind:htmlContent="getChartTooltipTemplate" />
 							<v-area position="date*value" shape="smooth" color="#2d8cf0" v-bind:opacity="0.5" />
 							<v-line position="date*value" shape="smooth" color="#2d8cf0" v-bind:opacity="1" v-bind:size="2" />
 						</v-chart>
@@ -30,7 +30,7 @@
 				</vui-statistic>
 			</vui-col>
 		</vui-row>
-		<vui-table v-bind:columns="dataTableOptions.columns" v-bind:data="dataTableOptions.data" class="margin-top-20" rowKey="id">
+		<vui-table v-bind="table" class="margin-top-20" rowKey="id">
 			<template slot="total" slot-scope="{ row, rowIndex }">
 				{{row.total | numerical}}
 			</template>
@@ -45,7 +45,11 @@
 	export default {
 		data() {
 			return {
-				chart1Options: {
+				chart1: {
+					scale: [
+						{ dataKey: "date", type: "time" },
+						{ dataKey: "value", min: 0 }
+					],
 					data:  [
 						{ date: "2019-10-01", value: 7 },
 						{ date: "2019-10-02", value: 5 },
@@ -63,13 +67,13 @@
 						{ date: "2019-10-14", value: 5 },
 						{ date: "2019-10-15", value: 3 },
 						{ date: "2019-10-16", value: 6 }
-					],
-					scale: [
-						{ dataKey: "date" },
-						{ dataKey: "value" }
 					]
 				},
-				chart2Options: {
+				chart2: {
+					scale: [
+						{ dataKey: "date", type: "time" },
+						{ dataKey: "value", min: 0 }
+					],
 					data:  [
 						{ date: "2019-10-01", value: 7 },
 						{ date: "2019-10-02", value: 5 },
@@ -87,18 +91,14 @@
 						{ date: "2019-10-14", value: 5 },
 						{ date: "2019-10-15", value: 3 },
 						{ date: "2019-10-16", value: 6 }
-					],
-					scale: [
-						{ dataKey: "date" },
-						{ dataKey: "value" }
 					]
 				},
-				dataTableOptions: {
+				table: {
 					columns: [
 						{ key: "rank", dataIndex: "rank", width: 80, title: "排名" },
 						{ key: "keyword", dataIndex: "keyword", title: "搜索关键词" },
 						{ key: "total", dataIndex: "total", sorter: true, slot: "total", title: "用户数" },
-						{ key: "ratio", dataIndex: "ratio", sorter: true, slot: "ratio", title: "周涨幅" }
+						{ key: "ratio", dataIndex: "ratio", width: 100, sorter: true, slot: "ratio", title: "周涨幅" }
 					],
 					data: [
 						{ id: 1, rank: 1, keyword: "搜索关键词1", total: 988, ratio: 22 },
@@ -111,14 +111,24 @@
 			};
 		},
 		methods: {
-			getTooltipItemTemplate() {
-				return `
-					<li data-index={index} style="white-space: nowrap;">
-						<i style="display: inline-block; width: 6px; height: 6px; border-radius: 6px; background-color: {color}; margin-right: 5px; vertical-align: middle;"></i>
-						<span style="display: inline-block; vertical-align: middle;">{title}</span>
-						<span style="display: inline-block; margin-left: 10px; vertical-align: middle;">{value}</span>
-					</li>
-				`;
+			getChartTooltipTemplate(title, items) {
+				let template = "";
+
+				template += "<div class=\"g2-tooltip\">";
+				template += "<ul class=\"g2-tooltip-list\">";
+				items.forEach(item => {
+					const data = item.point._origin;
+
+					template += "<li class=\"g2-tooltip-list-item\">";
+					template += "<i class=\"g2-tooltip-list-item-marker\" style=\"background-color: " + item.color + ";\"></i>";
+					template += "<label class=\"g2-tooltip-list-item-key\">" + data.date + "</label>";
+					template += "<label class=\"g2-tooltip-list-item-value\">" + data.value + "</label>";
+					template += "</li>";
+				});
+				template += "</ul>";
+				template += "</div>";
+
+				return template;
 			}
 		}
 	};

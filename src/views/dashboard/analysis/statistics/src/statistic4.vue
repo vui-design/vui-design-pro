@@ -1,7 +1,7 @@
 <template>
-	<vui-card v-bind:bordered="false">
+	<vui-card v-bind:bordered="false" shadow="always">
 		<vui-statistic v-bind:value="90" suffix="%" title="运营活动效果">
-			<vui-tooltip slot="extra" content="指标说明">
+			<vui-tooltip slot="extra" style="display: block;" content="指标说明">
 				<vui-icon type="info" />
 			</vui-tooltip>
 			<div slot="footer">
