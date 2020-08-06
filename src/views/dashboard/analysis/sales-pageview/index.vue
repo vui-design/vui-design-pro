@@ -1,5 +1,5 @@
 <template>
-	<vui-card v-bind:bordered="false" shadow="always" class="margin-top-20" bodyStyle="padding: 0;">
+	<vui-card v-bind:bordered="false" shadow="always" bodyStyle="padding: 0;">
 		<vui-tabs size="large" class="vui-pro-dashboard-analysis-tabs" headerStyle="margin-bottom: 0;">
 			<vui-radio-group v-model="range" slot="extra" type="button" size="small">
 				<vui-radio value="today" label="今日" />

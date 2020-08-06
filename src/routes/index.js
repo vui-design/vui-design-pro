@@ -388,5 +388,30 @@ export default [
 				component: () => import("src/views/exception/comingsoon")
 			}
 		]
+	},
+
+	{
+		path: "/business",
+		name: "business",
+		meta: {
+			addToMenu: true,
+			addToBreadcrumb: true,
+			icon: "stack",
+			title: "业务模板"
+		},
+		component: Layout,
+		redirect: "/business/recharge",
+		children: [
+			{
+				path: "/business/recharge",
+				name: "business-recharge",
+				meta: {
+					addToMenu: true,
+					addToBreadcrumb: true,
+					title: "充值分析"
+				},
+				component: () => import("src/views/business/recharge")
+			}
+		]
 	}
 ];

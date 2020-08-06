@@ -1,6 +1,6 @@
 <template>
 	<vui-layout class="vui-pro-layout">
-		<vui-sider class="vui-pro-layout-sider" theme="dark" collapsible v-bind:width="220" v-bind:collapsed="collapsed">
+		<vui-sider v-model="collapsed" v-bind:width="220" collapsible theme="dark" breakpoint="lg" class="vui-pro-layout-sider">
 			<h1 class="logo" v-bind:class="collapsed ? 'collapsed' : ''">
 				<router-link to="/">
 					<img src="/static/images/logo.svg" />
@@ -37,8 +37,7 @@
 							</vui-badge>
 						</a>
 						<vui-tabs slot="menu" class="vui-pro-layout-main-tabs">
-							<vui-tab-panel name="notice">
-								<template slot="title">通知 ({{notice.count}})</template>
+							<vui-tab-panel name="notice" title="通知">
 								<vui-empty v-if="notice.data.length == 0" style="padding:42px 0px;" description="暂无通知" />
 								<div v-else class="vui-pro-layout-main-broadcast">
 									<div class="vui-pro-layout-main-broadcast-body">
@@ -58,8 +57,7 @@
 									</div>
 								</div>
 							</vui-tab-panel>
-							<vui-tab-panel name="message">
-								<template slot="title">消息 ({{message.count}})</template>
+							<vui-tab-panel name="message" title="消息">
 								<vui-empty v-if="message.data.length == 0" style="padding:42px 0px;" description="暂无消息" />
 								<div v-else class="vui-pro-layout-main-broadcast">
 									<div class="vui-pro-layout-main-broadcast-body">
@@ -80,8 +78,7 @@
 									</div>
 								</div>
 							</vui-tab-panel>
-							<vui-tab-panel name="todo">
-								<template slot="title">待办 ({{todo.count}})</template>
+							<vui-tab-panel name="todo" title="待办">
 								<vui-empty v-if="todo.data.length == 0" style="padding:42px 0px;" description="暂无待办" />
 								<div v-else class="vui-pro-layout-main-broadcast">
 									<div class="vui-pro-layout-main-broadcast-body">

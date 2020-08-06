@@ -4,7 +4,7 @@
 			<vui-tooltip slot="extra" style="display: block;" content="指标说明">
 				<vui-icon type="info" />
 			</vui-tooltip>
-			<div slot="footer">
+			<div slot="footer" style="overflow: hidden;">
 				<v-chart v-bind="chartSettings.root">
 					<v-tooltip v-bind="chartSettings.tooltip" />
 					<v-view v-for="(item, itemIndex) in chartSettings.views" v-bind:key="itemIndex" v-bind="item.view">
@@ -17,7 +17,7 @@
 			</div>
 		</vui-statistic>
 		<vui-divider dashed style="margin: 16px 0;" />
-		<div style="line-height: 1;">
+		<div style="overflow: hidden; line-height: 1; white-space: nowrap;">
 			<div style="display: inline-block;">周同比 <vui-ratio v-bind:value="12" /></div>
 			<div style="display: inline-block; margin-left: 16px;">日同比 <vui-ratio v-bind:value="-10" /></div>
 		</div>

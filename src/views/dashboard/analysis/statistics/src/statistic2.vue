@@ -4,7 +4,7 @@
 			<vui-tooltip slot="extra" style="display: block;" content="指标说明">
 				<vui-icon type="info" />
 			</vui-tooltip>
-			<div slot="footer">
+			<div slot="footer" style="overflow: hidden;">
 				<v-chart v-bind="chartSettings.root">
 					<v-line v-bind="chartSettings.geom" />
 					<v-tooltip v-bind="chartSettings.tooltip" />
@@ -12,7 +12,7 @@
 			</div>
 		</vui-statistic>
 		<vui-divider dashed style="margin: 16px 0;" />
-		<div style="line-height: 1;">日访问量 {{1234 | numerical}}</div>
+		<div style="overflow: hidden; line-height: 1; white-space: nowrap;">日访问量 {{1234 | numerical}}</div>
 	</vui-card>
 </template>
 

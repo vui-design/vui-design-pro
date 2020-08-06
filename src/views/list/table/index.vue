@@ -37,7 +37,7 @@
 					</vui-tooltip>
 				</vui-space>
 				<vui-button key="2" icon="download" v-on:click="handleExport">导出</vui-button>
-				<vui-button key="3" type="primary" icon="plus">新增</vui-button>
+				<vui-button key="3" type="primary" icon="plus" v-on:click="handleAdd">新增</vui-button>
 				<vui-dropdown key="4" v-if="selectedTotalItems > 0">
 					<vui-button type="primary" icon="list-settings">批量操作</vui-button>
 					<vui-dropdown-menu slot="menu">
@@ -59,8 +59,8 @@
 				</template>
 				<template slot="action" slot-scope="{ row, rowIndex }">
 					<vui-action-group>
-						<a href="javascript:;" v-on:ok="handleEdit(row)">编辑</a>
-						<vui-popconfirm v-on:ok="handleRemove(row)" placement="top-end" title="确定要删除当前记录嘛？">
+						<a href="javascript:;" v-on:click="handleEdit(row)">编辑</a>
+						<vui-popconfirm v-on:ok="handleDelete(row)" placement="top-end" title="确定要删除当前记录嘛？">
 							<a href="javascript:;">删除</a>
 						</vui-popconfirm>
 					</vui-action-group>
@@ -71,25 +71,34 @@
 				<vui-pagination align="right" showPageSizer v-bind="pagination" v-on:change="handleChangePage" v-on:changePageSize="handleChangePageSize" />
 			</div>
 		</vui-card>
+
+		<vui-pro-form-modal ref="formModal"  />
 	</vui-fullscreen>
 </template>
 
 <script>
 	import VuiProFilter from "src/components/filter";
+	import VuiProFormModal from "./form-modal";
 
 	export default {
+		// 依赖组件
 		components: {
-			VuiProFilter
+			VuiProFilter,
+			VuiProFormModal
 		},
+		// 页面组件状态
 		data() {
 			return {
+				// 存放页面级状态，例如这里的全屏属性
 				page: {
 					fullscreen: false
 				},
+				// 存放查询器状态，例如这里的规则名称和描述
 				searcher: {
 					name: "",
 					description: ""
 				},
+				// 存放过滤器状态
 				filter: {
 					value: {
 						brand: [1, 2, 5, 7],
@@ -165,11 +174,13 @@
 						}
 					]
 				},
+				// 存放分页器状态，例如这里的总数量、当前页码、每页显示数量
 				pagination: {
 					total: 0,
 					page: 1,
 					pageSize: 20
 				},
+				// 存放列表的状态，例如是否处于加载中、列配置、是否可选择、数据源
 				list: {
 					loading: false,
 					columns: [
@@ -189,7 +200,7 @@
 				}
 			};
 		},
-
+		// 计算属性
 		computed: {
 			selectedTotalItems() {
 				return this.list.rowSelection.value.length;
@@ -209,8 +220,11 @@
 				return value;
 			}
 		},
-
+		// 页面组件方法
 		methods: {
+			// 获取列表数据
+			// 拼接参数 > 发起 action 到 store 状态管理层 > 发起异步请求到 service 层 > service 层执行真实的 ajax 请求
+			// 请求成功后按照上列顺序反向逐层返回数据，直至当前页面组件
 			getList() {
 				let payload = {
 					...this.searcher,
@@ -227,51 +241,90 @@
 					this.list.loading = false;
 				});
 			},
+			// 重置查询
 			handleResetSearch(name) {
 				this.$refs.searcher.reset();
 				this.getList();
 			},
+			// 查询
 			handleSearch() {
 				this.pagination.page = 1;
 				this.getList();
 			},
+			// 过滤器的选项发生变更
 			handleFilterChange(value) {
 				console.log(JSON.parse(JSON.stringify(value)));
 			},
+			// 切换页码
 			handleChangePage(page) {
 				this.pagination.page = page;
 				this.getList();
 			},
+			// 切换每页显示数量
 			handleChangePageSize(pageSize) {
 				this.pagination.pageSize = pageSize;
 				this.getList();
 			},
+			// 列表行选择
 			handleRowSelect(value) {
 				this.list.rowSelection.value = value;
 			},
+			// 全屏
 			handleFullscreen() {
 				this.page.fullscreen = !this.page.fullscreen;
 			},
+			// 刷新
 			handleRefresh() {
 				this.getList();
 			},
+			// 导出
 			handleExport() {
 				this.$refs.table.export({
 					original: false,
 					filename: "表格名称"
 				});
 			},
+			// 新增
 			handleAdd() {
-				console.log("add");
+				const data = {
+					name: "",
+					description: "",
+					count: 0,
+					state: 1,
+					datetime: ""
+				};
+
+				this.$refs.formModal.add(data, result => {
+					// 新增成功后刷新列表
+					this.getList();
+				});
 			},
+			// 编辑
 			handleEdit(row) {
-				console.log(JSON.parse(JSON.stringify(row)));
+				this.$refs.formModal.edit(row, result => {
+					// 编辑成功后刷新列表
+					this.getList();
+				});
 			},
-			handleRemove(row) {
-				console.log(JSON.parse(JSON.stringify(row)));
+			// 删除
+			handleDelete(row) {
+				const payload = row;
+				const loading = this.$message.loading({
+					duration: 0,
+					content: "正在删除，请稍后..."
+				});
+
+				this.$store.dispatch("example/deleteListTableDatasource", payload).then(data => {
+					loading.close();
+					this.$message.success("删除成功");
+					// 删除成功后刷新列表
+					this.getList();
+				}).catch(e => {
+					this.list.loading = false;
+				});
 			}
 		},
-
+		// 页面组件实例化完成后立即请求首页数据
 		created() {
 			this.getList();
 		}

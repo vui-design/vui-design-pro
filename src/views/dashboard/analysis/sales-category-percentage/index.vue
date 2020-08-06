@@ -9,7 +9,7 @@
 			<div class="vui-pro-dashboard-analysis-sales-category-percentage-chart">
 				<div class="vui-pro-dashboard-analysis-sales-category-percentage-chart-title">
 					<h1>销售额</h1>
-					<p>¥ 15,801</p>
+					<p>¥  {{total | numerical}}</p>
 				</div>
 				<div class="vui-pro-dashboard-analysis-sales-category-percentage-chart-main">
 					<v-chart v-bind:width="250" v-bind:height="250" v-bind:padding="15" v-bind:scale="chart.scale" v-bind:data="chartData">
@@ -57,6 +57,9 @@
 			};
 		},
 		computed: {
+			total() {
+				return this.chart.data.reduce((total, item) => total + item.value, 0);
+			},
 			chartData() {
 				return this.chart.data.filter(item => item.disabled === false);
 			}

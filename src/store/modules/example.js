@@ -31,7 +31,76 @@ export default {
 						};
 
 						resolve(response);
-					}, 300);
+					}, 500);
+				})
+			};
+
+			const response = await ajax(payload);
+			const data = response.data;
+
+			return data;
+		},
+		async addListTableDatasource(context, payload) {
+			// let response = await services.example.addListTableDatasource();
+			// let data = response.data;
+
+			const ajax = payload => {
+				return new Promise((resolve, reject) => {
+					setTimeout(() => {
+						const response = {
+							code: 0,
+							data: null,
+							message: "success"
+						};
+
+						resolve(response);
+					}, 1000);
+				})
+			};
+
+			const response = await ajax(payload);
+			const data = response.data;
+
+			return data;
+		},
+		async editListTableDatasource(context, payload) {
+			// let response = await services.example.editListTableDatasource();
+			// let data = response.data;
+
+			const ajax = payload => {
+				return new Promise((resolve, reject) => {
+					setTimeout(() => {
+						const response = {
+							code: 0,
+							data: null,
+							message: "success"
+						};
+
+						resolve(response);
+					}, 1000);
+				})
+			};
+
+			const response = await ajax(payload);
+			const data = response.data;
+
+			return data;
+		},
+		async deleteListTableDatasource(context, payload) {
+			// let response = await services.example.deleteListTableDatasource();
+			// let data = response.data;
+
+			const ajax = payload => {
+				return new Promise((resolve, reject) => {
+					setTimeout(() => {
+						const response = {
+							code: 0,
+							data: null,
+							message: "success"
+						};
+
+						resolve(response);
+					}, 1000);
 				})
 			};
 

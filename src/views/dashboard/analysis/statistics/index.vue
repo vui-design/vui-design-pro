@@ -1,15 +1,15 @@
 <template>
 	<vui-row v-bind:gutter="20">
-		<vui-col v-bind:span="6">
+		<vui-col style="margin-bottom: 20px;" v-bind:xs="24" v-bind:sm="12" v-bind:md="12" v-bind:lg="12" v-bind:xl="6">
 			<vui-pro-dashboard-analysis-statistic1 />
 		</vui-col>
-		<vui-col v-bind:span="6">
+		<vui-col style="margin-bottom: 20px;" v-bind:xs="24" v-bind:sm="12" v-bind:md="12" v-bind:lg="12" v-bind:xl="6">
 			<vui-pro-dashboard-analysis-statistic2 />
 		</vui-col>
-		<vui-col v-bind:span="6">
+		<vui-col style="margin-bottom: 20px;" v-bind:xs="24" v-bind:sm="12" v-bind:md="12" v-bind:lg="12" v-bind:xl="6">
 			<vui-pro-dashboard-analysis-statistic3 />
 		</vui-col>
-		<vui-col v-bind:span="6">
+		<vui-col style="margin-bottom: 20px;" v-bind:xs="24" v-bind:sm="12" v-bind:md="12" v-bind:lg="12" v-bind:xl="6">
 			<vui-pro-dashboard-analysis-statistic4 />
 		</vui-col>
 	</vui-row>
