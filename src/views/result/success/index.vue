@@ -1,8 +1,8 @@
 <template>
 	<vui-card v-bind:bordered="false" shadow="always" bodyStyle="padding: 0;">
-		<div class="vdp-result-success">
+		<div class="vui-pro-result-success">
 			<vui-result v-bind:status="status" v-bind:title="title" v-bind:description="description">
-				<div slot="content" class="vdp-result-success-content">
+				<div slot="content" class="vui-pro-result-success-content">
 					<vui-steps type="dot">
 						<vui-step v-for="(step, index) in steps" v-bind:key="index" v-bind:status="step.status" v-bind:title="step.title">
 							<div v-if="step.status !== 'wait'" slot="description">
@@ -57,11 +57,11 @@
 </script>
 
 <style>
-	.vdp-result-success { min-height:calc(100vh - 104px); }
+	.vui-pro-result-success { min-height:calc(100vh - 104px); }
 
-	.vdp-result-success-content {  }
-	.vdp-result-success-content h4 { color:#262626; font-size:16px; }
-	.vdp-result-success-content ul { color:#595959; }
-	.vdp-result-success-content li {  }
-	.vdp-result-success-content li + li { margin-top:4px; }
+	.vui-pro-result-success-content {  }
+	.vui-pro-result-success-content h4 { color:#262626; font-size:16px; }
+	.vui-pro-result-success-content ul { color:#595959; }
+	.vui-pro-result-success-content li {  }
+	.vui-pro-result-success-content li + li { margin-top:4px; }
 </style>

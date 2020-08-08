@@ -1,6 +1,6 @@
 <template>
 	<vui-card v-bind:bordered="false" shadow="always" bodyStyle="padding: 0;">
-		<div class="vdp-result-warning">
+		<div class="vui-pro-result-warning">
 			<vui-result v-bind:status="status" v-bind:title="title" v-bind:description="description">
 				<template slot="extra">
 					<vui-button type="primary" to="/">返回首页</vui-button>
@@ -23,5 +23,5 @@
 </script>
 
 <style>
-	.vdp-result-warning { min-height:calc(100vh - 104px); }
+	.vui-pro-result-warning { min-height:calc(100vh - 104px); }
 </style>

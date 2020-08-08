@@ -1,8 +1,8 @@
 <template>
 	<vui-card v-bind:bordered="false" shadow="always" bodyStyle="padding: 0;">
-		<div class="vdp-result-error">
+		<div class="vui-pro-result-error">
 			<vui-result v-bind:status="status" v-bind:title="title" v-bind:description="description">
-				<div slot="content" class="vdp-result-error-content">
+				<div slot="content" class="vui-pro-result-error-content">
 					<h4>您提交的内容可能存在如下错误：</h4>
 					<ul>
 						<li>
@@ -39,13 +39,13 @@
 </script>
 
 <style>
-	.vdp-result-error { min-height:calc(100vh - 104px); }
+	.vui-pro-result-error { min-height:calc(100vh - 104px); }
 
-	.vdp-result-error-content {  }
-	.vdp-result-error-content h4 { color:#262626; font-size:16px; }
-	.vdp-result-error-content ul { margin-top:32px; color:#595959; }
-	.vdp-result-error-content li {  }
-	.vdp-result-error-content li .vui-icon { margin-right:8px; }
-	.vdp-result-error-content li a { margin-left:8px; }
-	.vdp-result-error-content li + li { margin-top:16px; }
+	.vui-pro-result-error-content {  }
+	.vui-pro-result-error-content h4 { color:#262626; font-size:16px; }
+	.vui-pro-result-error-content ul { margin-top:32px; color:#595959; }
+	.vui-pro-result-error-content li {  }
+	.vui-pro-result-error-content li .vui-icon { margin-right:8px; }
+	.vui-pro-result-error-content li a { margin-left:8px; }
+	.vui-pro-result-error-content li + li { margin-top:16px; }
 </style>

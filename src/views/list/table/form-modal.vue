@@ -1,6 +1,13 @@
 <template>
-	<vui-modal v-model="visible" v-bind:width="680" v-bind:closable="!submitting" v-bind:clickBackdropToClose="false" v-on:cancel="handleCloseForm()" v-on:afterClose="handleAfterCloseForm()">
-		<template slot="title">{{type == 1 ? "添加规则" : "编辑规则"}}</template>
+	<vui-modal
+		v-model="visible"
+		v-bind:closable="!submitting"
+		v-bind:width="680"
+		v-bind:clickBackdropToClose="false"
+		v-on:cancel="handleClose()"
+		v-on:afterClose="handleAfterClose()"
+	>
+		<template slot="title">{{type == 1 ? "新增规则" : "编辑规则"}}</template>
 		<vui-form ref="form" layout="horizontal" v-bind:model="data" v-bind:rules="rules" v-bind:labelWidth="112">
 			<vui-form-item prop="name" label="规则名称">
 				<vui-input v-model="data.name" style="width: 50%;" placeholder="请输入规则名称" />
@@ -24,8 +31,8 @@
 			</vui-form-item>
 		</vui-form>
 		<template slot="footer">
-			<vui-button v-bind:disabled="submitting" v-on:click="handleCloseForm()">取消</vui-button>
-			<vui-button type="primary" v-bind:loading="submitting" v-on:click="handleSubmitForm()">{{type == 1 ? "确认" : "保存"}}</vui-button>
+			<vui-button v-bind:disabled="submitting" v-on:click="handleClose()">取消</vui-button>
+			<vui-button type="primary" v-bind:loading="submitting" v-on:click="handleSubmit()">{{type == 1 ? "确认" : "保存"}}</vui-button>
 		</template>
 	</vui-modal>
 </template>
@@ -66,12 +73,10 @@
 				}
 			};
 		},
-
 		methods: {
-			add(data, callback) {
+			add(callback) {
 				this.type = 1;
 				this.visible = true;
-				this.data = utils.clone(data);
 				this.callback = callback;
 			},
 			edit(data, callback) {
@@ -80,30 +85,28 @@
 				this.data = utils.clone(data);
 				this.callback = callback;
 			},
-
 			formatter(value) {
 				return value + " 万";
 			},
 			parser(value) {
 				return value.replace(" 万", "");
 			},
-
-			handleCloseForm() {
+			handleClose() {
 				this.visible = false;
 				this.submitting = false;
 			},
-			handleAfterCloseForm() {
+			handleAfterClose() {
 				this.$refs.form.reset();
 			},
-			handleSubmitForm() {
+			handleSubmit() {
 				this.$refs.form.validate(valid => {
 					if (!valid) {
 						return this.$message.error("信息填写不正确");
 					}
 
+					let payload = this.data;
 					let action = "";
 					let message = "";
-					let payload = this.data;
 
 					if (this.type == 1) {
 						action = "example/addListTableDatasource";
@@ -116,7 +119,7 @@
 
 					this.submitting = true;
 					this.$store.dispatch(action, payload).then(data => {
-						this.handleCloseForm();
+						this.handleClose();
 						this.$message.success(message);
 
 						if (typeof this.callback === "function") {

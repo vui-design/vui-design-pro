@@ -108,16 +108,6 @@ export default [
 					title: "分步表单"
 				},
 				component: () => import("src/views/form/steps")
-			},
-			{
-				path: "/form/advanced",
-				name: "form-advanced",
-				meta: {
-					addToMenu: true,
-					addToBreadcrumb: true,
-					title: "高级表单"
-				},
-				component: () => import("src/views/form/advanced")
 			}
 		]
 	},

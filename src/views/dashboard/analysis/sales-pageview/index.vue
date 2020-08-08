@@ -9,7 +9,7 @@
 			</vui-radio-group>
 			<vui-tab-panel name="sales" title="销售额">
 				<vui-row v-bind:gutter="40">
-					<vui-col v-bind:span="18">
+					<vui-col v-bind:xs="24" v-bind:sm="24" v-bind:md="14" v-bind:lg="16" v-bind:xl="18">
 						<div class="vui-pro-dashboard-analysis-trend">
 							<h1 class="vui-pro-dashboard-analysis-trend-title">销售额趋势</h1>
 							<div class="vui-pro-dashboard-analysis-trend-chart">
@@ -21,7 +21,7 @@
 							</div>
 						</div>
 					</vui-col>
-					<vui-col v-bind:span="6">
+					<vui-col v-bind:xs="24" v-bind:sm="24" v-bind:md="10" v-bind:lg="8" v-bind:xl="6">
 						<div class="vui-pro-dashboard-analysis-rank">
 							<h1 class="vui-pro-dashboard-analysis-rank-title">销售额排名</h1>
 							<ul class="vui-pro-dashboard-analysis-rank-list">
@@ -37,7 +37,7 @@
 			</vui-tab-panel>
 			<vui-tab-panel name="pageview" title="访问量">
 				<vui-row v-bind:gutter="40">
-					<vui-col v-bind:span="18">
+					<vui-col v-bind:xs="24" v-bind:sm="24" v-bind:md="14" v-bind:lg="16" v-bind:xl="18">
 						<div class="vui-pro-dashboard-analysis-trend">
 							<h1 class="vui-pro-dashboard-analysis-trend-title">访问量趋势</h1>
 							<div class="vui-pro-dashboard-analysis-trend-chart">
@@ -49,7 +49,7 @@
 							</div>
 						</div>
 					</vui-col>
-					<vui-col v-bind:span="6">
+					<vui-col v-bind:xs="24" v-bind:sm="24" v-bind:md="10" v-bind:lg="8" v-bind:xl="6">
 						<div class="vui-pro-dashboard-analysis-rank">
 							<h1 class="vui-pro-dashboard-analysis-rank-title">访问量排名</h1>
 							<ul class="vui-pro-dashboard-analysis-rank-list">
@@ -77,18 +77,18 @@
 						{ dataKey: "value", tickInterval: 200 }
 					],
 					data: [
-						{ value: 960, month: "一月", title: "销售额" },
-						{ value: 262, month: "二月", title: "销售额" },
-						{ value: 768, month: "三月", title: "销售额" },
-						{ value: 145, month: "四月", title: "销售额" },
-						{ value: 426, month: "五月", title: "销售额" },
-						{ value: 606, month: "六月", title: "销售额" },
-						{ value: 320, month: "七月", title: "销售额" },
-						{ value: 780, month: "八月", title: "销售额" },
-						{ value: 240, month: "九月", title: "销售额" },
-						{ value: 1020, month: "十月", title: "销售额" },
-						{ value: 824, month: "十一月", title: "销售额" },
-						{ value: 780, month: "十二月", title: "销售额" }
+						{ value: 960, month: "2020/01", title: "销售额" },
+						{ value: 262, month: "2020/02", title: "销售额" },
+						{ value: 768, month: "2020/03", title: "销售额" },
+						{ value: 145, month: "2020/04", title: "销售额" },
+						{ value: 426, month: "2020/05", title: "销售额" },
+						{ value: 606, month: "2020/06", title: "销售额" },
+						{ value: 320, month: "2020/07", title: "销售额" },
+						{ value: 780, month: "2020/08", title: "销售额" },
+						{ value: 240, month: "2020/09", title: "销售额" },
+						{ value: 1020, month: "2020/10", title: "销售额" },
+						{ value: 824, month: "2020/11", title: "销售额" },
+						{ value: 780, month: "2020/12", title: "销售额" }
 					]
 				},
 				rankSales: [
@@ -106,18 +106,18 @@
 						{ dataKey: "value", tickInterval: 200 }
 					],
 					data: [
-						{ value: 960, month: "一月", title: "访问量" },
-						{ value: 262, month: "二月", title: "访问量" },
-						{ value: 768, month: "三月", title: "访问量" },
-						{ value: 145, month: "四月", title: "访问量" },
-						{ value: 426, month: "五月", title: "访问量" },
-						{ value: 606, month: "六月", title: "访问量" },
-						{ value: 320, month: "七月", title: "访问量" },
-						{ value: 780, month: "八月", title: "访问量" },
-						{ value: 240, month: "九月", title: "访问量" },
-						{ value: 1020, month: "十月", title: "访问量" },
-						{ value: 824, month: "十一月", title: "访问量" },
-						{ value: 780, month: "十二月", title: "访问量" }
+						{ value: 960, month: "2020/01", title: "访问量" },
+						{ value: 262, month: "2020/02", title: "访问量" },
+						{ value: 768, month: "2020/03", title: "访问量" },
+						{ value: 145, month: "2020/04", title: "访问量" },
+						{ value: 426, month: "2020/05", title: "访问量" },
+						{ value: 606, month: "2020/06", title: "访问量" },
+						{ value: 320, month: "2020/07", title: "访问量" },
+						{ value: 780, month: "2020/08", title: "访问量" },
+						{ value: 240, month: "2020/09", title: "访问量" },
+						{ value: 1020, month: "2020/10", title: "访问量" },
+						{ value: 824, month: "2020/11", title: "访问量" },
+						{ value: 780, month: "2020/12", title: "访问量" }
 					]
 				},
 				rankPageview: [
@@ -171,19 +171,19 @@
 	.vui-pro-dashboard-analysis-rank-title { margin-bottom:20px; color:#8c8c8c; font-size:14px; line-height:1.42857142; }
 	.vui-pro-dashboard-analysis-rank-list {  }
 	.vui-pro-dashboard-analysis-rank-item { display:flex; align-items:center; margin-top:16px; font-size:14px; line-height:1.42857142; }
-	.vui-pro-dashboard-analysis-rank-item .vui-pro-dashboard-analysis-rank-item-no { width:20px; height:20px; border-radius:20px; margin-right:10px; color:#595959; text-align:center; line-height:20px; }
+	.vui-pro-dashboard-analysis-rank-item .vui-pro-dashboard-analysis-rank-item-no { width:20px; height:20px; border-radius:20px; background-color:#fafafa; margin-right:10px; color:#595959; font-style:italic; text-align:center; line-height:20px; }
 	.vui-pro-dashboard-analysis-rank-item .vui-pro-dashboard-analysis-rank-item-title { flex:1; color:#595959; }
 	.vui-pro-dashboard-analysis-rank-item .vui-pro-dashboard-analysis-rank-item-extra { margin-left:10px; color:#8c8c8c; }
 	.vui-pro-dashboard-analysis-rank-item:nth-child(1) {  }
-	.vui-pro-dashboard-analysis-rank-item:nth-child(1) .vui-pro-dashboard-analysis-rank-item-no { background-color:#1a2035; color:#fff; }
+	.vui-pro-dashboard-analysis-rank-item:nth-child(1) .vui-pro-dashboard-analysis-rank-item-no { background-color:#eaf4fe; color:#2d8cf0; }
 	.vui-pro-dashboard-analysis-rank-item:nth-child(1) .vui-pro-dashboard-analysis-rank-item-title {  }
 	.vui-pro-dashboard-analysis-rank-item:nth-child(1) .vui-pro-dashboard-analysis-rank-item-extra {  }
 	.vui-pro-dashboard-analysis-rank-item:nth-child(2) {  }
-	.vui-pro-dashboard-analysis-rank-item:nth-child(2) .vui-pro-dashboard-analysis-rank-item-no { background-color:#1a2035; color:#fff; }
+	.vui-pro-dashboard-analysis-rank-item:nth-child(2) .vui-pro-dashboard-analysis-rank-item-no { background-color:#fef7ed; color:#faad14; }
 	.vui-pro-dashboard-analysis-rank-item:nth-child(2) .vui-pro-dashboard-analysis-rank-item-title {  }
 	.vui-pro-dashboard-analysis-rank-item:nth-child(2) .vui-pro-dashboard-analysis-rank-item-extra {  }
 	.vui-pro-dashboard-analysis-rank-item:nth-child(3) {  }
-	.vui-pro-dashboard-analysis-rank-item:nth-child(3) .vui-pro-dashboard-analysis-rank-item-no { background-color:#1a2035; color:#fff; }
+	.vui-pro-dashboard-analysis-rank-item:nth-child(3) .vui-pro-dashboard-analysis-rank-item-no { background-color:#fdeef0; color:#ed5565; }
 	.vui-pro-dashboard-analysis-rank-item:nth-child(3) .vui-pro-dashboard-analysis-rank-item-title {  }
 	.vui-pro-dashboard-analysis-rank-item:nth-child(3) .vui-pro-dashboard-analysis-rank-item-extra {  }
 </style>

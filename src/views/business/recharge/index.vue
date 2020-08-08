@@ -1,5 +1,6 @@
 <template>
 	<div>
+
 		<vui-card v-bind:bordered="false" shadow="always">
 			<vui-form ref="searcher" layout="inline">
 				<vui-form-item>
@@ -40,12 +41,14 @@
 				<template slot="pvp" slot-scope="{ row }">{{row.pvp | numerical}}</template>
 				<template slot="pve" slot-scope="{ row }">{{row.pve | numerical}}</template>
 				<template slot="mix" slot-scope="{ row }">{{row.mix | numerical}}</template>
-				<vui-action-group slot="action" slot-scope="{ row }">
-					<a href="javascript:;">神兵分布</a>
-					<a href="javascript:;">地域分布</a>
-					<a href="javascript:;">活跃趋势</a>
-					<a href="javascript:;">流失用户</a>
-				</vui-action-group>
+				<template slot="action" slot-scope="{ row }">
+					<vui-space v-bind:gutter="2">
+						<vui-tag color="blue" style="cursor: pointer;">神兵分布</vui-tag>
+						<vui-tag color="blue" style="cursor: pointer;">地域分布</vui-tag>
+						<vui-tag color="green" style="cursor: pointer;">活跃趋势</vui-tag>
+						<vui-tag color="red" style="cursor: pointer;">流失用户</vui-tag>
+					</vui-space>
+				</template>
 			</vui-table>
 		</vui-card>
 
@@ -64,7 +67,7 @@
 				list: {
 					loading: false,
 					scroll: {
-						x: 1560
+						x: 1520
 					},
 					columns: [
 						{ key: "distribution", dataIndex: "distribution", fixed: "left", width: 150, align: "right", ellipsis: true, title: "累充金额分布(元)" },
@@ -76,7 +79,7 @@
 						{ key: "pvp", dataIndex: "pvp", width: 150, align: "right", ellipsis: true, sorter: true, slot: "pvp", title: "仅竞技地图人数" },
 						{ key: "pve", dataIndex: "pve", width: 150, align: "right", ellipsis: true, sorter: true, slot: "pve", title: "仅关卡地图人数" },
 						{ key: "mix", dataIndex: "mix", align: "right", ellipsis: true, sorter: true, slot: "mix", title: "混合玩法人数" },
-						{ key: "action", fixed: "right", width: 320, align: "center", slot: "action", title: "明细" }
+						{ key: "action", fixed: "right", width: 280, align: "center", slot: "action", title: "明细" }
 					],
 					data: []
 				}

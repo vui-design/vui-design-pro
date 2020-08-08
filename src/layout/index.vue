@@ -1,6 +1,6 @@
 <template>
 	<vui-layout class="vui-pro-layout">
-		<vui-sider v-model="collapsed" v-bind:width="220" collapsible theme="dark" breakpoint="lg" class="vui-pro-layout-sider">
+		<vui-sider v-model="collapsed" v-bind:width="220" collapsible breakpoint="lg" theme="dark" class="vui-pro-layout-sider">
 			<h1 class="logo" v-bind:class="collapsed ? 'collapsed' : ''">
 				<router-link to="/">
 					<img src="/static/images/logo.svg" />
@@ -24,12 +24,23 @@
 			</vui-menu>
 		</vui-sider>
 		<vui-layout class="vui-pro-layout-main" v-bind:class="collapsed ? 'collapsed' : ''">
-			<vui-header class="vui-pro-layout-main-header" theme="light">
-				<vui-button class="btn-trigger" type="primary" size="small" v-bind:icon="collapsed ? 'menu-unfold' : 'menu-fold'" v-on:click="handleSiderCollapse" />
-				<vui-breadcrumb class="breadcrumb">
+			<vui-header theme="light" class="vui-pro-layout-main-header">
+				<div class="navbar pull-left">
+					<div class="navbar-item">
+						<a href="javascript:;" class="link" v-on:click="handleSiderCollapse">
+							<vui-icon v-bind:type="collapsed ? 'menu-unfold' : 'menu-fold'" />
+						</a>
+					</div>
+					<div class="navbar-item">
+						<a href="javascript:;" class="link" v-on:click="handleMainRefresh">
+							<vui-icon type="refresh" />
+						</a>
+					</div>
+				</div>
+				<vui-breadcrumb class="breadcrumb pull-left margin-left-10">
 					<vui-breadcrumb-item v-for="item in breadcrumb" v-bind:key="item.name" v-bind:to="item.path">{{item.meta && item.meta.title}}</vui-breadcrumb-item>
 				</vui-breadcrumb>
-				<div class="navbar">
+				<div class="navbar pull-right">
 					<vui-dropdown v-model="broadcast.visible" class="navbar-item" placement="bottom-end" trigger="click">
 						<a href="javascript:;" class="link" v-bind:class="broadcast.visible ? 'active' : ''">
 							<vui-badge v-bind:count="notice.count + message.count + todo.count" v-bind:offset="[3, 3]">
@@ -134,7 +145,7 @@
 				</div>
 			</vui-header>
 			<vui-content class="vui-pro-layout-main-body">
-				<router-view v-bind:key="$route.fullPath" />
+				<router-view v-if="isRouterAlive" v-bind:key="$route.fullPath" />
 			</vui-content>
 			<vui-footer class="vui-pro-layout-main-footer">
 				<vui-action-group align="center" v-bind:gutter="20">
@@ -155,117 +166,42 @@
 	import authorization from "src/utils/authorization";
 
 	export default {
+		provide() {
+			return {
+				refresh: this.refresh
+			};
+		},
 		data() {
 			return {
 				collapsed: false,
-				openedSubmenus: ["/dashboard"],
 				broadcast: {
 					visible: false
 				},
 				notice: {
 					count: 5,
 					data: [
-						{
-							id: 5,
-							icon: "/static/images/notice-icons/1.png",
-							title: "你收到了 20 分新的周报",
-							createdAt: "2020-08-02 12:00:00",
-							readed: false
-						},
-						{
-							id: 4,
-							icon: "/static/images/notice-icons/4.png",
-							title: "点击后设为已读状态",
-							createdAt: "2020-08-02 06:00:00",
-							readed: false
-						},
-						{
-							id: 3,
-							icon: "/static/images/notice-icons/3.png",
-							title: "你推荐的 张三丰 已通过第三轮面试",
-							createdAt: "2020-08-02 00:00:00",
-							readed: false
-						},
-						{
-							id: 2,
-							icon: "/static/images/notice-icons/2.png",
-							title: "左侧图标用于区分不同类型",
-							createdAt: "2020-07-20 00:00:00",
-							readed: false
-						},
-						{
-							id: 1,
-							icon: "/static/images/notice-icons/1.png",
-							title: "标题文本不易过长，超出部分将被自动截断",
-							createdAt: "2020-02-02 00:00:00",
-							readed: false
-						}
+						{ id: 5, readed: false, icon: "/static/images/notice-icons/1.png", createdAt: "2020-08-02 12:00:00", title: "你收到了 20 分新的周报" },
+						{ id: 4, readed: false, icon: "/static/images/notice-icons/4.png", createdAt: "2020-08-02 06:00:00", title: "点击后设为已读状态" },
+						{ id: 3, readed: false, icon: "/static/images/notice-icons/3.png", createdAt: "2020-08-02 00:00:00", title: "你推荐的 张三丰 已通过第三轮面试" },
+						{ id: 2, readed: false, icon: "/static/images/notice-icons/2.png", createdAt: "2020-07-20 00:00:00", title: "左侧图标用于区分不同类型" },
+						{ id: 1, readed: false, icon: "/static/images/notice-icons/1.png", createdAt: "2020-02-02 00:00:00", title: "标题文本不易过长，超出部分将被自动截断" }
 					]
 				},
 				message: {
 					count: 3,
 					data: [
-						{
-							id: 3,
-							icon: "/static/images/avatar.svg",
-							title: "张三丰 评论了你",
-							description: "哇塞，你好厉害~",
-							createdAt: "2020-08-02 00:00:00",
-							readed: false
-						},
-						{
-							id: 2,
-							icon: "/static/images/avatar.svg",
-							title: "张无忌 回复了你",
-							description: "这种模板用于提醒谁与你发生了互动，左侧放互动人员头像",
-							createdAt: "2020-07-20 00:00:00",
-							readed: false
-						},
-						{
-							id: 1,
-							icon: "/static/images/avatar.svg",
-							title: "标题文本不易过长，超出部分将被自动截断",
-							description: "这种模板用于提醒谁与你发生了互动，左侧放互动人员头像",
-							createdAt: "2020-02-02 00:00:00",
-							readed: false
-						}
+						{ id: 3, readed: false, icon: "/static/images/avatar.svg", createdAt: "2020-08-02 00:00:00", title: "张三丰 评论了你", description: "哇塞，你好厉害~" },
+						{ id: 2, readed: false, icon: "/static/images/avatar.svg", createdAt: "2020-07-20 00:00:00", title: "张无忌 回复了你", description: "这种模板用于提醒谁与你发生了互动，左侧放互动人员头像" },
+						{ id: 1, readed: false, icon: "/static/images/avatar.svg", createdAt: "2020-02-02 00:00:00", title: "标题文本不易过长，超出部分将被自动截断", description: "这种模板用于提醒谁与你发生了互动，左侧放互动人员头像" }
 					]
 				},
 				todo: {
 					count: 4,
 					data: [
-						{
-							id: 4,
-							title: "任务名称",
-							description: "任务需要在 2020-12-30 12:00:00 前启动",
-							status: 1,
-							statusText: "未开始",
-							readed: false
-						},
-						{
-							id: 3,
-							title: "第三方紧急代码变更",
-							description: "张三丰提交于 2020-08-02，需在 2020-08-04 前完成代码变更任务",
-							status: 4,
-							statusText: "马上到期",
-							readed: false
-						},
-						{
-							id: 2,
-							title: "信息安全考试",
-							description: "描述内容描述内容描述内容",
-							status: 3,
-							statusText: "已耗时 8 天",
-							readed: false
-						},
-						{
-							id: 1,
-							title: "ABCD 版本发布",
-							description: "这种模板用于提醒用户最新待办事项，详细内容点击进行查看...",
-							status: 2,
-							statusText: "进行中",
-							readed: false
-						}
+						{ id: 4, readed: false, status: 1, statusText: "未开始", title: "任务名称", description: "任务需要在 2020-12-30 12:00:00 前启动" },
+						{ id: 3, readed: false, status: 4, statusText: "马上到期", title: "第三方紧急代码变更", description: "张三丰提交于 2020-08-02，需在 2020-08-04 前完成代码变更任务" },
+						{ id: 2, readed: false, status: 3, statusText: "已耗时 8 天", title: "信息安全考试", description: "描述内容描述内容描述内容" },
+						{ id: 1, readed: false, status: 2, statusText: "进行中", title: "ABCD 版本发布", description: "这种模板用于提醒用户最新待办事项，详细内容点击进行查看..." }
 					]
 				},
 				usermenu: {
@@ -277,6 +213,7 @@
 						{ name: "logout", icon: "logout", title: "退出登录" }
 					]
 				},
+				isRouterAlive: true,
 				year: new Date().getFullYear()
 			};
 		},
@@ -293,6 +230,13 @@
 				const items = utils.getBreadcrumbByRoute(route, rootRoute);
 
 				return items;
+			},
+			openedSubmenus() {
+				const paths = this.$route.matched.map(item => item.path);
+				const start = 0;
+				const end = paths.length - 1;
+
+				return paths.slice(start, end);
 			},
 			selectedMenuItem() {
 				const route = this.$route;
@@ -317,9 +261,16 @@
 			}
 		},
 		methods: {
+			refresh() {
+				this.isRouterAlive = false;
+				this.$nextTick(() => this.isRouterAlive = true);
+			},
 			handleSiderCollapse() {
 				this.collapsed = !this.collapsed;
 				utils.dispatchResize();
+			},
+			handleMainRefresh() {
+				this.refresh();
 			},
 			handleNoticeClick(item, index) {
 				if (item.readed) {
@@ -388,10 +339,9 @@
 	.vui-pro-layout-main { position:relative; z-index:1; min-height:100%; padding-left:220px; transition:all 0.2s; }
 	.vui-pro-layout-main.collapsed { padding-left:80px; }
 
-	.vui-pro-layout-main-header { position:relative; z-index:2; box-shadow:0 0 6px rgba(0,0,0,0.06); padding:0 10px 0 20px; }
-	.vui-pro-layout-main-header .btn-trigger { float:left; margin:20px 0; }
-	.vui-pro-layout-main-header .breadcrumb { float:left; height:24px; margin:20px 0 20px 20px; line-height:24px; }
-	.vui-pro-layout-main-header .navbar { float:right; }
+	.vui-pro-layout-main-header { position:relative; z-index:2; box-shadow:0 0 6px rgba(0,0,0,0.06); padding:0 10px; }
+	.vui-pro-layout-main-header .breadcrumb { display:flex; align-items:center; height:64px; }
+	.vui-pro-layout-main-header .navbar {  }
 	.vui-pro-layout-main-header .navbar .navbar-item { float:left; height:64px; }
 	.vui-pro-layout-main-header .link { cursor:pointer; display:flex; align-items:center; height:64px; padding:0 10px; color:#595959; transition:all 0.2s; }
 	.vui-pro-layout-main-header .link:hover { background-color:rgba(0,0,0,0.02); color:#4298f2; }
@@ -448,4 +398,8 @@
 	.vui-pro-layout-main-todo-list .vui-list-item .vui-list-item-meta-title .vui-tag { margin-left:8px; }
 	.vui-pro-layout-main-todo-list .vui-list-item .vui-list-item-meta-description { font-size:12px; }
 	.vui-pro-layout-main-todo-list .vui-list-item:hover { background-color:#fafafa; }
+
+	.vui-pro-page { margin:-20px; }
+	.vui-pro-page-header {  }
+	.vui-pro-page-body { padding:20px; }
 </style>
