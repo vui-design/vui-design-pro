@@ -13,10 +13,10 @@
 			<div class="margin-top-20" style="position: relative;">
 				<vui-spin v-if="list.loading" fixed />
 				<vui-empty v-if="list.data.length == 0" style="padding: 154px 0;" />
-				<vui-list v-else v-bind:grid="list.grid" v-bind:data="list.data" style="background-color: transparent;">
+				<vui-list v-else v-bind:grid="list.grid" v-bind:data="list.data">
 					<vui-list-item slot="item" slot-scope="item, index">
 						<vui-card v-bind:bordered="false" shadow="always">
-							<img slot="cover" v-bind:src="item.thumbnail" style="height: 170px; object-fit: cover;" />
+							<vui-image slot="cover" v-bind:src="item.thumbnail" lazyload fit="cover" style="width: 100%; height: 170px;" />
 							<vui-card-meta v-bind:title="item.title">
 								<div slot="description" class="line-clamp line-clamp2" style="height: 40px;">{{item.description}}</div>
 							</vui-card-meta>

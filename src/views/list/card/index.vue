@@ -8,7 +8,7 @@
 			<div style="position: relative;">
 				<vui-spin v-if="list.loading" fixed />
 				<vui-empty v-if="list.data.length == 0" style="padding: calc((100vh - 278px) / 2) 0;" />
-				<vui-list v-else v-bind:grid="list.grid" v-bind:data="list.data" style="background-color: transparent;">
+				<vui-list v-else v-bind:grid="list.grid" v-bind:data="list.data">
 					<vui-list-item slot="item" slot-scope="item, index">
 						<vui-card v-bind:bordered="false" shadow="always">
 							<vui-card-meta v-bind:title="item.title">

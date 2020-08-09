@@ -13,7 +13,7 @@
 			<div class="margin-top-20" style="position: relative;">
 				<vui-spin v-if="list.loading" fixed />
 				<vui-empty v-if="list.data.length == 0" style="padding: 60px 0;" />
-				<vui-list v-else v-bind:grid="list.grid" v-bind:data="list.data" style="background-color: transparent;">
+				<vui-list v-else v-bind:grid="list.grid" v-bind:data="list.data">
 					<vui-list-item slot="item" slot-scope="item, index">
 						<vui-card v-bind:bordered="false" shadow="always">
 							<vui-card-meta v-bind:title="item.title">

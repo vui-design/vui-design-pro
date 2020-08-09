@@ -1,6 +1,0 @@
-.line-clamp { display:-webkit-box; overflow:hidden; text-overflow:ellipsis; -webkit-box-orient:vertical; }
-.line-clamp1 { -webkit-line-clamp:1; }
-.line-clamp2 { -webkit-line-clamp:2; }
-.line-clamp3 { -webkit-line-clamp:3; }
-.line-clamp4 { -webkit-line-clamp:4; }
-.line-clamp5 { -webkit-line-clamp:5; }
