@@ -28,6 +28,14 @@ export const deleteListStandardDatasource = payload => {
 	return axios.delete("/example/deleteListStandardDatasource/" + payload.id);
 };
 
+export const getListCardDatasource = payload => {
+	const settings = {
+		params: payload
+	};
+
+	return axios.get("/example/getListCardDatasource");
+};
+
 export const getListTableDatasource = payload => {
 	const settings = {
 		params: payload
@@ -48,6 +56,30 @@ export const deleteListTableDatasource = payload => {
 	return axios.delete("/example/deleteListTableDatasource/" + payload.id);
 };
 
+export const getListSearchArticlesDatasource = payload => {
+	const settings = {
+		params: payload
+	};
+
+	return axios.get("/example/getListSearchArticlesDatasource");
+};
+
+export const getListSearchProjectsDatasource = payload => {
+	const settings = {
+		params: payload
+	};
+
+	return axios.get("/example/getListSearchProjectsDatasource");
+};
+
+export const getListSearchApplicationsDatasource = payload => {
+	const settings = {
+		params: payload
+	};
+
+	return axios.get("/example/getListSearchApplicationsDatasource");
+};
+
 export default {
 	submitFormBasic,
 	submitFormSteps,
@@ -55,8 +87,12 @@ export default {
 	addListStandardDatasource,
 	editListStandardDatasource,
 	deleteListStandardDatasource,
+	getListCardDatasource,
 	getListTableDatasource,
 	addListTableDatasource,
 	editListTableDatasource,
-	deleteListTableDatasource
+	deleteListTableDatasource,
+	getListSearchArticlesDatasource,
+	getListSearchProjectsDatasource,
+	getListSearchApplicationsDatasource
 };

@@ -1,25 +1,25 @@
 <template>
-	<vui-layout class="vdp-login">
-		<vui-content class="vdp-login-body">
-			<div class="vdp-login-logo">
+	<vui-layout class="vui-pro-login">
+		<vui-content class="vui-pro-login-body">
+			<div class="vui-pro-login-logo">
 				<router-link to="/">
-					<img src="../../assets/images/logo.svg" />
+					<img src="/static/images/layout/logo.svg" />
 					<span>Vui Design Pro</span>
 				</router-link>
 			</div>
-			<div class="vdp-login-slogan">小人物，小欲望，小满足，大幸福 — Vui Design Pro</div>
-			<div class="vdp-login-form">
-				<div class="vdp-login-tabs">
-					<div class="vdp-login-tabs-header">
-						<div class="vdp-login-tabs-trigger" :class="currentLoginType === 1 ? 'active' : ''" @click="handleChangeLoginType(1)">密码登录</div>
-						<div class="vdp-login-tabs-trigger" :class="currentLoginType === 2 ? 'active' : ''" @click="handleChangeLoginType(2)">短信登录</div>
+			<div class="vui-pro-login-slogan">小人物，小欲望，小满足，大幸福 — Vui Design Pro</div>
+			<div class="vui-pro-login-form">
+				<div class="vui-pro-login-tabs">
+					<div class="vui-pro-login-tabs-header">
+						<div class="vui-pro-login-tabs-trigger" :class="currentLoginType === 1 ? 'active' : ''" @click="handleChangeLoginType(1)">密码登录</div>
+						<div class="vui-pro-login-tabs-trigger" :class="currentLoginType === 2 ? 'active' : ''" @click="handleChangeLoginType(2)">短信登录</div>
 					</div>
-					<div class="vdp-login-tabs-body">
-						<div class="vdp-login-tabs-panel" :class="currentLoginType === 1 ? 'active' : ''">
+					<div class="vui-pro-login-tabs-body">
+						<div class="vui-pro-login-tabs-panel" :class="currentLoginType === 1 ? 'active' : ''">
 							<vui-input prefix="user" size="large" class="margin-top-0" v-model="account" placeholder="请输入账号" />
 							<vui-input type="password" prefix="lock" size="large" class="margin-top-25" v-model="password" placeholder="请输入密码" />
 						</div>
-						<div class="vdp-login-tabs-panel" :class="currentLoginType === 2 ? 'active' : ''">
+						<div class="vui-pro-login-tabs-panel" :class="currentLoginType === 2 ? 'active' : ''">
 							<vui-input prefix="smartphone" size="large" class="margin-top-0" placeholder="请输入手机号" />
 							<vui-input-group compact size="large" class="margin-top-25">
 								<vui-input prefix="mail" style="width: 239px;" placeholder="请输入验证码" />
@@ -30,11 +30,10 @@
 				</div>
 				<div class="margin-top-25 clearfix">
 					<vui-checkbox v-model="autoLogin" label="自动登录" />
-					<div class="pull-right">
-						<a href="javasctip:;">忘记密码</a>
-						<vui-divider type="vertical" />
-						<a href="javasctip:;">立即注册</a>
-					</div>
+					<vui-action-group align="center" class="pull-right">
+						<a href="javasctip:;" class="link-default">忘记密码</a>
+						<a href="javasctip:;" class="link-default">立即注册</a>
+					</vui-action-group>
 				</div>
 				<vui-button type="primary" size="large" class="margin-top-25" style="width: 100%;" @click="handleLogin">立即登录</vui-button>
 				<div class="socialLogin">
@@ -59,21 +58,16 @@
 				</div>
 			</div>
 		</vui-content>
-		<vui-footer class="vdp-login-footer">
-			<div class="vdp-login-links">
-				<a href="javascript:;" class="link-muted">友情链接</a>
-				<vui-divider type="vertical" />
-				<a href="javascript:;" class="link-muted">友情链接</a>
-				<vui-divider type="vertical" />
-				<a href="javascript:;" class="link-muted">友情链接</a>
-				<vui-divider type="vertical" />
-				<a href="javascript:;" class="link-muted">友情链接</a>
-				<vui-divider type="vertical" />
-				<a href="javascript:;" class="link-muted">友情链接</a>
-				<vui-divider type="vertical" />
-				<a href="javascript:;" class="link-muted">友情链接</a>
-			</div>
-			<div class="vdp-login-copyright">Copyright &copy; yyyy-yyyy Vui Design Pro</div>
+		<vui-footer class="vui-pro-login-footer">
+			<vui-action-group align="center" class="vui-pro-login-links">
+				<a href="javascript:;" class="link-default">友情链接</a>
+				<a href="javascript:;" class="link-default">友情链接</a>
+				<a href="javascript:;" class="link-default">友情链接</a>
+				<a href="javascript:;" class="link-default">友情链接</a>
+				<a href="javascript:;" class="link-default">友情链接</a>
+				<a href="javascript:;" class="link-default">友情链接</a>
+			</vui-action-group>
+			<div class="vui-pro-login-copyright">Copyright © {{year}} 杭州电魂网络科技股份有限公司</div>
 		</vui-footer>
 	</vui-layout>
 </template>
@@ -87,7 +81,8 @@
 				currentLoginType: 1,
 				autoLogin: true,
 				account: "admin",
-				password: "123456"
+				password: "123456",
+				year: new Date().getFullYear()
 			};
 		},
 		methods: {
@@ -109,27 +104,27 @@
 </script>
 
 <style>
-	.vdp-login { height:100%; background:url("~src/assets/images/body.png") repeat 50% 0; overflow:auto; }
+	.vui-pro-login { height:100%; background:url("/static/images/layout/body.png") repeat 50% 0; overflow:auto; }
 
 	/* body */
-	.vdp-login-body { padding:50px 0; }
+	.vui-pro-login-body { padding:50px 0; }
 
-	.vdp-login-logo { position:relative; width:360px; margin:0 auto; text-align:center; }
-	.vdp-login-logo a { display:inline-block; vertical-align:middle; line-height:1; }
-	.vdp-login-logo img { display:inline-block; height:40px; vertical-align:middle; }
-	.vdp-login-logo span { display:inline-block; margin-left:10px; vertical-align:middle; line-height:40px; color:#09192a; font-size:30px; font-weight:700; font-stretch:condensed; }
+	.vui-pro-login-logo { position:relative; width:360px; margin:0 auto; text-align:center; }
+	.vui-pro-login-logo a { display:inline-block; vertical-align:middle; line-height:1; }
+	.vui-pro-login-logo img { display:inline-block; height:40px; vertical-align:middle; }
+	.vui-pro-login-logo span { display:inline-block; margin-left:10px; vertical-align:middle; line-height:40px; color:#09192a; font-size:30px; font-weight:700; font-stretch:condensed; }
 
-	.vdp-login-slogan { margin-top:20px; margin-bottom:50px; color:#8c8c8c; text-align:center; }
+	.vui-pro-login-slogan { margin-top:20px; margin-bottom:50px; color:#8c8c8c; text-align:center; }
 
-	.vdp-login-form { width:360px; margin:0 auto; }
+	.vui-pro-login-form { width:360px; margin:0 auto; }
 
-	.vdp-login-tabs {  }
-	.vdp-login-tabs .vdp-login-tabs-header { font-size:0; text-align:center; }
-	.vdp-login-tabs .vdp-login-tabs-header .vdp-login-tabs-trigger { cursor:pointer; display:inline-block; width:90px; border-bottom:2px solid transparent; margin:0 15px; padding-bottom:10px; color:#595959; font-size:14px; text-align:center; transition:all 0.2s; }
-	.vdp-login-tabs .vdp-login-tabs-header .vdp-login-tabs-trigger.active { border-bottom-color:#2d8cf0; color:#2d8cf0; }
-	.vdp-login-tabs .vdp-login-tabs-body { margin-top:25px; }
-	.vdp-login-tabs .vdp-login-tabs-body .vdp-login-tabs-panel { display:none; }
-	.vdp-login-tabs .vdp-login-tabs-body .vdp-login-tabs-panel.active { display:block; }
+	.vui-pro-login-tabs {  }
+	.vui-pro-login-tabs .vui-pro-login-tabs-header { font-size:0; text-align:center; }
+	.vui-pro-login-tabs .vui-pro-login-tabs-header .vui-pro-login-tabs-trigger { cursor:pointer; display:inline-block; width:90px; border-bottom:2px solid transparent; margin:0 15px; padding-bottom:10px; color:#595959; font-size:14px; text-align:center; transition:all 0.2s; }
+	.vui-pro-login-tabs .vui-pro-login-tabs-header .vui-pro-login-tabs-trigger.active { border-bottom-color:#2d8cf0; color:#2d8cf0; }
+	.vui-pro-login-tabs .vui-pro-login-tabs-body { margin-top:25px; }
+	.vui-pro-login-tabs .vui-pro-login-tabs-body .vui-pro-login-tabs-panel { display:none; }
+	.vui-pro-login-tabs .vui-pro-login-tabs-body .vui-pro-login-tabs-panel.active { display:block; }
 
 	.socialLogin { margin-top:25px; }
 	.socialLogin .socialLogin-header { color:#8c8c8c; text-align:center; }
@@ -152,8 +147,8 @@
 	.socialLogin .socialLogin-body .socialLogin-button-sina:hover svg {  }
 
 	/* footer */
-	.vdp-login-footer { padding:25px 0; }
+	.vui-pro-login-footer { padding:25px 0; }
 
-	.vdp-login-links { color:#8c8c8c; text-align:center; line-height:2; }
-	.vdp-login-copyright { color:#8c8c8c; text-align:center; line-height:2; }
+	.vui-pro-login-links { color:#8c8c8c; text-align:center; line-height:2; }
+	.vui-pro-login-copyright { margin-top:8px; color:#8c8c8c; text-align:center; line-height:2; }
 </style>

@@ -3,7 +3,7 @@
 		<vui-sider v-model="collapsed" v-bind:width="220" collapsible breakpoint="lg" theme="dark" class="vui-pro-layout-sider">
 			<h1 class="logo" v-bind:class="collapsed ? 'collapsed' : ''">
 				<router-link to="/">
-					<img src="/static/images/logo.svg" />
+					<img src="/static/images/layout/logo.svg" />
 					<label>Vui Design Pro</label>
 				</router-link>
 			</h1>
@@ -131,7 +131,7 @@
 					<vui-dropdown v-model="usermenu.visible" class="navbar-item" placement="bottom-end" trigger="click">
 						<div class="user" v-bind:class="usermenu.visible ? 'active' : ''">
 							<label>kiwi</label>
-							<vui-avatar size="small" src="/static/images/avatar.svg" />
+							<vui-avatar size="small" src="/static/images/layout/avatar.svg" />
 							<vui-icon type="chevron-down" />
 						</div>
 						<vui-dropdown-menu slot="menu" v-on:click="handleUsermenuClick">
@@ -180,19 +180,19 @@
 				notice: {
 					count: 5,
 					data: [
-						{ id: 5, readed: false, icon: "/static/images/notice-icons/1.png", createdAt: "2020-08-02 12:00:00", title: "你收到了 20 分新的周报" },
-						{ id: 4, readed: false, icon: "/static/images/notice-icons/4.png", createdAt: "2020-08-02 06:00:00", title: "点击后设为已读状态" },
-						{ id: 3, readed: false, icon: "/static/images/notice-icons/3.png", createdAt: "2020-08-02 00:00:00", title: "你推荐的 张三丰 已通过第三轮面试" },
-						{ id: 2, readed: false, icon: "/static/images/notice-icons/2.png", createdAt: "2020-07-20 00:00:00", title: "左侧图标用于区分不同类型" },
-						{ id: 1, readed: false, icon: "/static/images/notice-icons/1.png", createdAt: "2020-02-02 00:00:00", title: "标题文本不易过长，超出部分将被自动截断" }
+						{ id: 5, readed: false, icon: "/static/images/icon-notice/1.png", createdAt: "2020-08-02 12:00:00", title: "你收到了 20 分新的周报" },
+						{ id: 4, readed: false, icon: "/static/images/icon-notice/4.png", createdAt: "2020-08-02 06:00:00", title: "点击后设为已读状态" },
+						{ id: 3, readed: false, icon: "/static/images/icon-notice/3.png", createdAt: "2020-08-02 00:00:00", title: "你推荐的 张三丰 已通过第三轮面试" },
+						{ id: 2, readed: false, icon: "/static/images/icon-notice/2.png", createdAt: "2020-07-20 00:00:00", title: "左侧图标用于区分不同类型" },
+						{ id: 1, readed: false, icon: "/static/images/icon-notice/1.png", createdAt: "2020-02-02 00:00:00", title: "标题文本不易过长，超出部分将被自动截断" }
 					]
 				},
 				message: {
 					count: 3,
 					data: [
-						{ id: 3, readed: false, icon: "/static/images/avatar.svg", createdAt: "2020-08-02 00:00:00", title: "张三丰 评论了你", description: "哇塞，你好厉害~" },
-						{ id: 2, readed: false, icon: "/static/images/avatar.svg", createdAt: "2020-07-20 00:00:00", title: "张无忌 回复了你", description: "这种模板用于提醒谁与你发生了互动，左侧放互动人员头像" },
-						{ id: 1, readed: false, icon: "/static/images/avatar.svg", createdAt: "2020-02-02 00:00:00", title: "标题文本不易过长，超出部分将被自动截断", description: "这种模板用于提醒谁与你发生了互动，左侧放互动人员头像" }
+						{ id: 3, readed: false, icon: "/static/images/layout/avatar.svg", createdAt: "2020-08-02 00:00:00", title: "张三丰 评论了你", description: "哇塞，你好厉害~" },
+						{ id: 2, readed: false, icon: "/static/images/layout/avatar.svg", createdAt: "2020-07-20 00:00:00", title: "张无忌 回复了你", description: "这种模板用于提醒谁与你发生了互动，左侧放互动人员头像" },
+						{ id: 1, readed: false, icon: "/static/images/layout/avatar.svg", createdAt: "2020-02-02 00:00:00", title: "标题文本不易过长，超出部分将被自动截断", description: "这种模板用于提醒谁与你发生了互动，左侧放互动人员头像" }
 					]
 				},
 				todo: {

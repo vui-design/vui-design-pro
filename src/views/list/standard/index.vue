@@ -29,13 +29,13 @@
 			</vui-card>
 			<vui-card v-bind:bordered="false" shadow="always" class="margin-top-20" headerStyle="padding: 16px 16px 16px 20px;" title="任务列表">
 				<vui-space slot="extra">
-					<vui-radio-group type="button" v-model="searcher.status">
+					<vui-radio-group v-model="searcher.status" type="button">
 						<vui-radio v-bind:value="0">全部</vui-radio>
 						<vui-radio v-bind:value="1">进行中</vui-radio>
 						<vui-radio v-bind:value="2">已完成</vui-radio>
 					</vui-radio-group>
 					<vui-input-group compact>
-						<vui-input v-model="searcher.keywords" placeholder="输入关键字查询" />
+						<vui-input v-model="searcher.keywords" style="width: 200px;" placeholder="输入关键字查询" />
 						<vui-button icon="search" v-on:click="handleSearch" />
 					</vui-input-group>
 					<vui-button type="primary" icon="plus" v-on:click="handleAdd">添加</vui-button>
@@ -97,7 +97,7 @@
 		// 页面组件状态
 		data() {
 			return {
-				// 存放查询器状态，例如这里的规则名称和描述
+				// 存放查询器状态，例如这里的状态和关键词
 				searcher: {
 					status: 0,
 					keywords: ""

@@ -3,11 +3,11 @@
 		<vui-pro-dashboard-analysis-statistics />
 		<vui-pro-dashboard-analysis-shortcuts />
 		<vui-pro-dashboard-analysis-sales-pageview />
-		<vui-row class="margin-top-20" v-bind:gutter="20">
-			<vui-col v-bind:span="12">
+		<vui-row v-bind:gutter="20">
+			<vui-col style="margin-top: 20px;" v-bind:lg="24" v-bind:xl="12">
 				<vui-pro-dashboard-analysis-popular-search />
 			</vui-col>
-			<vui-col v-bind:span="12">
+			<vui-col style="margin-top: 20px;" v-bind:lg="24" v-bind:xl="12">
 				<vui-pro-dashboard-analysis-sales-category-percentage />
 			</vui-col>
 		</vui-row>
