@@ -24,13 +24,13 @@
 
 		<vui-card v-bind:bordered="false" shadow="always" class="margin-top-20" headerStyle="padding: 16px 16px 16px 20px;" bodyStyle="padding: 0; overflow: hidden;">
 			<template slot="title">{{type == 1 ? "累充分析" : "至尊分析"}}</template>
-			<vui-action-group slot="extra" size="small">
+			<vui-separator slot="extra">
 				<vui-radio-group v-model="type" type="button">
 					<vui-radio v-bind:value="1">累充分析</vui-radio>
 					<vui-radio v-bind:value="2">至尊分析</vui-radio>
 				</vui-radio-group>
 				<vui-button key="2" type="primary" icon="download" v-on:click="handleExport">导出</vui-button>
-			</vui-action-group>
+			</vui-separator>
 			<vui-table ref="table" bordered rowKey="id" style="max-width: unset; margin: -1px;" v-bind="list">
 				<template slot="users" slot-scope="{ row }">{{row.users | numerical}}</template>
 				<template slot="percentage" slot-scope="{ row }">{{row.percentage | numerical(2)}} %</template>

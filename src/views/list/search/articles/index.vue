@@ -19,10 +19,16 @@
 						<vui-option v-bind:value="3">合格</vui-option>
 					</vui-select>
 					<vui-select v-model="searcher.authors" v-bind:maxTagCount="1" multiple style="width: 140px;" placeholder="作者">
+						<vui-option value="阿波罗">阿波罗</vui-option>
+						<vui-option value="柳残阳">柳残阳</vui-option>
 						<vui-option value="萱子乔">萱子乔</vui-option>
 						<vui-option value="花满楼">花满楼</vui-option>
 						<vui-option value="张无忌">张无忌</vui-option>
 						<vui-option value="紫旭琳">紫旭琳</vui-option>
+						<vui-option value="张三丰">张三丰</vui-option>
+						<vui-option value="瑰柳儿">瑰柳儿</vui-option>
+						<vui-option value="雪浮灵">雪浮灵</vui-option>
+						<vui-option value="南宫惘">南宫惘</vui-option>
 					</vui-select>
 					<vui-input-group compact>
 						<vui-input v-model="searcher.keywords" style="width: 200px;" placeholder="输入关键字查询" />

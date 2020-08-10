@@ -65,7 +65,7 @@
 							</div>
 							<template slot="actions">
 								<a href="javascript:;" v-on:click="e => handleEdit(item)">编辑</a>
-								<vui-dropdown trigger="click" placement="bottom-end">
+								<vui-dropdown trigger="click" placement="bottom">
 									<a href="javascript:;">更多</a>
 									<vui-dropdown-menu slot="menu" v-on:click="name => handleMoreActionClick(name, item)">
 										<vui-dropdown-menu-item name="edit" title="编辑" />

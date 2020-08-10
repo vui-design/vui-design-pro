@@ -30,10 +30,10 @@
 				</div>
 				<div class="margin-top-25 clearfix">
 					<vui-checkbox v-model="autoLogin" label="自动登录" />
-					<vui-action-group align="center" class="pull-right">
+					<vui-separator align="center" class="pull-right">
 						<a href="javasctip:;" class="link-default">忘记密码</a>
 						<a href="javasctip:;" class="link-default">立即注册</a>
-					</vui-action-group>
+					</vui-separator>
 				</div>
 				<vui-button type="primary" size="large" class="margin-top-25" style="width: 100%;" @click="handleLogin">立即登录</vui-button>
 				<div class="socialLogin">
@@ -59,14 +59,14 @@
 			</div>
 		</vui-content>
 		<vui-footer class="vui-pro-login-footer">
-			<vui-action-group align="center" class="vui-pro-login-links">
+			<vui-separator align="center" class="vui-pro-login-links">
 				<a href="javascript:;" class="link-default">友情链接</a>
 				<a href="javascript:;" class="link-default">友情链接</a>
 				<a href="javascript:;" class="link-default">友情链接</a>
 				<a href="javascript:;" class="link-default">友情链接</a>
 				<a href="javascript:;" class="link-default">友情链接</a>
 				<a href="javascript:;" class="link-default">友情链接</a>
-			</vui-action-group>
+			</vui-separator>
 			<div class="vui-pro-login-copyright">Copyright © {{year}} 杭州电魂网络科技股份有限公司</div>
 		</vui-footer>
 	</vui-layout>

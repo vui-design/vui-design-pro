@@ -17,10 +17,16 @@
 			</vui-form-item>
 			<vui-form-item prop="owner" label="负责人">
 				<vui-select v-model="data.owner" style="width: 50%;" placeholder="请选择负责人">
+					<vui-option value="阿波罗">阿波罗</vui-option>
+					<vui-option value="柳残阳">柳残阳</vui-option>
 					<vui-option value="萱子乔">萱子乔</vui-option>
 					<vui-option value="花满楼">花满楼</vui-option>
 					<vui-option value="张无忌">张无忌</vui-option>
 					<vui-option value="紫旭琳">紫旭琳</vui-option>
+					<vui-option value="张三丰">张三丰</vui-option>
+					<vui-option value="瑰柳儿">瑰柳儿</vui-option>
+					<vui-option value="雪浮灵">雪浮灵</vui-option>
+					<vui-option value="南宫惘">南宫惘</vui-option>
 				</vui-select>
 			</vui-form-item>
 			<vui-form-item prop="description" label="任务描述">

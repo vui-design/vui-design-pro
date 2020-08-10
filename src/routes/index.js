@@ -54,6 +54,7 @@ export default [
 				},
 				component: () => import("src/views/dashboard/analysis")
 			},
+			/*
 			{
 				path: "/dashboard/monitor",
 				name: "dashboard-monitor",
@@ -64,6 +65,7 @@ export default [
 				},
 				component: () => import("src/views/dashboard/monitor")
 			},
+			*/
 			{
 				path: "/dashboard/workplace",
 				name: "dashboard-workplace",
