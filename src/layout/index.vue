@@ -131,7 +131,7 @@
 					<vui-dropdown v-model="usermenu.visible" class="navbar-item" placement="bottom-end" trigger="click">
 						<div class="user" v-bind:class="usermenu.visible ? 'active' : ''">
 							<label>kiwi</label>
-							<vui-avatar size="small" src="/static/images/layout/avatar.svg" />
+							<vui-avatar size="small" src="/static/images/avatars/svg/1.svg" />
 							<vui-icon type="chevron-down" />
 						</div>
 						<vui-dropdown-menu slot="menu" v-on:click="handleUsermenuClick">

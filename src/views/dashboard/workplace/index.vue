@@ -4,7 +4,7 @@
 			<template slot="title">工作台</template>
 			<div class="vui-pro-dashboard-workplace">
 				<div class="vui-pro-dashboard-workplace-profile">
-					<vui-avatar class="vui-pro-dashboard-workplace-profile-avatar" src="/static/images/layout/avatar.svg" v-bind:size="72" />
+					<vui-avatar class="vui-pro-dashboard-workplace-profile-avatar" src="/static/images/avatars/svg/1.svg" v-bind:size="72" />
 					<section class="vui-pro-dashboard-workplace-profile-details">
 						<div class="welcome">早安，Ding Wei，祝你开心每一天！</div>
 						<vui-separator class="meta">
@@ -26,9 +26,11 @@
 			<vui-row v-bind:gutter="20">
 				<vui-col v-bind:span="16">
 					<vui-pro-project-list />
+					<vui-pro-event-list />
 				</vui-col>
 				<vui-col v-bind:span="8">
-					
+					<vui-pro-shortcut-list />
+					<vui-pro-radar />
 				</vui-col>
 			</vui-row>
 		</div>
@@ -37,10 +39,16 @@
 
 <script>
 	import VuiProProjectList from "./components/project-list";
+	import VuiProEventList from "./components/event-list";
+	import VuiProShortcutList from "./components/shortcut-list";
+	import VuiProRadar from "./components/radar";
 
 	export default {
 		components: {
-			VuiProProjectList
+			VuiProProjectList,
+			VuiProEventList,
+			VuiProShortcutList,
+			VuiProRadar
 		},
 		data() {
 			return {

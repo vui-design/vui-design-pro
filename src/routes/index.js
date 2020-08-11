@@ -120,7 +120,7 @@ export default [
 		meta: {
 			addToMenu: true,
 			addToBreadcrumb: true,
-			icon: "list-settings",
+			icon: "table",
 			title: "列表"
 		},
 		component: Layout,
@@ -278,11 +278,11 @@ export default [
 		meta: {
 			addToMenu: true,
 			addToBreadcrumb: true,
-			icon: "checkmark-circle",
+			icon: "info",
 			title: "结果页面"
 		},
 		component: Layout,
-		redirect: "/result/success",
+		redirect: "/result/info",
 		children: [
 			{
 				path: "/result/info",

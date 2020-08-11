@@ -24,13 +24,13 @@
 								<label class="moment">{{item.createdAt | dateformatter("yyyy-MM-dd HH:mm")}}</label>
 								<div class="avatar-list">
 									<vui-tooltip class="avatar" content="张三">
-										<vui-avatar size="small" src="/static/images/avatars/1.png" />
+										<vui-avatar size="small" src="/static/images/avatars/png/1.png" />
 									</vui-tooltip>
 									<vui-tooltip class="avatar" content="李四">
-										<vui-avatar size="small" src="/static/images/avatars/2.png" />
+										<vui-avatar size="small" src="/static/images/avatars/png/2.png" />
 									</vui-tooltip>
 									<vui-tooltip class="avatar" content="王二">
-										<vui-avatar size="small" src="/static/images/avatars/3.png" />
+										<vui-avatar size="small" src="/static/images/avatars/png/3.png" />
 									</vui-tooltip>
 								</div>
 							</div>
