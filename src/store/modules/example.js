@@ -357,14 +357,101 @@ export default {
 							data: {
 								total: 10,
 								content:  [
-									{ id: 8, thumbnail: "/static/images/list-projects/lodash.png", createdAt: "2020-08-08 12:40:00", title: "Lodash", description: "一个一致性、模块化、高性能的 JavaScript 实用工具库" },
-									{ id: 7, thumbnail: "/static/images/list-projects/isjs.png", createdAt: "2020-08-08 12:40:00", title: "Is.js", description: "Is.js 是一个微型通用性数据检查验证包" },
-									{ id: 6, thumbnail: "/static/images/list-projects/vue.png", createdAt: "2020-08-08 12:40:00", title: "Vue", description: "渐进式 JavaScript 框架" },
-									{ id: 5, thumbnail: "/static/images/list-projects/react.png", createdAt: "2020-08-08 12:40:00", title: "React", description: "起源于 Facebook 的内部项目，用来架设 Instagram 的网站，并于 2013 年 5 月开源" },
-									{ id: 4, thumbnail: "/static/images/list-projects/angular.png", createdAt: "2020-08-08 12:40:00", title: "Angular", description: "应用设计框架与开发平台，用于创建高效、复杂、精致的单页面应用" },
-									{ id: 3, thumbnail: "/static/images/list-projects/bootstrap.png", createdAt: "2020-08-08 12:40:00", title: "Bootstrap", description: "Bootstrap 是 Twitter 推出的一个用于前端开发的开源工具包" },
-									{ id: 2, thumbnail: "/static/images/list-projects/viser.png", createdAt: "2020-08-08 12:40:00", title: "Viser", description: "再一次发现你的数据" },
-									{ id: 1, thumbnail: "/static/images/list-projects/axure.png", createdAt: "2020-08-08 12:40:00", title: "Axure", description: "Axure RP 是一款专业的快速原型设计工具" }
+									{
+										id: 8,
+										thumbnail: "/static/images/list-projects/lodash.png",
+										createdAt: "2020-08-08 12:40:00",
+										title: "Lodash",
+										description: "一个一致性、模块化、高性能的 JavaScript 实用工具库",
+										collaborators: [
+											{ id: 1, avatar: "/static/images/avatars/png/1.png", name: "张三" },
+											{ id: 2, avatar: "/static/images/avatars/png/2.png", name: "李四" },
+											{ id: 3, avatar: "/static/images/avatars/png/3.png", name: "王二" }
+										]
+									},
+									{
+										id: 7,
+										thumbnail: "/static/images/list-projects/isjs.png",
+										createdAt: "2020-08-08 12:40:00",
+										title: "Is.js",
+										description: "Is.js 是一个微型通用性数据检查验证包",
+										collaborators: [
+											{ id: 1, avatar: "/static/images/avatars/png/1.png", name: "张三" },
+											{ id: 2, avatar: "/static/images/avatars/png/2.png", name: "李四" },
+											{ id: 3, avatar: "/static/images/avatars/png/3.png", name: "王二" }
+										]
+									},
+									{
+										id: 6,
+										thumbnail: "/static/images/list-projects/vue.png",
+										createdAt: "2020-08-08 12:40:00",
+										title: "Vue",
+										description: "渐进式 JavaScript 框架",
+										collaborators: [
+											{ id: 1, avatar: "/static/images/avatars/png/1.png", name: "张三" },
+											{ id: 2, avatar: "/static/images/avatars/png/2.png", name: "李四" },
+											{ id: 3, avatar: "/static/images/avatars/png/3.png", name: "王二" }
+										]
+									},
+									{
+										id: 5,
+										thumbnail: "/static/images/list-projects/react.png",
+										createdAt: "2020-08-08 12:40:00",
+										title: "React",
+										description: "起源于 Facebook 的内部项目，用来架设 Instagram 的网站，并于 2013 年 5 月开源",
+										collaborators: [
+											{ id: 1, avatar: "/static/images/avatars/png/1.png", name: "张三" },
+											{ id: 2, avatar: "/static/images/avatars/png/2.png", name: "李四" },
+											{ id: 3, avatar: "/static/images/avatars/png/3.png", name: "王二" }
+										]
+									},
+									{
+										id: 4,
+										thumbnail: "/static/images/list-projects/angular.png",
+										createdAt: "2020-08-08 12:40:00",
+										title: "Angular",
+										description: "应用设计框架与开发平台，用于创建高效、复杂、精致的单页面应用",
+										collaborators: [
+											{ id: 1, avatar: "/static/images/avatars/png/1.png", name: "张三" },
+											{ id: 2, avatar: "/static/images/avatars/png/2.png", name: "李四" },
+											{ id: 3, avatar: "/static/images/avatars/png/3.png", name: "王二" }
+										]
+									},
+									{
+										id: 3,
+										thumbnail: "/static/images/list-projects/bootstrap.png",
+										createdAt: "2020-08-08 12:40:00",
+										title: "Bootstrap",
+										description: "Bootstrap 是 Twitter 推出的一个用于前端开发的开源工具包",
+										collaborators: [
+											{ id: 1, avatar: "/static/images/avatars/png/1.png", name: "张三" },
+											{ id: 2, avatar: "/static/images/avatars/png/2.png", name: "李四" },
+											{ id: 3, avatar: "/static/images/avatars/png/3.png", name: "王二" }
+										]
+									},
+									{
+										id: 2,
+										thumbnail: "/static/images/list-projects/viser.png",
+										createdAt: "2020-08-08 12:40:00",
+										title: "Viser",
+										description: "再一次发现你的数据",
+										collaborators: [
+											{ id: 1, avatar: "/static/images/avatars/png/1.png", name: "张三" },
+											{ id: 2, avatar: "/static/images/avatars/png/2.png", name: "李四" },
+											{ id: 3, avatar: "/static/images/avatars/png/3.png", name: "王二" }
+										]
+									},
+									{
+										id: 1,
+										thumbnail: "/static/images/list-projects/axure.png",
+										createdAt: "2020-08-08 12:40:00", title: "Axure",
+										description: "Axure RP 是一款专业的快速原型设计工具",
+										collaborators: [
+											{ id: 1, avatar: "/static/images/avatars/png/1.png", name: "张三" },
+											{ id: 2, avatar: "/static/images/avatars/png/2.png", name: "李四" },
+											{ id: 3, avatar: "/static/images/avatars/png/3.png", name: "王二" }
+										]
+									}
 								]
 							},
 							message: "success"

@@ -1,5 +1,5 @@
 <template>
-	<vui-card v-bind:bordered="false">
+	<vui-card v-bind:bordered="false" shadow="always">
 		<template slot="title">快速开始 / 便捷导航</template>
 		<vui-card-grid class="vui-pro-dashboard-workplace-shortcut-wrapper">
 			<router-link to="/dashboard" class="vui-pro-dashboard-workplace-shortcut">

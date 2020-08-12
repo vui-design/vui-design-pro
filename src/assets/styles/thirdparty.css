@@ -3,7 +3,7 @@
 
 /* Viser 图表 tooltip 提示 */
 .g2-tooltip { position:absolute; top:0; left:0; border-radius:2px; box-shadow:0 1px 6px rgba(0,0,0,0.1); background-color:rgba(255,255,255,0.95); padding:10px; color:#565656; font-size:12px; line-height:20px; }
-.g2-tooltip .g2-tooltip-title { font-size:14px; }
+.g2-tooltip .g2-tooltip-title { margin-bottom:4px; font-size:12px; }
 .g2-tooltip .g2-tooltip-list { box-sizing:border-box; list-style:none; margin:0; padding:0; }
 .g2-tooltip .g2-tooltip-list-item { display:flex; align-items:center; box-sizing:border-box; list-style:none; margin:0; padding:0; }
 .g2-tooltip .g2-tooltip-list-item + .g2-tooltip-list-item { margin-top:4px; }

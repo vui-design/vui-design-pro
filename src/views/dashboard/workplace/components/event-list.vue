@@ -1,5 +1,5 @@
 <template>
-	<vui-card v-bind:bordered="false" class="margin-top-20">
+	<vui-card v-bind:bordered="false" shadow="always" class="margin-top-20">
 		<template slot="title">最新动态</template>
 		<vui-list class="vui-pro-dashboard-workplace-event-list">
 			<vui-list-item class="vui-pro-dashboard-workplace-event">
@@ -39,7 +39,7 @@
 						<span class="text">回复了</span>
 						<a slot="title" href="javascript:;" class="username">花满楼</a>
 						<span class="text">的问题</span>
-						<a slot="title" href="javascript:;" class="content">Vue 中怎么实现大数据列表的虚拟滚动？</a>
+						<a slot="title" href="javascript:;" class="content">Vue 中如何实现大数据列表的虚拟滚动？</a>
 					</div>
 					<div slot="description" class="moment">4 天前</div>
 				</vui-list-item-meta>
@@ -81,7 +81,7 @@
 </script>
 
 <style>
-	.vui-pro-dashboard-workplace-event-list {  }
+	.vui-pro-dashboard-workplace-event-list { min-height:488px; }
 
 	.vui-pro-dashboard-workplace-event {  }
 	.vui-pro-dashboard-workplace-event .username { color:#262626; }

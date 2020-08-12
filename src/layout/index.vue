@@ -190,9 +190,9 @@
 				message: {
 					count: 3,
 					data: [
-						{ id: 3, readed: false, icon: "/static/images/layout/avatar.svg", createdAt: "2020-08-02 00:00:00", title: "张三丰 评论了你", description: "哇塞，你好厉害~" },
-						{ id: 2, readed: false, icon: "/static/images/layout/avatar.svg", createdAt: "2020-07-20 00:00:00", title: "张无忌 回复了你", description: "这种模板用于提醒谁与你发生了互动，左侧放互动人员头像" },
-						{ id: 1, readed: false, icon: "/static/images/layout/avatar.svg", createdAt: "2020-02-02 00:00:00", title: "标题文本不易过长，超出部分将被自动截断", description: "这种模板用于提醒谁与你发生了互动，左侧放互动人员头像" }
+						{ id: 3, readed: false, icon: "/static/images/avatars/svg/1.svg", createdAt: "2020-08-02 00:00:00", title: "张三丰 评论了你", description: "哇塞，你好厉害~" },
+						{ id: 2, readed: false, icon: "/static/images/avatars/svg/2.svg", createdAt: "2020-07-20 00:00:00", title: "张无忌 回复了你", description: "这种模板用于提醒谁与你发生了互动，左侧放互动人员头像" },
+						{ id: 1, readed: false, icon: "/static/images/avatars/svg/3.svg", createdAt: "2020-02-02 00:00:00", title: "标题文本不易过长，超出部分将被自动截断", description: "这种模板用于提醒谁与你发生了互动，左侧放互动人员头像" }
 					]
 				},
 				todo: {

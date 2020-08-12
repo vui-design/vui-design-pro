@@ -1,88 +1,177 @@
 <template>
-	<vui-card v-bind:bordered="false" class="margin-top-20">
+	<vui-card v-bind:bordered="false" shadow="always" class="margin-top-20">
 		<template slot="title">XX 指数</template>
-		<v-chart v-bind:forceFit="true" v-bind:animate="false" v-bind:height="260" v-bind:data="data" v-bind:scale="scale" v-bind:padding="padding">
-			<v-axis v-bind:dataKey="axis.dataKey" v-bind:line="axis.line" v-bind:tickLine="axis.tickLine" v-bind:grid="axis.grid" />
-			<v-line position="type*score" v-bind:color="color" v-bind:size="1" />
-			<v-point position="type*score" v-bind:color="color" shape="circle" v-bind:size="3" />
-			<v-coord type="polar" radius="1" />
-			<v-tooltip />
-		</v-chart>
-		<vui-separator v-bind:size="54" v-bind:gutter="40" align="center" class="margin-top-30">
-			<a href="javascript:;" v-on:click="handleClickLegendItem('个人')">
-				<vui-statistic class="vui-pro-dashboard-workplace-extra-statistic" v-bind:value="36" title="个人" />
-			</a>
-			<a href="javascript:;" v-on:click="handleClickLegendItem('团队')">
-				<vui-statistic class="vui-pro-dashboard-workplace-extra-statistic" v-bind:value="20" title="团队" />
-			</a>
-			<a href="javascript:;" v-on:click="handleClickLegendItem('部门')">
-				<vui-statistic class="vui-pro-dashboard-workplace-extra-statistic" v-bind:value="28" title="部门" />
-			</a>
-		</vui-separator>
+		<vui-empty v-if="dataSource.length === 0" style="padding: 127px 0;">
+			<img slot="image" style="height: 60px;" src="https://gw.alipayobjects.com/zos/antfincdn/ZHrcdLPrvN/empty.svg" />
+			<div slot="description">暂无统计数据</div>
+		</vui-empty>
+		<div v-else>
+			<v-chart v-bind="chartSettings.root">
+				<v-coord v-bind="chartSettings.coord" />
+				<v-axis v-bind="chartSettings.axis" />
+				<v-line v-bind="chartSettings.line" />
+				<v-point v-bind="chartSettings.point" />
+				<v-tooltip v-bind="chartSettings.tooltip" />
+			</v-chart>
+			<vui-separator v-bind:size="54" v-bind:gutter="40" align="center" class="margin-top-30">
+				<a href="javascript:;" v-for="(item, index) in dataSource" v-bind:key="index" v-on:click="handleClickChartLegendItem(item)">
+					<vui-statistic class="vui-pro-dashboard-workplace-radar-statistic" v-bind:value="item.citation + item.praise + item.output + item.contribution + item.hot">
+						<template slot="title">
+							<i v-bind:style="getChartLegendItemColor(item)"></i>{{item.target}}
+						</template>
+					</vui-statistic>
+				</a>
+			</vui-separator>
+		</div>
 	</vui-card>
 </template>
 
 <script>
-	const colors = [
-		{ disabled: false, color: "#1890ff", target: "个人" },
-		{ disabled: false, color: "#2fc25b", target: "团队" },
-		{ disabled: false, color: "#facc14", target: "部门" }
-	];
+	import DataSet from "@antv/data-set";
 
-	const dataSource = [
-		{ score: 10, type: "引用", target: "个人" },
-		{ score: 4, type: "引用", target: "团队" },
-		{ score: 6, type: "引用", target: "部门" },
-		{ score: 8, type: "口碑", target: "个人" },
-		{ score: 4, type: "口碑", target: "团队" },
-		{ score: 2, type: "口碑", target: "部门" },
-		{ score: 4, type: "产量", target: "个人" },
-		{ score: 6, type: "产量", target: "团队" },
-		{ score: 6, type: "产量", target: "部门" },
-		{ score: 6, type: "贡献", target: "个人" },
-		{ score: 4, type: "贡献", target: "团队" },
-		{ score: 6, type: "贡献", target: "部门" },
-		{ score: 8, type: "热度", target: "个人" },
-		{ score: 2, type: "热度", target: "团队" },
-		{ score: 8, type: "热度", target: "部门" }
-	];
+	const scales = {
+		citation: "引用",
+		praise: "口碑",
+		output: "产量",
+		contribution: "贡献",
+		hot: "热度"
+	};
 
-	export default {
-		data() {
+	const chart = {
+		getScaleText: function(value) {
+			return scales[value];
+		},
+		getGeomColor(dataSource, value) {
+			const target = dataSource.find(item => item.target === value);
+
+			return target ? target.color : value;
+		},
+		getChartTooltipTemplate(title, items) {
+			let template = "";
+
+			template += "<div class=\"g2-tooltip\">";
+			template += "<div class=\"g2-tooltip-title\">" + title + "</div>";
+			template += "<ul class=\"g2-tooltip-list\">";
+			items.forEach(item => {
+				const data = item.point._origin;
+
+				template += "<li class=\"g2-tooltip-list-item\">";
+				template += "<i class=\"g2-tooltip-list-item-marker\" style=\"background-color: " + item.color + ";\"></i>";
+				template += "<label class=\"g2-tooltip-list-item-key\">" + data.target + "</label>";
+				template += "<label class=\"g2-tooltip-list-item-value\">" + data.value + "</label>";
+				template += "</li>";
+			});
+			template += "</ul>";
+			template += "</div>";
+
+			return template;
+		},
+		getSettings(dataSource) {
+			let data = dataSource.filter(it => it.enabled);
+
+			data = new DataSet.View().source(data);
+			data.transform({
+				type: "fold",
+				fields: ["citation", "praise", "output", "contribution", "hot"],
+				key: "item",
+				value: "value"
+			});
+			data = data.rows;
+
 			return {
-				data: dataSource,
-				scale: [
-					{ dataKey: "score", min: 0, max: 10 }
-				],
-				padding: ["auto", "auto", "auto", "auto"],
-				color: ["target", this.getTargetColor],
+				root: {
+					key: new Date().getTime(),
+					forceFit: true,
+					animate: true,
+					height: 260,
+					padding: ["auto", "auto", "auto", "auto"],
+					data: data,
+					scale: [
+						{ dataKey: "item", formatter: this.getScaleText },
+						{ dataKey: "value", min: 0, max: 10 }
+					]
+				},
+				coord: {
+					type: "polar",
+					radius: 1
+				},
 				axis: {
-					dataKey: "score",
+					dataKey: "value",
 					line: null,
 					tickLine: null,
 					grid: {
 						type: "polygon"
 					}
+				},
+				line: {
+					position: "item*value",
+					size: 1,
+					color: ["target", value => this.getGeomColor(dataSource, value)]
+				},
+				point: {
+					position: "item*value",
+					size: 3,
+					shape: "circle",
+					color: ["target", value => this.getGeomColor(dataSource, value)]
+				},
+				tooltip: {
+					crosshairs: false,
+					useHtml: true,
+					htmlContent:  this.getChartTooltipTemplate
 				}
+			};
+		}
+	};
+
+	export default {
+		data() {
+			const dataSource = [];
+			const chartSettings = chart.getSettings(dataSource);
+
+			return {
+				dataSource,
+				chartSettings
 			};
 		},
 		methods: {
-			getTargetColor(value) {
-				const item = colors.find(item => item.target === value);
-
-				return item.color;
+			getChartLegendItemColor(item) {
+				return {
+					backgroundColor: item.enabled ? item.color : "#aaaaaa"
+				};
 			},
-			handleClickLegendItem(value) {
-				const item = colors.find(item => item.target === value);
+			handleClickChartLegendItem(item) {
+				// 至少保留一项数据可见
+				const items = this.dataSource.filter(item => item.enabled);
 
-				item.disabled = !item.disabled;
+				if (items.length <= 1 && item.enabled === true) {
+					return;
+				}
 
-				this.data = dataSource.filter(item => item.target !== value);
+				// 切换数据可见性，并重绘图表
+				item.enabled = !item.enabled;
+
+				const chartSettings = chart.getSettings(this.dataSource);
+
+				this.chartSettings = chartSettings;
 			}
+		},
+		created() {
+			const dataSource = [
+				{ target: "个人", citation: 9, praise: 8, output: 4, contribution: 6, hot: 8, enabled: true, color: "#1890ff" },
+				{ target: "团队", citation: 4, praise: 4, output: 8, contribution: 4, hot: 2, enabled: true, color: "#2fc25b" },
+				{ target: "部门", citation: 6, praise: 2, output: 6, contribution: 8, hot: 8, enabled: true, color: "#facc14" }
+			];
+			const chartSettings = chart.getSettings(dataSource);
+
+			this.dataSource = dataSource;
+			this.chartSettings = chartSettings;
 		}
 	};
 </script>
 
 <style>
-	
+	.vui-pro-dashboard-workplace-radar-statistic {  }
+	.vui-pro-dashboard-workplace-radar-statistic .vui-statistic-title { display:flex; justify-content:flex-end; align-items:center; }
+	.vui-pro-dashboard-workplace-radar-statistic .vui-statistic-title i { display:block; width:6px; height:6px; border-radius:6px; margin-right:8px; }
+	.vui-pro-dashboard-workplace-radar-statistic .vui-statistic-body { justify-content:flex-end; }
 </style>

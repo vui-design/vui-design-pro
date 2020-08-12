@@ -22,17 +22,7 @@
 							</vui-card-meta>
 							<div class="vui-pro-list-search-projects-item-meta">
 								<label class="moment">{{item.createdAt | dateformatter("yyyy-MM-dd HH:mm")}}</label>
-								<div class="avatar-list">
-									<vui-tooltip class="avatar" content="张三">
-										<vui-avatar size="small" src="/static/images/avatars/png/1.png" />
-									</vui-tooltip>
-									<vui-tooltip class="avatar" content="李四">
-										<vui-avatar size="small" src="/static/images/avatars/png/2.png" />
-									</vui-tooltip>
-									<vui-tooltip class="avatar" content="王二">
-										<vui-avatar size="small" src="/static/images/avatars/png/3.png" />
-									</vui-tooltip>
-								</div>
+								<vui-pro-avatar-list v-bind:data="item.collaborators" />
 							</div>
 							<template slot="actions">
 								<vui-tooltip style="display: block;" content="编辑">
@@ -59,11 +49,13 @@
 
 <script>
 	import VuiProFilter from "src/components/filter";
+	import VuiProAvatarList from "src/components/avatar-list";
 
 	export default {
 		// 依赖组件
 		components: {
-			VuiProFilter
+			VuiProFilter,
+			VuiProAvatarList
 		},
 		// 页面组件状态
 		data() {
@@ -166,8 +158,4 @@
 <style>
 	.vui-pro-list-search-projects-item-meta { display:flex; justify-content:space-between; align-items:center; margin-top:16px; }
 	.vui-pro-list-search-projects-item-meta .moment { color:#8c8c8c; }
-	.vui-pro-list-search-projects-item-meta .avatar-list {  }
-	.vui-pro-list-search-projects-item-meta .avatar { position:relative; width:28px; height:28px; border:2px solid #fff; border-radius:28px; opacity:0.8; transition:opacity 0.2s; }
-	.vui-pro-list-search-projects-item-meta .avatar + .avatar { margin-left:-8px; }
-	.vui-pro-list-search-projects-item-meta .avatar:hover { opacity:1; }
 </style>

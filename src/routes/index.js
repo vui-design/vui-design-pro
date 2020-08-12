@@ -403,6 +403,16 @@ export default [
 					title: "充值分析"
 				},
 				component: () => import("src/views/business/recharge")
+			},
+			{
+				path: "/business/recharge/trend",
+				name: "business-recharge/trend",
+				meta: {
+					addToMenu: false,
+					addToBreadcrumb: true,
+					title: "充值分析"
+				},
+				component: () => import("src/views/business/recharge-trend")
 			}
 		]
 	}
