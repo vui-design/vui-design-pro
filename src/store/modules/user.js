@@ -1,5 +1,5 @@
 import services from "src/services";
-import authorization from "src/utils/authorization";
+import authorization from "src/libs/authorization";
 
 export default {
 	namespaced: true,

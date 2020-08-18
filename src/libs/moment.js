@@ -1,9 +1,39 @@
-const getType = value => Object.prototype.toString.call(value);
-const isString = value => getType(value) === "[object String]";
-const isNotNumber = value => window.isNaN(value) && value !== value;
-const isNumber = value => getType(value) === "[object Number]" && !isNotNumber(value);
-const isDate = value => getType(value) === "[object Date]";
-const isValidDate = value => isDate(value) && !isNotNumber(value.getTime());
+import is from "./is";
+
+// 将日期对象、日期字符串或时间戳转换为日期对象
+export const parse = function() {
+	let date;
+
+	if (arguments.length == 0) {
+		date = new Date();
+	}
+	else if (arguments.length == 1) {
+		let value = arguments[0];
+
+		if (is.string(value)) {
+			date = new Date(value.replace(/-/g, "/"));
+		}
+		else if (is.number(value)) {
+			date = new Date(parseInt(value, 10));
+		}
+		else {
+			date = new Date(value);
+		}
+	}
+	else if (arguments.length >= 3) {
+		let [year, month, day, hour = 0, minute = 0, second = 0] = arguments;
+
+		date = new Date(year, month - 1, day, hour, minute, second);
+	}
+
+	if (!is.date(date)) {
+		throw new Error("[Vui Design Pro][moment.parse] Parameter cannot be converted to a legal Date object!");
+	}
+
+	return date;
+};
+
+// 将日期对象、日期字符串或时间戳转换为指定格式
 const weekdays = {
 	"0": "\u65e5",
 	"1": "\u4e00",
@@ -14,38 +44,10 @@ const weekdays = {
 	"6": "\u516d" 
 };
 
-const parse = function() {
-	let date;
+export const format = function(date, pattern) {
+	date = parse(date);
 
-	if (arguments.length == 0) {
-		date = null;
-	}
-	else if (arguments.length == 1) {
-		let value = arguments[0];
-
-		if (isDate(value)) {
-			date = value;
-		}
-		else if (isString(value)) {
-			date = new Date(value.replace(/-/g, "/"));
-		}
-		else if (isNumber(value)) {
-			date = new Date(parseInt(value, 10));
-		}
-	}
-	else if (arguments.length >= 3) {
-		let [year, month, day, hour = 0, minute = 0, second = 0] = arguments;
-
-		date = new Date(year, month - 1, day, hour, minute, second);
-	}
-
-	return date;
-};
-
-export default (value, pattern) => {
-	const date = parse(value);
-
-	if (!date || !isValidDate(date)) {
+	if (!is.date(date)) {
 		return "";
 	}
 
@@ -68,11 +70,17 @@ export default (value, pattern) => {
 		pattern = pattern.replace(RegExp.$1, ((RegExp.$1.length > 1) ? (RegExp.$1.length > 2 ? "\u661f\u671f" : "\u5468") : "") + weekdays[date.getDay() + ""]);
 	}
 
-	for (var key in settings) {
+	for (let key in settings) {
 		if (new RegExp("(" + key + ")").test(pattern)) {
 			pattern = pattern.replace(RegExp.$1, (RegExp.$1.length == 1) ? (settings[key]) : (("00" + settings[key]).substr(("" + settings[key]).length)));
 		}
 	}
 
 	return pattern;
+};
+
+// 导出所有
+export default {
+	parse,
+	format
 };

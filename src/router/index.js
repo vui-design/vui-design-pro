@@ -2,8 +2,8 @@ import Vue from "vue";
 import VueRouter from "vue-router";
 import routes from "src/routes";
 import store from "src/store";
-import utils from "src/utils";
-import authorization from "src/utils/authorization";
+import utils from "src/libs/utils";
+import authorization from "src/libs/authorization";
 
 Vue.use(VueRouter);
 

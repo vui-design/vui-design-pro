@@ -42,8 +42,18 @@ export default [
 			title: "控制面板"
 		},
 		component: Layout,
-		redirect: "/dashboard/analysis",
+		redirect: "/dashboard/workplace",
 		children: [
+			{
+				path: "/dashboard/workplace",
+				name: "dashboard-workplace",
+				meta: {
+					addToMenu: true,
+					addToBreadcrumb: true,
+					title: "工作台"
+				},
+				component: () => import("src/views/dashboard/workplace")
+			},
 			{
 				path: "/dashboard/analysis",
 				name: "dashboard-analysis",
@@ -64,18 +74,8 @@ export default [
 					title: "监控页"
 				},
 				component: () => import("src/views/dashboard/monitor")
-			},
-			*/
-			{
-				path: "/dashboard/workplace",
-				name: "dashboard-workplace",
-				meta: {
-					addToMenu: true,
-					addToBreadcrumb: true,
-					title: "工作台"
-				},
-				component: () => import("src/views/dashboard/workplace")
 			}
+			*/
 		]
 	},
 

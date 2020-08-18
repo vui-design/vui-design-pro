@@ -1,17 +1,17 @@
 import VuiDesign from "vui-design";
 import axios from "axios";
-import { baseURL } from "src/config";
-import { getToken } from "src/utils/authorization";
+import config from "src/config";
+import authorization from "src/libs/authorization";
 
-axios.defaults.baseURL = baseURL;
+axios.defaults.baseURL = config.baseURL;
 axios.defaults.timeout = 10000;
 
 axios.interceptors.request.use(config => {
 	if (config.url === "/user/login") {
 
 	}
-	else if (getToken()) {
-		config.headers["Authorization"] = getToken();
+	else if (authorization.getToken()) {
+		config.headers["Authorization"] = authorization.getToken();
 	}
 
 	return config;

@@ -38,7 +38,7 @@
 </template>
 
 <script>
-	import utils from "src/utils";
+	import utils from "src/libs/utils";
 
 	export default {
 		data() {

@@ -4,7 +4,7 @@ import VuiDesignZhCN from "vui-design/dist/locale/zh-CN";
 import VuiDesignEnUS from "vui-design/dist/locale/en-US";
 import LocaleZhCN from "./lang/zh-CN";
 import LocaleEnUS from "./lang/en-US";
-import utils from "src/utils";
+import utils from "src/libs/utils";
 
 Vue.use(VueI18n);
 

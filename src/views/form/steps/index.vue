@@ -165,8 +165,6 @@
 						return this.$message.error("转账信息填写不正确");
 					}
 
-					console.log(JSON.parse(JSON.stringify(this.form)));
-
 					this.step++;
 				});
 			},
@@ -178,8 +176,6 @@
 					if (!valid) {
 						return this.$message.error("转账信息填写不正确");
 					}
-
-					console.log(JSON.parse(JSON.stringify(this.form)));
 
 					this.submitting = true;
 					this.$store.dispatch("example/submitFormSteps", this.form).then(data => {

@@ -162,8 +162,8 @@
 	import { mapState } from "vuex";
 	import routes from "src/routes";
 	import config from "src/config";
-	import utils from "src/utils";
-	import authorization from "src/utils/authorization";
+	import utils from "src/libs/utils";
+	import authorization from "src/libs/authorization";
 
 	export default {
 		provide() {

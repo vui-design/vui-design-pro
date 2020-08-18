@@ -1,4 +1,4 @@
-import utils from "src/utils";
+import utils from "src/libs/utils";
 
 export default {
 	namespaced: true,

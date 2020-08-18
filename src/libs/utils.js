@@ -1,16 +1,6 @@
+import html2canvas from "html2canvas";
 import config from "src/config";
-
-// 谓词函数，用于检测变量类型
-/* ---------------------------------------------------------------------------------------------------- */
-
-const funProto = Function.prototype;
-const objProto = Object.prototype;
-
-const getPrototypeOf = Object.getPrototypeOf;
-
-const objToString = objProto.toString;
-const hasOwnProperty = objProto.hasOwnProperty;
-const funToString = funProto.toString;
+import is from "./is";
 
 const restArguments = function(fn, startIndex) {
 	startIndex = startIndex == null ? fn.length - 1 : +startIndex;
@@ -51,108 +41,33 @@ if (!window.requestAnimationFrame) {
 	};
 }
 
-// 检查给定的值是否是 dom 元素
-export function isElement(value) {
-	return !!(value && value.nodeType === 1);
-};
-
-// 检查给定的值是否是 null
-export function isNull(value) {
-	return value === null;
-};
-
-// 检查给定的值是否是 undefined
-export function isUndefined(value) {
-	return value === void 0;
-};
-
-// 检查给定的值是否是 NaN，这和原生的 isNaN 函数不一样，如果变量是 undefined，原生的 isNaN 函数也会返回 true
-export function isNaN(value) {
-	return window.isNaN(value) && value !== value;
-};
-
-// 检查给定的值是否是数值
-export function isNumber(value) {
-	return objToString.call(value) === "[object Number]" && !isNaN(value);
-};
-
-// 检查给定的值是否是字符串
-export function isString(value) {
-	return objToString.call(value) === "[object String]";
-};
-
-// 检查给定的值是否是布尔值
-export function isBoolean(value) {
-	return value === true || value === false || objToString.call(value) === "[object Boolean]";
-};
-
-// 检查给定的值是否是正则表达式
-export function isRegExp(value) {
-	return objToString.call(value) === "[object RegExp]";
-};
-
-// 检查给定的值是否是日期对象
-export function isDate(value) {
-	return objToString.call(value) === "[object Date]";
-};
-
-// 检查给定的值是否是函数
-export function isFunction(value) {
-	return objToString.call(value) === "[object Function]" || typeof value === "function";
-};
-
-// 检查给定的值是否是数组
-export function isArray(value) {
-	return objToString.call(value) === "[object Array]";
-};
-
-// 检查给定的值是否是对象
-export function isObject(value) {
-	return !!value && typeof value === "object";
-};
-
-// 检查给定的值是否是纯对象，纯对象是指通过 {} 或 new Object() 声明的对象
-export function isPlainObject(value) {
-	if (!value || objToString.call(value) !== "[object Object]") {
-		return false;
-	}
-
-	var prototype = getPrototypeOf(value);
-
-	if (prototype === null) {
-		return true;
-	}
-
-	var constructor = hasOwnProperty.call(prototype, "constructor") && prototype.constructor;
-
-	return typeof constructor === "function" && funToString.call(constructor) === funToString.call(Object);
-};
-
-// 通用方法
+// 通用工具方法
 /* ---------------------------------------------------------------------------------------------------- */
 
 // 创建全局唯一标识符
 export const guid = () => {
-	let result = [];
+	let parts = [];
 
 	for (let index = 1; index <= 32; index++) {
 		let n = Math.floor(Math.random() * 16.0).toString(16);
 
-		result.push(n);
+		parts.push(n);
 
 		if ((index == 8) || (index == 12) || (index == 16) || (index == 20)) {
-			result.push("-");
+			parts.push("-");
 		}
 	}
 
-	return result.join("");
+	return parts.join("");
 };
 
 // 默认的迭代函数
 export const identity = value => value;
 
-// 延时
-export const delay = restArguments((callback, wait, args) => setTimeout(() => callback.apply(null, args), wait));
+// 实现 sleep 函数，可用于延时处理
+// 或让线程休眠，等到指定时间在重新唤起（需要配合 async/await 函数使用）
+// 单位毫秒
+export const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
 
 // 函数节流
 export const throttle = (fn, wait, options = {}) => {
@@ -214,6 +129,8 @@ export const throttle = (fn, wait, options = {}) => {
 };
 
 // 函数防抖
+const delay = restArguments((callback, wait, args) => setTimeout(() => callback.apply(null, args), wait));
+
 export const debounce = (fn, wait, immediate) => {
 	let timeout;
 	let result;
@@ -255,13 +172,13 @@ export const debounce = (fn, wait, immediate) => {
 	return debounced;
 };
 
-// 数组或对象克隆
+// 数组或对象克隆（深拷贝）
 export const clone = object => {
-	if (!isArray(object) && !isPlainObject(object)) {
+	if (!is.array(object) && !is.json(object)) {
 		return object;
 	}
 
-	let copy = isArray(object) ? [] : {};
+	let copy = is.array(object) ? [] : {};
 
 	for (let key in object) {
 		if (hasOwnProperty.call(object, key)) {
@@ -276,131 +193,110 @@ export const clone = object => {
 
 // 扁平化处理嵌套结构的列表数据
 // @param {Array} list 数据列表
-// @param {String} key 数据条目的子数据所对应的 key 键名称
-// @param {Boolean} keep 扁平化处理时是否保留父级数据条目
-export const flatten = (list, key, keep = false) => {
-	let result = [];
+// @param {String} property 数据条目的子数据所对应的键值名称，可选，默认为 children 字段
+// @param {Boolean} keep 扁平化处理时是否保留父级数据条目，可选，默认为 false 不保留
+// @param {Function} predicate 谓词函数，用于判断是否展开子数据；可选
+export const flatten = (list, property = "children", keep = false, predicate) => {
+	if (is.boolean(property)) {
+		predicate = key;
+		keep = property;
+		property = "children";
+	}
+
+	let array = [];
 
 	list.forEach(item => {
-		let children = item[key];
+		let children = item[property];
 
 		if (children) {
 			if (keep) {
-				result.push(item);
+				array.push(item);
 			}
 
-			result.push.apply(result, flatten(children, key, keep));
+            if (is.function(predicate) && !predicate(item)) {
+                return;
+            }
+
+			array.push.apply(array, flatten(children, property, keep, predicate));
 		}
 		else {
-			result.push(item);
+			array.push(item);
 		}
 	});
 
-	return result;
+	return array;
 };
 
-// 将日期字符串、时间戳等转换为日期对象
-export const dateparser = (...rest) => {
-	let date;
+// 将数值千分位化，并保留指定小数位
+const numeric = /^(-?)(\d*)(\.(\d+))?$/;
+const nonnegativeinteger = /^\d+$/;
+const thousandth = /\B(?=(\d{3})+(?!\d))/g;
 
-	if (rest.length == 0) {
-		date = new Date();
+export const numerical = (value, precision) => {
+	let string = String(value);
+	let matched = string.match(numeric);
+
+	if (!matched) {
+		return value ? value : "N/A";
 	}
-	else if (rest.length == 1) {
-		let value = rest[0];
+	else {
+		if (nonnegativeinteger.test(precision)) {
+			value = Number(value).toFixed(precision);
+			string = String(value);
+			matched = string.match(numeric);
+		}
 
-		if (isDate(value)) {
-			date = value;
+		let negative = matched[1];
+		let int = matched[2] || "0";
+		let decimal = matched[4] || "";
+
+		int = int.replace(thousandth, ",");
+
+		if (decimal) {
+			decimal = `.${decimal}`;
 		}
-		else if (isString(value)) {
-			date = new Date(value.replace(/-/g, "/"));
-		}
-		else if (isNumber(value)) {
-			date = new Date(parseInt(value, 10));
-		}
-		else {
-			date = new Date(value);
-		}
+
+		return negative + int + decimal;
 	}
-	else if (rest.length >= 3) {
-		let [year, month, day, hour = 0, minute = 0, second = 0] = rest;
-
-		date = new Date(year, month - 1, day, hour, minute, second);
-	}
-
-	return date;
 };
 
-// 将日期对象转换为指定格式
-export const dateformatter = (date, format) => {
-	date = dateparser(date);
-
-	let settings = {
-		"M+": date.getMonth() + 1,
-		"d+": date.getDate(),
-		"h+": date.getHours() == 12 ? 12 : date.getHours() % 12,
-		"H+": date.getHours(),
-		"m+": date.getMinutes(),
-		"s+": date.getSeconds(),
-		"S": date.getMilliseconds(),
-		"q+": Math.floor((date.getMonth() + 3) / 3)
-	};
-	let week = {
-		"0": "\u65e5",
-		"1": "\u4e00",
-		"2": "\u4e8c",
-		"3": "\u4e09",
-		"4": "\u56db",
-		"5": "\u4e94",
-		"6": "\u516d" 
-	};
-
-	if(/(y+)/.test(format)){
-		format = format.replace(RegExp.$1, (date.getFullYear() + "").substr(4 - RegExp.$1.length));
+// 获取 dom 元素的指定 style 样式
+export const getStyle = (element, property) => {
+	if (!element || !property) {
+		return null;
 	}
 
-	if(/(E+)/.test(format)){
-		format = format.replace(RegExp.$1, ((RegExp.$1.length > 1) ? (RegExp.$1.length > 2 ? "\u661f\u671f" : "\u5468") : "") + week[date.getDay() + ""]);
+	if (property === "float") {
+		property = "cssFloat";
 	}
 
-	for(let key in settings){
-		if(new RegExp("(" + key + ")").test(format)){
-			format = format.replace(RegExp.$1, (RegExp.$1.length == 1) ? (settings[key]) : (("00" + settings[key]).substr(("" + settings[key]).length)));
-		}
-	}
+	try {
+		const computed = document.defaultView.getComputedStyle(element, "");
 
-	return format;
+		return element.style[property] || computed ? computed[property] : null;
+	}
+	catch(e) {
+		return element.style[property];
+	}
 };
 
-// 将指定文本内容复制到剪贴板
-export const clipboard = text => {
-	return new Promise((resolve, reject) => {
-		// 创建隐藏的 Textarea 标签，并将文本放入其中
-		let textarea = document.createElement("textarea");
+// 根据字体设置计算文本宽度，可用于动态表格列配置的列宽设置
+export const getTextWidth = function(text, font) {
+	if (!font) {
+		font = getStyle(document.body, "font");
+	}
 
-		textarea.style.position = "absolute";
-		textarea.style.top = "0";
-		textarea.style.left = "0";
-		textarea.style.border = "none";
-		textarea.style.margin = "0";
-		textarea.style.padding = "0";
-		textarea.style.opacity = "0";
-		textarea.value = text;
+	const canvas = getTextWidth.canvas || (getTextWidth.canvas = document.createElement("canvas"));
+	const context = canvas.getContext("2d");
 
-		document.body.appendChild(textarea);
+	context.font = font;
 
-		// 复制 Textarea 标签的文本
-		textarea.select();
-		document.execCommand("copy");
+	const measure = context.measureText(text);
 
-		// 移除 Textarea 标签
-		document.body.removeChild(textarea);
-
-		resolve();
-	});
+	return measure.width;
 };
 
-// 获取元素距离页面顶部的距离
+// 获取 dom 元素距离页面顶部的距离
 export const getElementRectTop = element => {
 	let top = element.offsetTop;
 
@@ -411,7 +307,7 @@ export const getElementRectTop = element => {
 	return top;
 };
 
-// 获取浏览器滚动高度
+// 获取浏览器当前滚动高度
 export const getScrollTop = () => window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
 
 // 从一个位置平滑滚动到另一个位置
@@ -425,7 +321,7 @@ export const scrollTo = (element, from = 0, to, duration = 500, callback) => {
 	const step = Math.ceil(difference / duration * 50);
 	const scroll = (start, end, step) => {
 		if (start === end) {
-			return isFunction(callback) && callback();
+			return is.function(callback) && callback();
 		}
 
 		let distance = (start + step > end) ? end : start + step;
@@ -451,8 +347,8 @@ export const scrollTo = (element, from = 0, to, duration = 500, callback) => {
 // @param {Number} duration 滚动动画时长，单位毫秒
 // @param {Function} callback 滚动完成的回调函数
 export const scrollToTop = (duration, callback) => {
-	let from = getScrollTop();
-	let to = 0;
+	const from = getScrollTop();
+	const to = 0;
 
 	scrollTo(window, from, to, duration, callback);
 };
@@ -466,8 +362,8 @@ export const scrollToElement = (element, duration, callback) => {
 		return;
 	}
 
-	let from = getScrollTop();
-	let to = getElementRectTop(element);
+	const from = getScrollTop();
+	const to = getElementRectTop(element);
 
 	scrollTo(window, from, to, duration, callback);
 };
@@ -475,6 +371,88 @@ export const scrollToElement = (element, duration, callback) => {
 // 手动触发 window 的 reize 事件
 // 目的是为了在收缩左侧菜单栏时，内容板块的图表宽度可能不会自动适应父容器的宽度变化
 export const dispatchResize = () => window.dispatchEvent(new Event("resize"));
+
+// 将指定文本内容复制到剪贴板
+export const clipboard = text => {
+	return new Promise((resolve, reject) => {
+		try {
+			const textarea = document.createElement("textarea");
+
+			textarea.style.position = "absolute";
+			textarea.style.top = "0";
+			textarea.style.left = "0";
+			textarea.style.border = "none";
+			textarea.style.margin = "0";
+			textarea.style.padding = "0";
+			textarea.style.opacity = "0";
+			textarea.value = text;
+
+			document.body.appendChild(textarea);
+			textarea.select();
+			document.execCommand("copy");
+			document.body.removeChild(textarea);
+
+			resolve();
+		}
+		catch(e) {
+			reject(e);
+		}
+	});
+};
+
+// 将指定 dom 元素的内容保存为图片，可用于实现页面截图
+// @param {HTMLElement} element 内容容器
+// @param {Function} ignoreElements 用于忽略指定元素
+// @param {String} filename 保存的文件名
+export const html2image = options => {
+	const { width, height } = options.element.getBoundingClientRect();
+	const dpr = window.devicePixelRatio || 1;
+	const canvas = document.createElement("canvas");
+
+	canvas.width = width * dpr;
+	canvas.height = height * dpr;
+	canvas.style.width = width + "px";
+	canvas.style.height = height + "px";
+
+	const context = canvas.getContext("2d");
+
+	context.scale(dpr, dpr);
+
+	html2canvas(options.element, {
+		useCORS: true,
+		ignoreElements: options.ignoreElements,
+		canvas
+	}).then(canvas => {
+		const image  = canvas.toDataURL("image/jpeg", 1.0);
+		const link = document.createElementNS("http://www.w3.org/1999/xhtml", "a");
+		const event = document.createEvent("MouseEvents");
+
+		link.href = image;
+		link.download = options.filename;
+
+		event.initMouseEvent("click", true, false, window, 0, 0, 0, 0, 0, false, false, false, false, 0, null);
+		link.dispatchEvent(event);
+	}).catch(e => {
+		console.log(e);
+	});
+};
+
+// 利用 FileReader 将本地图片转换为 URL 格式的字符串（base64 编码）
+// @param {File} image 图片文件
+// @param {Function} callback 转换成功的回调函数
+export const imageToDataURL = image => {
+	return new Promise((resolve, reject) => {
+		try {
+			const reader = new FileReader();
+
+			reader.addEventListener("load", e => resolve(reader.result));
+			reader.readAsDataURL(image);
+		}
+		catch(e) {
+			reject(e);
+		}
+	});
+};
 
 // 获取默认语言
 export const getLanguage = () => localStorage.getItem("language") || window.navigator.language || "zh-CN";
@@ -600,7 +578,7 @@ export const compareWhiteList = route => config.whiteList.indexOf(route.path) > 
 // @param {String|Array} authority 授权标识符或标识符列表
 export const checkAuthority = (authority, permissions) => {
 	const predicate = permission => {
-		return isString(authority) ? authority === permission : authority.includes(permission);
+		return is.string(authority) ? authority === permission : authority.includes(permission);
 	};
 
 	return permissions.some(predicate);
@@ -609,37 +587,26 @@ export const checkAuthority = (authority, permissions) => {
 // 以默认导出的形式导出所有谓词函数
 /* ---------------------------------------------------------------------------------------------------- */
 export default {
-	isElement,
-	isNull,
-	isUndefined,
-	isNaN,
-	isNumber,
-	isString,
-	isBoolean,
-	isRegExp,
-	isDate,
-	isFunction,
-	isArray,
-	isObject,
-	isPlainObject,
-
 	guid,
 	identity,
-	delay,
+	sleep,
 	throttle,
 	debounce,
 	clone,
 	flatten,
-	dateparser,
-	dateformatter,
+	numerical,
 
-	clipboard,
+	getStyle,
+	getTextWidth,
 	getElementRectTop,
 	getScrollTop,
 	scrollTo,
 	scrollToTop,
 	scrollToElement,
 	dispatchResize,
+	clipboard,
+	html2image,
+	imageToDataURL,
 
 	getLanguage,
 	setPageTitle,

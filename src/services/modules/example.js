@@ -1,4 +1,4 @@
-import axios from "src/utils/axios";
+import axios from "src/libs/axios";
 
 export const submitFormBasic = payload => {
 	return axios.post("/example/submitFormBasic", payload);
