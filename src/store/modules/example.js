@@ -4,7 +4,7 @@ export default {
 	namespaced: true,
 	actions: {
 		async submitFormBasic(context, payload) {
-			// let response = await services.example.submitFormBasic();
+			// let response = await services.example.submitFormBasic(payload);
 			// let data = response.data;
 
 			const ajax = payload => {
@@ -27,7 +27,7 @@ export default {
 			return data;
 		},
 		async submitFormSteps(context, payload) {
-			// let response = await services.example.submitFormSteps();
+			// let response = await services.example.submitFormSteps(payload);
 			// let data = response.data;
 
 			const ajax = payload => {
@@ -54,7 +54,7 @@ export default {
 			return data;
 		},
 		async getListStandardDatasource(context, payload) {
-			// let response = await services.example.getListStandardDatasource();
+			// let response = await services.example.getListStandardDatasource(payload);
 			// let data = response.data;
 
 			const ajax = payload => {
@@ -91,7 +91,7 @@ export default {
 			return data;
 		},
 		async addListStandardDatasource(context, payload) {
-			// let response = await services.example.addListStandardDatasource();
+			// let response = await services.example.addListStandardDatasource(payload);
 			// let data = response.data;
 
 			const ajax = payload => {
@@ -114,7 +114,7 @@ export default {
 			return data;
 		},
 		async editListStandardDatasource(context, payload) {
-			// let response = await services.example.editListStandardDatasource();
+			// let response = await services.example.editListStandardDatasource(payload);
 			// let data = response.data;
 
 			const ajax = payload => {
@@ -137,7 +137,7 @@ export default {
 			return data;
 		},
 		async deleteListStandardDatasource(context, payload) {
-			// let response = await services.example.deleteListStandardDatasource();
+			// let response = await services.example.deleteListStandardDatasource(payload);
 			// let data = response.data;
 
 			const ajax = payload => {
@@ -160,7 +160,7 @@ export default {
 			return data;
 		},
 		async getListCardDatasource(context, payload) {
-			// let response = await services.example.getListCardDatasource();
+			// let response = await services.example.getListCardDatasource(payload);
 			// let data = response.data;
 
 			const ajax = payload => {
@@ -203,7 +203,7 @@ export default {
 			return data;
 		},
 		async getListTableDatasource(context, payload) {
-			// let response = await services.example.getListTableDatasource();
+			// let response = await services.example.getListTableDatasource(payload);
 			// let data = response.data;
 
 			const ajax = payload => {
@@ -240,7 +240,7 @@ export default {
 			return data;
 		},
 		async addListTableDatasource(context, payload) {
-			// let response = await services.example.addListTableDatasource();
+			// let response = await services.example.addListTableDatasource(payload);
 			// let data = response.data;
 
 			const ajax = payload => {
@@ -263,7 +263,7 @@ export default {
 			return data;
 		},
 		async editListTableDatasource(context, payload) {
-			// let response = await services.example.editListTableDatasource();
+			// let response = await services.example.editListTableDatasource(payload);
 			// let data = response.data;
 
 			const ajax = payload => {
@@ -286,7 +286,7 @@ export default {
 			return data;
 		},
 		async deleteListTableDatasource(context, payload) {
-			// let response = await services.example.deleteListTableDatasource();
+			// let response = await services.example.deleteListTableDatasource(payload);
 			// let data = response.data;
 
 			const ajax = payload => {
@@ -309,7 +309,7 @@ export default {
 			return data;
 		},
 		async getListSearchArticlesDatasource(context, payload) {
-			// let response = await services.example.getListSearchArticlesDatasource();
+			// let response = await services.example.getListSearchArticlesDatasource(payload);
 			// let data = response.data;
 
 			const ajax = payload => {
@@ -346,7 +346,7 @@ export default {
 			return data;
 		},
 		async getListSearchProjectsDatasource(context, payload) {
-			// let response = await services.example.getListSearchProjectsDatasource();
+			// let response = await services.example.getListSearchProjectsDatasource(payload);
 			// let data = response.data;
 
 			const ajax = payload => {
@@ -468,7 +468,7 @@ export default {
 			return data;
 		},
 		async getListSearchApplicationsDatasource(context, payload) {
-			// let response = await services.example.getListSearchApplicationsDatasource();
+			// let response = await services.example.getListSearchApplicationsDatasource(payload);
 			// let data = response.data;
 
 			const ajax = payload => {

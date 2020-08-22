@@ -13,7 +13,7 @@ export const getListStandardDatasource = payload => {
 		params: payload
 	};
 
-	return axios.get("/example/getListStandardDatasource");
+	return axios.get("/example/getListStandardDatasource", settings);
 };
 
 export const addListStandardDatasource = payload => {
@@ -33,7 +33,7 @@ export const getListCardDatasource = payload => {
 		params: payload
 	};
 
-	return axios.get("/example/getListCardDatasource");
+	return axios.get("/example/getListCardDatasource", settings);
 };
 
 export const getListTableDatasource = payload => {
@@ -41,7 +41,7 @@ export const getListTableDatasource = payload => {
 		params: payload
 	};
 
-	return axios.get("/example/getListTableDatasource");
+	return axios.get("/example/getListTableDatasource", settings);
 };
 
 export const addListTableDatasource = payload => {
@@ -61,7 +61,7 @@ export const getListSearchArticlesDatasource = payload => {
 		params: payload
 	};
 
-	return axios.get("/example/getListSearchArticlesDatasource");
+	return axios.get("/example/getListSearchArticlesDatasource", settings);
 };
 
 export const getListSearchProjectsDatasource = payload => {
@@ -69,7 +69,7 @@ export const getListSearchProjectsDatasource = payload => {
 		params: payload
 	};
 
-	return axios.get("/example/getListSearchProjectsDatasource");
+	return axios.get("/example/getListSearchProjectsDatasource", settings);
 };
 
 export const getListSearchApplicationsDatasource = payload => {
@@ -77,7 +77,7 @@ export const getListSearchApplicationsDatasource = payload => {
 		params: payload
 	};
 
-	return axios.get("/example/getListSearchApplicationsDatasource");
+	return axios.get("/example/getListSearchApplicationsDatasource", settings);
 };
 
 export default {
