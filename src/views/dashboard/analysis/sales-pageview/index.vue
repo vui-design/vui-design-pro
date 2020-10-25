@@ -7,7 +7,7 @@
 				<vui-radio value="month" label="本月" />
 				<vui-radio value="year" label="全年" />
 			</vui-radio-group>
-			<vui-tab-panel name="sales" title="销售额">
+			<vui-tab-panel key="sales" title="销售额">
 				<vui-row v-bind:gutter="40">
 					<vui-col v-bind:xs="24" v-bind:sm="24" v-bind:md="14" v-bind:lg="16" v-bind:xl="18">
 						<div class="vui-pro-dashboard-analysis-trend">
@@ -35,7 +35,7 @@
 					</vui-col>
 				</vui-row>
 			</vui-tab-panel>
-			<vui-tab-panel name="pageview" title="访问量">
+			<vui-tab-panel key="pageview" title="访问量">
 				<vui-row v-bind:gutter="40">
 					<vui-col v-bind:xs="24" v-bind:sm="24" v-bind:md="14" v-bind:lg="16" v-bind:xl="18">
 						<div class="vui-pro-dashboard-analysis-trend">
@@ -159,7 +159,7 @@
 <style>
 	/* vui-pro-dashboard-analysis-tabs */
 	.vui-pro-dashboard-analysis-tabs .vui-tabs-header { padding:0 20px; }
-	.vui-pro-dashboard-analysis-tabs .vui-tab-panel .vui-tab-panel-content { padding:20px; }
+	.vui-pro-dashboard-analysis-tabs .vui-tabs-panel .vui-tabs-panel-content { padding:20px; }
 
 	/* vui-pro-dashboard-analysis-trend */
 	.vui-pro-dashboard-analysis-trend {  }

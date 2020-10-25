@@ -48,7 +48,7 @@
 							</vui-badge>
 						</a>
 						<vui-tabs slot="menu" class="vui-pro-layout-main-tabs">
-							<vui-tab-panel name="notice" title="通知">
+							<vui-tab-panel key="notice" title="通知">
 								<vui-empty v-if="notice.data.length == 0" style="padding:42px 0px;" description="暂无通知" />
 								<div v-else class="vui-pro-layout-main-broadcast">
 									<div class="vui-pro-layout-main-broadcast-body">
@@ -68,7 +68,7 @@
 									</div>
 								</div>
 							</vui-tab-panel>
-							<vui-tab-panel name="message" title="消息">
+							<vui-tab-panel key="message" title="消息">
 								<vui-empty v-if="message.data.length == 0" style="padding:42px 0px;" description="暂无消息" />
 								<div v-else class="vui-pro-layout-main-broadcast">
 									<div class="vui-pro-layout-main-broadcast-body">
@@ -89,7 +89,7 @@
 									</div>
 								</div>
 							</vui-tab-panel>
-							<vui-tab-panel name="todo" title="待办">
+							<vui-tab-panel key="todo" title="待办">
 								<vui-empty v-if="todo.data.length == 0" style="padding:42px 0px;" description="暂无待办" />
 								<div v-else class="vui-pro-layout-main-broadcast">
 									<div class="vui-pro-layout-main-broadcast-body">

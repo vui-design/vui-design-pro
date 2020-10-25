@@ -26,7 +26,7 @@
 
 		<vui-card v-bind:bordered="false" shadow="always" class="margin-top-20" bodyStyle="padding: 0;">
 			<vui-tabs v-model="tabpanel" size="large" headerStyle="margin-bottom: 0; padding: 0 20px;">
-				<vui-tab-panel name="full" title="累充用户趋势">
+				<vui-tab-panel key="full" title="累充用户趋势">
 					<div class="padding-20">
 						<v-chart v-bind="full.chart.root">
 							<v-line v-bind="full.chart.geom" />
@@ -53,7 +53,7 @@
 						</vui-table>
 					</div>
 				</vui-tab-panel>
-				<vui-tab-panel name="supreme" title="至尊用户趋势">
+				<vui-tab-panel key="supreme" title="至尊用户趋势">
 					<div class="padding-20">
 						<v-chart v-bind="supreme.chart.root">
 							<v-line v-bind="supreme.chart.geom" />
