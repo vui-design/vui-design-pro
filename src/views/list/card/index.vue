@@ -5,8 +5,7 @@
 			<p>卡片类型的列表，配合栅格实现响应式布局</p>
 		</vui-page-header>
 		<div class="vui-pro-page-body">
-			<div style="position: relative;">
-				<vui-spin v-if="list.loading" fixed />
+			<vui-spin v-bind:spinning="list.loading">
 				<vui-empty v-if="list.data.length == 0" style="padding: calc((100vh - 278px) / 2) 0;" />
 				<vui-list v-else v-bind:grid="list.grid" v-bind:data="list.data">
 					<vui-list-item slot="item" slot-scope="item, index">
@@ -33,7 +32,7 @@
 						</vui-card>
 					</vui-list-item>
 				</vui-list>
-			</div>
+			</vui-spin>
 		</div>
 	</div>
 </template>

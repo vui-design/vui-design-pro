@@ -41,7 +41,7 @@
 							</vui-form-item>
 						</vui-form>
 					</div>
-					<vui-divider dashed v-bind:margin="40" />
+					<vui-divider dashed v-bind:gutter="40" />
 					 <vui-alert type="warning" showIcon message="注意事项">
 					 	<div slot="description" class="vui-pro-form-steps-alert-description">
 					 		<ul>

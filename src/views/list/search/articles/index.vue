@@ -36,8 +36,7 @@
 					</vui-input-group>
 					<vui-button type="primary" icon="plus">写文章</vui-button>
 				</vui-space>
-				<div style="position: relative;">
-					<vui-spin v-if="list.loading" fixed />
+				<vui-spin v-bind:spinning="list.loading">
 					<vui-empty v-if="list.data.length == 0" style="padding: 100px 0;" />
 					<vui-list v-else layout="vertical" size="large">
 						<vui-list-item v-for="(item, index) in list.data" v-bind:key="index">
@@ -69,7 +68,7 @@
 							<img slot="extra" width="280" height="216" v-bind:src="item.thumbnail" />
 						</vui-list-item>
 					</vui-list>
-				</div>
+				</vui-spin>
 				<div style="border-top: 1px solid #f0f0f0; padding-top: 20px;">
 					<div style="float: left; line-height: 34px;">共 <em>{{pagination.total}}</em> 条</div>
 					<vui-pagination align="right" showPageSizer showPageElevator v-bind="pagination" v-on:change="handleChangePage" v-on:changePageSize="handleChangePageSize" />

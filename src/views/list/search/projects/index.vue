@@ -10,8 +10,7 @@
 		</vui-page-header>
 		<div class="vui-pro-page-body">
 			<vui-pro-filter v-model="filter.value" v-bind:options="filter.options" v-on:change="handleFilterChange" />
-			<div class="margin-top-20" style="position: relative;">
-				<vui-spin v-if="list.loading" fixed />
+			<vui-spin v-bind:spinning="list.loading" class="margin-top-20">
 				<vui-empty v-if="list.data.length == 0" style="padding: 154px 0;" />
 				<vui-list v-else v-bind:grid="list.grid" v-bind:data="list.data">
 					<vui-list-item slot="item" slot-scope="item, index">
@@ -22,7 +21,11 @@
 							</vui-card-meta>
 							<div class="vui-pro-list-search-projects-item-meta">
 								<label class="moment">{{item.createdAt | dateformatter("yyyy-MM-dd HH:mm")}}</label>
-								<vui-pro-avatar-list v-bind:data="item.collaborators" />
+								<vui-avatar-group size="small">
+									<vui-tooltip v-for="collaborator in item.collaborators" v-bind:key="collaborator.id" v-bind:content="collaborator.name">
+										<vui-avatar v-bind:src="collaborator.avatar" />
+									</vui-tooltip>
+								</vui-avatar-group>
 							</div>
 							<template slot="actions">
 								<vui-tooltip style="display: block;" content="编辑">
@@ -42,20 +45,18 @@
 						</vui-card>
 					</vui-list-item>
 				</vui-list>
-			</div>
+			</vui-spin>
 		</div>
 	</div>
 </template>
 
 <script>
 	import VuiProFilter from "src/components/filter";
-	import VuiProAvatarList from "src/components/avatar-list";
 
 	export default {
 		// 依赖组件
 		components: {
-			VuiProFilter,
-			VuiProAvatarList
+			VuiProFilter
 		},
 		// 页面组件状态
 		data() {

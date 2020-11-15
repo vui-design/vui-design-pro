@@ -5,19 +5,18 @@
 			<template slot="no" slot-scope="{ row, rowIndex }">{{rowIndex + 1}}</template>
 			<template slot="title" slot-scope="{ row, rowIndex }">{{row.title}}</template>
 			<template slot="collaborators" slot-scope="{ row, rowIndex }">
-				<vui-pro-avatar-list v-bind:data="row.collaborators" />
+				<vui-avatar-group size="small">
+					<vui-tooltip v-for="collaborator in row.collaborators" v-bind:key="collaborator.id" v-bind:content="collaborator.name">
+						<vui-avatar v-bind:src="collaborator.avatar" />
+					</vui-tooltip>
+				</vui-avatar-group>
 			</template>
 		</vui-table>
 	</vui-card>
 </template>
 
 <script>
-	import VuiProAvatarList from "src/components/avatar-list";
-
 	export default {
-		components: {
-			VuiProAvatarList
-		},
 		data() {
 			return {
 				loading: false,

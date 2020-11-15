@@ -83,7 +83,7 @@
 					key: new Date().getTime(),
 					forceFit: true,
 					animate: true,
-					height: 260,
+					height: 272,
 					padding: ["auto", "auto", "auto", "auto"],
 					data: data,
 					scale: [

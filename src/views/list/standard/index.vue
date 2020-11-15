@@ -40,8 +40,7 @@
 					</vui-input-group>
 					<vui-button type="primary" icon="plus" v-on:click="handleAdd">添加</vui-button>
 				</vui-space>
-				<div style="position: relative;">
-					<vui-spin v-if="list.loading" fixed />
+				<vui-spin v-bind:spinning="list.loading">
 					<vui-empty v-if="list.data.length == 0" style="padding: 100px 0;" />
 					<vui-list v-else>
 						<vui-list-item v-for="(item, index) in list.data" v-bind:key="index">
@@ -75,7 +74,7 @@
 							</template>
 						</vui-list-item>
 					</vui-list>
-				</div>
+				</vui-spin>
 				<div style="border-top: 1px solid #f0f0f0; padding-top: 20px;">
 					<div style="float: left; line-height: 34px;">共 <em>{{pagination.total}}</em> 条</div>
 					<vui-pagination align="right" showPageSizer showPageElevator v-bind="pagination" v-on:change="handleChangePage" v-on:changePageSize="handleChangePageSize" />
