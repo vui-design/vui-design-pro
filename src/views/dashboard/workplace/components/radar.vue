@@ -13,7 +13,7 @@
 				<v-point v-bind="chartSettings.point" />
 				<v-tooltip v-bind="chartSettings.tooltip" />
 			</v-chart>
-			<vui-separator v-bind:size="54" v-bind:gutter="40" align="center" class="margin-top-30">
+			<vui-space v-bind:divider="54" v-bind:size="40" style="display: flex; justify-content: center; margin-top: 30px">
 				<a href="javascript:;" v-for="(item, index) in dataSource" v-bind:key="index" v-on:click="handleClickChartLegendItem(item)">
 					<vui-statistic class="vui-pro-dashboard-workplace-radar-statistic" v-bind:value="item.citation + item.praise + item.output + item.contribution + item.hot">
 						<template slot="title">
@@ -21,7 +21,7 @@
 						</template>
 					</vui-statistic>
 				</a>
-			</vui-separator>
+			</vui-space>
 		</div>
 	</vui-card>
 </template>

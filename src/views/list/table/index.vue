@@ -21,7 +21,7 @@
 			</vui-card>
 			<vui-pro-filter class="margin-top-20" v-model="filter.value" v-bind:options="filter.options" v-on:change="handleFilterChange" />
 			<vui-card v-bind:bordered="false" shadow="always" class="margin-top-20" headerStyle="padding: 16px 16px 16px 20px;" bodyStyle="padding: 0;" title="查询表格">
-				<vui-separator slot="extra" size="small" v-bind:gutter="16">
+				<vui-space slot="extra" divider v-bind:size="16">
 					<vui-space>
 						<vui-tooltip v-bind:content="page.fullscreen ? '退出全屏' : '全屏'">
 							<a href="javascript:;" class="link-default" style="font-size: 16px;" v-on:click="handleFullscreen">
@@ -45,7 +45,7 @@
 							</vui-dropdown-menu>
 						</vui-dropdown>
 					</vui-space>
-				</vui-separator>
+				</vui-space>
 				<vui-alert type="warning" banner showIcon style="border-bottom: 1px solid #f0f0f0">
 					<template>已选择 <em style="color: #faad14; font-weight: 600;">{{selectedTotalItems}}</em> 项，服务调用次数总计 <em>{{selectedTotalTimes}}</em> 万</template>
 				</vui-alert>
@@ -58,12 +58,12 @@
 						<vui-badge v-else-if="row.state == 4" status="error" text="关闭" />
 					</template>
 					<template slot="action" slot-scope="{ row, rowIndex }">
-						<vui-separator>
+						<vui-space divider>
 							<a href="javascript:;" v-on:click="handleEdit(row)">编辑</a>
 							<vui-popconfirm v-on:ok="handleDelete(row)" placement="top-end" title="确定要删除当前记录嘛？">
 								<a href="javascript:;">删除</a>
 							</vui-popconfirm>
-						</vui-separator>
+						</vui-space>
 					</template>
 				</vui-table>
 				<div class="padding-20">

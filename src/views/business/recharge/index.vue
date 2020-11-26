@@ -38,7 +38,7 @@
 
 		<vui-card v-bind:bordered="false" shadow="always" class="margin-top-20" headerStyle="padding: 16px 16px 16px 20px;" bodyStyle="padding: 0; overflow: hidden;">
 			<template slot="title">{{type == 1 ? "累充分析" : "至尊分析"}}</template>
-			<vui-separator slot="extra">
+			<vui-space slot="extra" divider>
 				<vui-radio-group v-model="type" type="button">
 					<vui-radio v-bind:value="1">累充分析</vui-radio>
 					<vui-radio v-bind:value="2">至尊分析</vui-radio>
@@ -47,7 +47,7 @@
 					<vui-button type="primary" icon="bar-chart" to="trend" append>查看趋势</vui-button>
 					<vui-button type="primary" icon="download" v-on:click="handleExport">导出</vui-button>
 				</vui-space>
-			</vui-separator>
+			</vui-space>
 			<vui-table ref="table" bordered rowKey="id" style="max-width: unset; margin: -1px;" v-bind="list">
 				<template slot="users" slot-scope="{ row }">{{row.users | numerical}}</template>
 				<template slot="percentage" slot-scope="{ row }">{{row.percentage | numerical(2)}} %</template>
@@ -63,10 +63,10 @@
 				<template slot="lost_uv_30d" slot-scope="{ row }">{{row.lost_uv_30d | numerical}}</template>
 				<template slot="lost_uv_90d" slot-scope="{ row }">{{row.lost_uv_90d | numerical}}</template>
 				<template slot="action" slot-scope="{ row }">
-					<vui-separator align="center">
+					<vui-space divider>
 						<a href="javascript:;">神兵分布</a>
 						<a href="javascript:;">地域分布</a>
-					</vui-separator>
+					</vui-space>
 				</template>
 			</vui-table>
 		</vui-card>

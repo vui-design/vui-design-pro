@@ -81,7 +81,7 @@
 </script>
 
 <style>
-	.vui-pro-dashboard-workplace-event-list { min-height:488px; }
+	.vui-pro-dashboard-workplace-event-list { min-height:486px; }
 
 	.vui-pro-dashboard-workplace-event {  }
 	.vui-pro-dashboard-workplace-event .username { color:#262626; }

@@ -148,10 +148,10 @@
 				<router-view v-if="isRouterAlive" v-bind:key="$route.fullPath" />
 			</vui-content>
 			<vui-footer class="vui-pro-layout-main-footer">
-				<vui-separator align="center" v-bind:gutter="20">
+				<vui-space divider size="large">
 					<a href="https://github.com/vui-design/vui-design" target="_blank" class="link-default">Vui Design</a>
 					<a href="https://github.com/vui-design/vui-design-pro" target="_blank" class="link-default">Vui Design Pro</a>
-				</vui-separator>
+				</vui-space>
 				<div>Copyright © {{year}} 杭州电魂网络科技股份有限公司</div>
 			</vui-footer>
 		</vui-layout>
@@ -362,7 +362,7 @@
 	.vui-pro-layout-main-body { position:relative; z-index:1; padding:20px; }
 
 	.vui-pro-layout-main-footer { padding:20px; text-align:center; }
-	.vui-pro-layout-main-footer .vui-separator { margin-bottom:10px; }
+	.vui-pro-layout-main-footer .vui-space { margin-bottom:10px; }
 
 	.vui-pro-layout-main-tabs { width:340px; border-radius:2px; background-color:#fff; box-shadow:0 1px 6px rgba(0,0,0,0.1); }
 	.vui-pro-layout-main-tabs .vui-tabs-header { margin-bottom:0; }
