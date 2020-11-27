@@ -7,8 +7,9 @@ import authorization from "src/libs/authorization";
 
 Vue.use(VueRouter);
 
+const env = process.env.NODE_ENV;
 const router =  new VueRouter({
-	mode: "history",
+	mode: env === "production" ? "hash" : "history",
 	scrollBehavior: () => ({ y: 0 }),
 	routes
 });
