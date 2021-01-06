@@ -12,7 +12,7 @@
   },
   "dependencies": {
     "@antv/data-set": "^0.11.4",
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "html2canvas": "^1.0.0-rc.7",
     "viser-vue": "^2.4.8",
     "vue": "^2.6.11",
