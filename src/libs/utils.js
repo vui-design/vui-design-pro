@@ -61,6 +61,9 @@ export const guid = () => {
 	return parts.join("");
 };
 
+// 默认的回调函数
+export const noop = () => {};
+
 // 默认的迭代函数
 export const identity = value => value;
 
@@ -213,9 +216,9 @@ export const flatten = (list, property = "children", keep = false, predicate) =>
 				array.push(item);
 			}
 
-            if (is.function(predicate) && !predicate(item)) {
-                return;
-            }
+			if (is.function(predicate) && !predicate(item)) {
+				return;
+			}
 
 			array.push.apply(array, flatten(children, property, keep, predicate));
 		}
@@ -423,7 +426,7 @@ export const html2image = options => {
 		ignoreElements: options.ignoreElements,
 		canvas
 	}).then(canvas => {
-		const image  = canvas.toDataURL("image/jpeg", 1.0);
+		const image = canvas.toDataURL("image/jpeg", 1.0);
 		const link = document.createElementNS("http://www.w3.org/1999/xhtml", "a");
 		const event = document.createEvent("MouseEvents");
 
@@ -588,6 +591,7 @@ export const checkAuthority = (authority, permissions) => {
 /* ---------------------------------------------------------------------------------------------------- */
 export default {
 	guid,
+	noop,
 	identity,
 	sleep,
 	throttle,

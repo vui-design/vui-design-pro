@@ -1,2 +1,0 @@
-webpackJsonp([22],{gQ5d:function(t,e,r){"use strict";Object.defineProperty(e,"__esModule",{value:!0});var s={render:function(){var t=this.$createElement,e=this._self._c||t;return e("vui-result",{attrs:{status:"404",title:"Oops...Not Found!",description:"很抱歉，你访问的页面地址有误，或者该页面不存在！"}},[e("template",{slot:"extra"},[e("vui-button",{attrs:{type:"primary",to:"/"}},[this._v("返回首页")])],1)],2)},staticRenderFns:[]},n=r("VU/8")({},s,!1,null,null,null);e.default=n.exports}});
-//# sourceMappingURL=22.9531ddc9e080a0f068d9.js.map

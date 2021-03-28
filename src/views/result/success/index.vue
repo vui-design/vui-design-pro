@@ -11,7 +11,7 @@
 							</div>
 						</vui-step>
 					</vui-steps>
-					<vui-descriptions v-bind:columns="2" bordered class="margin-top-40">
+					<vui-descriptions class="margin-top-40" bordered equivalent v-bind:columns="2" v-bind:labelWidth="160">
 						<vui-description label="项目名称">这里是项目名称</vui-description>
 						<vui-description label="项目类型">自研产品</vui-description>
 						<vui-description label="项目简介" v-bind:span="2">
@@ -28,11 +28,11 @@
 						<vui-description label="项目预算">$100,000.00</vui-description>
 					</vui-descriptions>
 				</div>
-				<template slot="extra">
+				<vui-space slot="extra">
 					<vui-button type="primary" to="/">返回首页</vui-button>
 					<vui-button>查看详情</vui-button>
 					<vui-button>打印</vui-button>
-				</template>
+				</vui-space>
 			</vui-result>
 		</div>
 	</vui-card>

@@ -47,7 +47,7 @@
 								<vui-icon type="notification" />
 							</vui-badge>
 						</a>
-						<vui-tabs slot="menu" class="vui-pro-layout-main-tabs">
+						<vui-tabs slot="menu" class="vui-pro-layout-main-tabs" v-bind:animated="false">
 							<vui-tab-panel key="notice" title="通知">
 								<vui-empty v-if="notice.data.length == 0" style="padding:42px 0px;" description="暂无通知" />
 								<div v-else class="vui-pro-layout-main-broadcast">
@@ -150,9 +150,10 @@
 			<vui-footer class="vui-pro-layout-main-footer">
 				<vui-space divider size="large">
 					<a href="https://github.com/vui-design/vui-design" target="_blank" class="link-default">Vui Design</a>
+					<a href="https://github.com/vui-design/vui-design-doc" target="_blank" class="link-default">Vui Design Doc</a>
 					<a href="https://github.com/vui-design/vui-design-pro" target="_blank" class="link-default">Vui Design Pro</a>
 				</vui-space>
-				<div>Copyright © {{year}} 杭州电魂网络科技股份有限公司</div>
+				<div>Copyright © {{year}} Company Name</div>
 			</vui-footer>
 		</vui-layout>
 	</vui-layout>

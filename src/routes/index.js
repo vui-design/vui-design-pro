@@ -383,36 +383,24 @@ export default [
 	},
 
 	{
-		path: "/business",
-		name: "business",
+		path: "/*",
 		meta: {
-			addToMenu: true,
+			addToMenu: false,
 			addToBreadcrumb: true,
-			icon: "stack",
-			title: "业务模板"
+			title: "访问异常"
 		},
 		component: Layout,
-		redirect: "/business/recharge",
+		redirect: "/404",
 		children: [
 			{
-				path: "/business/recharge",
-				name: "business-recharge",
+				path: "/404",
+				name: "404",
 				meta: {
 					addToMenu: true,
 					addToBreadcrumb: true,
-					title: "充值分析"
+					title: "404"
 				},
-				component: () => import("src/views/business/recharge")
-			},
-			{
-				path: "/business/recharge/trend",
-				name: "business-recharge/trend",
-				meta: {
-					addToMenu: false,
-					addToBreadcrumb: true,
-					title: "充值分析"
-				},
-				component: () => import("src/views/business/recharge-trend")
+				component: () => import("src/views/exception/404")
 			}
 		]
 	}

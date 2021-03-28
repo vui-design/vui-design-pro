@@ -14,12 +14,13 @@
 						<vui-input v-model="searcher.description" placeholder="请输入描述" />
 					</vui-form-item>
 					<vui-form-item>
-						<vui-button v-on:click="handleResetSearch">重置</vui-button>
-						<vui-button type="primary" class="margin-left-10" v-on:click="handleSearch">查询</vui-button>
+						<vui-space>
+							<vui-button v-on:click="handleResetSearch">重置</vui-button>
+							<vui-button type="primary" v-on:click="handleSearch">查询</vui-button>
+						</vui-space>
 					</vui-form-item>
 				</vui-form>
 			</vui-card>
-			<vui-pro-filter class="margin-top-20" v-model="filter.value" v-bind:options="filter.options" v-on:change="handleFilterChange" />
 			<vui-card v-bind:bordered="false" shadow="always" class="margin-top-20" headerStyle="padding: 16px 16px 16px 20px;" bodyStyle="padding: 0;" title="查询表格">
 				<vui-space slot="extra" divider v-bind:size="16">
 					<vui-space>
@@ -78,13 +79,11 @@
 </template>
 
 <script>
-	import VuiProFilter from "src/components/filter";
 	import VuiProFormModal from "./form-modal";
 
 	export default {
 		// 依赖组件
 		components: {
-			VuiProFilter,
 			VuiProFormModal
 		},
 		// 页面组件状态
@@ -98,47 +97,6 @@
 				searcher: {
 					name: "",
 					description: ""
-				},
-				// 存放过滤器状态
-				filter: {
-					value: {
-						android: [1, 3, 5, 7],
-						ios: [2, 4, 6]
-					},
-					options: [
-						{
-							label: "Android系统",
-							key: "android",
-							options: [
-								{ value: 1, label: "11" },
-								{ value: 2, label: "10" },
-								{ value: 3, label: "9" },
-								{ value: 4, label: "8.1.0" },
-								{ value: 5, label: "8.0.0" },
-								{ value: 6, label: "7.1.2" },
-								{ value: 7, label: "7.1.1" },
-								{ value: 8, label: "7.1" },
-								{ value: 9, label: "7.0.0" },
-								{ value: 10, label: "6.8.1" },
-								{ value: 11, label: "6.8" }
-							]
-						},
-						{
-							label: "iOS系统",
-							key: "ios",
-							options: [
-								{ value: 1, label: "13.6" },
-								{ value: 2, label: "13.4.1" },
-								{ value: 3, label: "13.4" },
-								{ value: 4, label: "13.3.1" },
-								{ value: 5, label: "13.3" },
-								{ value: 6, label: "13.1.2" },
-								{ value: 7, label: "13.1.1" },
-								{ value: 8, label: "13.1" },
-								{ value: 9, label: "12.4.5" }
-							]
-						}
-					]
 				},
 				// 存放分页器状态，例如这里的总数量、当前页码、每页显示数量
 				pagination: {
@@ -194,7 +152,6 @@
 			getList() {
 				let payload = {
 					...this.searcher,
-					...this.filter.value,
 					page: this.pagination.page,
 					pageSize: this.pagination.pageSize
 				};
@@ -216,10 +173,6 @@
 			// 查询
 			handleSearch() {
 				this.pagination.page = 1;
-				this.getList();
-			},
-			// 过滤器的选项发生变更
-			handleFilterChange(value) {
 				this.getList();
 			},
 			// 切换页码

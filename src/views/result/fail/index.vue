@@ -17,10 +17,10 @@
 						</li>
 					</ul>
 				</div>
-				<template slot="extra">
+				<vui-space slot="extra">
 					<vui-button type="primary" to="/">返回首页</vui-button>
 					<vui-button>重试</vui-button>
-				</template>
+				</vui-space>
 			</vui-result>
 		</div>
 	</vui-card>
