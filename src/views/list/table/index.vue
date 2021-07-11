@@ -60,9 +60,9 @@
 					</template>
 					<template slot="action" slot-scope="{ row, rowIndex }">
 						<vui-space divider>
-							<a href="javascript:;" v-on:click="handleEdit(row)">编辑</a>
-							<vui-popconfirm v-on:ok="handleDelete(row)" placement="top-end" title="确定要删除当前记录嘛？">
-								<a href="javascript:;">删除</a>
+							<a href="javascript:;" style="display: block;" v-on:click="handleEdit(row)">编辑</a>
+							<vui-popconfirm v-on:ok="handleDelete(row)" placement="top-end" style="display: block;" title="确定要删除当前记录嘛？">
+								<a href="javascript:;" style="display: block;">删除</a>
 							</vui-popconfirm>
 						</vui-space>
 					</template>

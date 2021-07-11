@@ -96,7 +96,17 @@
 				this.submitting = false;
 			},
 			handleAfterClose() {
+				const data = {
+					id: undefined,
+					name: "",
+					description: "",
+					count: 0,
+					state: 1,
+					datetime: ""
+				};
+
 				this.$refs.form.reset();
+				this.data = data;
 			},
 			handleSubmit() {
 				this.$refs.form.validate(valid => {

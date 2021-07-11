@@ -4,8 +4,8 @@
 		v-bind:closable="!submitting"
 		v-bind:width="600"
 		v-bind:clickBackdropToClose="false"
-		v-on:cancel="handleClose()"
-		v-on:afterClose="handleAfterClose()"
+		v-on:cancel="handleClose"
+		v-on:afterClose="handleAfterClose"
 	>
 		<template slot="title">{{type == 1 ? "添加任务" : "编辑任务"}}</template>
 		<vui-form ref="form" layout="horizontal" v-bind:model="data" v-bind:rules="rules" v-bind:labelWidth="86">
@@ -89,7 +89,16 @@
 				this.submitting = false;
 			},
 			handleAfterClose() {
+				const data = {
+					id: undefined,
+					title: "",
+					startAt: "",
+					owner: undefined,
+					description: ""
+				};
+
 				this.$refs.form.reset();
+				this.data = data;
 			},
 			handleSubmit() {
 				this.$refs.form.validate(valid => {
