@@ -1,0 +1,32 @@
+
+.vui-pro-filter-group { position:relative; display:flex; align-items:flex-start;
+}
+.vui-pro-filter-group-header { display:flex; align-items:center; width:120px; padding:8px 0;
+}
+.vui-pro-filter-group-header .label { flex:1; display:block; height:36px; padding:0 16px; overflow:hidden; white-space:nowrap; text-overflow:ellipsis; color:#262626; line-height:36px;
+}
+.vui-pro-filter-group-body { flex:1; padding:8px 0; overflow:hidden;
+}
+.vui-pro-filter-group-body .vui-row { height:auto; overflow:hidden; transition:all 0.2s;
+}
+.vui-pro-filter-group-body .vui-row.collapsed { height:36px;
+}
+.vui-pro-filter-group-body .vui-pro-filter-group-option { display:flex; padding:8px 0; overflow:hidden; white-space:nowrap; text-overflow:ellipsis;
+}
+.vui-pro-filter-group-footer { display:flex; padding:8px 0; line-height:36px;
+}
+.vui-pro-filter-group-footer .btn-more { flex:1; display:block; align-items:center; height:36px; padding:0 16px;
+}
+.vui-pro-filter-group-footer .btn-more .vui-icon { margin-left:4px; transform:scale(0.6);
+}
+.vui-pro-filter-group + .vui-pro-filter-group { margin-top:1px;
+}
+.vui-pro-filter-group.even { background-color:#fff;
+}
+.vui-pro-filter-group.odd { background-color:#fafafa;
+}
+
+
+.vui-pro-filter { border-radius:2px; overflow:hidden;
+}
+

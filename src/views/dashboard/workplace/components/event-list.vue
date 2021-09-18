@@ -3,7 +3,7 @@
 		<template slot="title">最新动态</template>
 		<vui-list class="vui-pro-dashboard-workplace-event-list">
 			<vui-list-item class="vui-pro-dashboard-workplace-event">
-				<vui-list-item-meta avatar="/static/images/avatars/svg/1.svg">
+				<vui-list-item-meta avatar="/images/static/avatars/svg/1.svg">
 					<div slot="title">
 						<a slot="title" href="javascript:;" class="username">阿波罗</a>
 						<span class="text">关注了项目</span>
@@ -13,7 +13,7 @@
 				</vui-list-item-meta>
 			</vui-list-item>
 			<vui-list-item class="vui-pro-dashboard-workplace-event">
-				<vui-list-item-meta avatar="/static/images/avatars/svg/2.svg">
+				<vui-list-item-meta avatar="/images/static/avatars/svg/2.svg">
 					<div slot="title">
 						<a slot="title" href="javascript:;" class="username">柳残阳</a>
 						<span class="text">发表了文章</span>
@@ -23,7 +23,7 @@
 				</vui-list-item-meta>
 			</vui-list-item>
 			<vui-list-item class="vui-pro-dashboard-workplace-event">
-				<vui-list-item-meta avatar="/static/images/avatars/svg/3.svg">
+				<vui-list-item-meta avatar="/images/static/avatars/svg/3.svg">
 					<div slot="title">
 						<a slot="title" href="javascript:;" class="username">萱子乔</a>
 						<span class="text">提出问题</span>
@@ -33,7 +33,7 @@
 				</vui-list-item-meta>
 			</vui-list-item>
 			<vui-list-item class="vui-pro-dashboard-workplace-event">
-				<vui-list-item-meta avatar="/static/images/avatars/svg/4.svg">
+				<vui-list-item-meta avatar="/images/static/avatars/svg/4.svg">
 					<div slot="title">
 						<a slot="title" href="javascript:;" class="username">萱子乔</a>
 						<span class="text">回复了</span>
@@ -45,7 +45,7 @@
 				</vui-list-item-meta>
 			</vui-list-item>
 			<vui-list-item class="vui-pro-dashboard-workplace-event">
-				<vui-list-item-meta avatar="/static/images/avatars/svg/5.svg">
+				<vui-list-item-meta avatar="/images/static/avatars/svg/5.svg">
 					<div slot="title">
 						<a slot="title" href="javascript:;" class="username">张无忌</a>
 						<span class="text">兑换了物品</span>
@@ -55,7 +55,7 @@
 				</vui-list-item-meta>
 			</vui-list-item>
 			<vui-list-item class="vui-pro-dashboard-workplace-event">
-				<vui-list-item-meta avatar="/static/images/avatars/svg/6.svg">
+				<vui-list-item-meta avatar="/images/static/avatars/svg/6.svg">
 					<div slot="title">
 						<a slot="title" href="javascript:;" class="username">紫旭琳</a>
 						<span class="text">评论了</span>

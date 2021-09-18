@@ -30,23 +30,23 @@
 						id: 3,
 						title: "修改 Notion 上的 BRNR 模板",
 						collaborators: [
-							{ id: 1, avatar: "/static/images/avatars/png/1.png", name: "张三" },
-							{ id: 2, avatar: "/static/images/avatars/png/2.png", name: "李四" }
+							{ id: 1, avatar: "/images/static/avatars/png/1.png", name: "张三" },
+							{ id: 2, avatar: "/images/static/avatars/png/2.png", name: "李四" }
 						]
 					},
 					{
 						id: 2,
 						title: "购买 CDN 域名",
 						collaborators: [
-							{ id: 3, avatar: "/static/images/avatars/png/3.png", name: "王二" },
+							{ id: 3, avatar: "/images/static/avatars/png/3.png", name: "王二" },
 						]
 					},
 					{
 						id: 1,
 						title: "阅读若干 API 文档并完成 Demo Code",
 						collaborators: [
-							{ id: 3, avatar: "/static/images/avatars/png/3.png", name: "王二" },
-							{ id: 4, avatar: "/static/images/avatars/png/4.png", name: "麻子" }
+							{ id: 3, avatar: "/images/static/avatars/png/3.png", name: "王二" },
+							{ id: 4, avatar: "/images/static/avatars/png/4.png", name: "麻子" }
 						]
 					}
 				]

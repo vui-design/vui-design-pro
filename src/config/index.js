@@ -6,7 +6,7 @@
 * @description release 预发布环境
 * @description production 生产环境
 */
-export const env = process.env.NODE_ENV;
+export const appMode = process.env.VUE_APP_MODE;
 
 /**
 * @type {string}
@@ -43,7 +43,7 @@ const apiPaths = {
 	production: "//www.production.com/api"
 };
 
-export const baseURL = apiPaths[env];
+export const baseURL = apiPaths[appMode];
 
 /**
 * @type {number}
@@ -61,7 +61,7 @@ export const colors = ["#2d8cf0", "#faad14", "#ed5565", "#52c41a", "#b381f1", "#
 * @description Export all configurations by default
 */
 export default {
-	env,
+	appMode,
 	title,
 	useI18n,
 	rootRoute,

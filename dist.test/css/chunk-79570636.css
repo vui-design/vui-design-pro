@@ -1,0 +1,12 @@
+
+.vui-pro-form-steps-alert-description {
+}
+.vui-pro-form-steps-alert-description ul { list-style:decimal; padding-left:14px;
+}
+.vui-pro-form-steps-alert-description li + li { margin-top:8px;
+}
+.vui-pro-form-steps-alert-description h4 { color:#595959; font-size:14px;
+}
+.vui-pro-form-steps-alert-description p { color:#8c8c8c; font-size:14px;
+}
+

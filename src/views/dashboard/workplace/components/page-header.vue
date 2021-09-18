@@ -3,7 +3,7 @@
 		<template slot="title">工作台</template>
 		<div class="vui-pro-dashboard-workplace">
 			<div class="vui-pro-dashboard-workplace-profile">
-				<vui-avatar class="vui-pro-dashboard-workplace-profile-avatar" src="/static/images/avatars/svg/1.svg" v-bind:size="72" />
+				<vui-avatar class="vui-pro-dashboard-workplace-profile-avatar" src="/images/static/avatars/svg/1.svg" v-bind:size="72" />
 				<section class="vui-pro-dashboard-workplace-profile-details">
 					<div class="welcome">早安，Ding Wei，祝你开心每一天！</div>
 					<vui-space divider class="meta">

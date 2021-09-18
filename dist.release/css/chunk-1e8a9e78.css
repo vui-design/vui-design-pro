@@ -1,0 +1,14 @@
+
+.vui-pro-result-success { min-height:calc(100vh - 104px);
+}
+.vui-pro-result-success-content {
+}
+.vui-pro-result-success-content h4 { color:#262626; font-size:16px;
+}
+.vui-pro-result-success-content ul { color:#595959;
+}
+.vui-pro-result-success-content li {
+}
+.vui-pro-result-success-content li + li { margin-top:4px;
+}
+

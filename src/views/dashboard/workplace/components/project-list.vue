@@ -3,7 +3,7 @@
 		<template slot="title">我的项目</template>
 		<router-link slot="extra" to="/list/search/projects">全部项目</router-link>
 		<vui-empty v-if="data.length == 0" style="padding: 60px 0;">
-			<img slot="image" src="/static/images/workplace/projects.png" style="height: 80px;" />
+			<img slot="image" src="/images/static/workplace/projects.png" style="height: 80px;" />
 			<template slot="description">Sorry，暂无项目记录！点击下方按钮立即创建</template>
 			<vui-button type="primary" to="/list/search/projects">立即创建</vui-button>
 		</vui-empty>
@@ -32,12 +32,12 @@
 		data() {
 			return {
 				data: [
-					{ id: 6, logo: "/static/images/list-standard/lodash.png", createdAt: "2020-08-08 12:40:00", title: "Lodash", tag: "JavaScript 工具包", description: "一个一致性、模块化、高性能的 JavaScript 实用工具库" },
-					{ id: 5, logo: "/static/images/list-standard/isjs.png", createdAt: "2020-08-08 12:40:00", title: "Is.js", tag: "数据验证包", description: "Is.js 是一个微型通用性数据检查验证包" },
-					{ id: 4, logo: "/static/images/list-standard/vue.png", createdAt: "2020-08-08 12:40:00", title: "Vue", tag: "渐进式 UI 框架", description: "渐进式 JavaScript 框架" },
-					{ id: 3, logo: "/static/images/list-standard/react.png", createdAt: "2020-08-08 12:40:00", title: "React", tag: "UI 框架", description: "起源于 Facebook 的内部项目，用来架设 Instagram 的网站，并于 2013 年 5 月开源" },
-					{ id: 2, logo: "/static/images/list-standard/angular.png", createdAt: "2020-08-08 12:40:00", title: "Angular", tag: "UI 框架", description: "应用设计框架与开发平台，用于创建高效、复杂、精致的单页面应用" },
-					{ id: 1, logo: "/static/images/list-standard/bootstrap.png", createdAt: "2020-08-08 12:40:00", title: "Bootstrap", tag: "开源工具包", description: "Bootstrap 是 Twitter 推出的一个用于前端开发的开源工具包" },
+					{ id: 6, logo: "/images/static/list-standard/lodash.png", createdAt: "2020-08-08 12:40:00", title: "Lodash", tag: "JavaScript 工具包", description: "一个一致性、模块化、高性能的 JavaScript 实用工具库" },
+					{ id: 5, logo: "/images/static/list-standard/isjs.png", createdAt: "2020-08-08 12:40:00", title: "Is.js", tag: "数据验证包", description: "Is.js 是一个微型通用性数据检查验证包" },
+					{ id: 4, logo: "/images/static/list-standard/vue.png", createdAt: "2020-08-08 12:40:00", title: "Vue", tag: "渐进式 UI 框架", description: "渐进式 JavaScript 框架" },
+					{ id: 3, logo: "/images/static/list-standard/react.png", createdAt: "2020-08-08 12:40:00", title: "React", tag: "UI 框架", description: "起源于 Facebook 的内部项目，用来架设 Instagram 的网站，并于 2013 年 5 月开源" },
+					{ id: 2, logo: "/images/static/list-standard/angular.png", createdAt: "2020-08-08 12:40:00", title: "Angular", tag: "UI 框架", description: "应用设计框架与开发平台，用于创建高效、复杂、精致的单页面应用" },
+					{ id: 1, logo: "/images/static/list-standard/bootstrap.png", createdAt: "2020-08-08 12:40:00", title: "Bootstrap", tag: "开源工具包", description: "Bootstrap 是 Twitter 推出的一个用于前端开发的开源工具包" },
 				]
 			};
 		}
