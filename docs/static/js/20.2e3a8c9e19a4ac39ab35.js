@@ -1,2 +1,0 @@
-webpackJsonp([20],{"8iBH":function(t,e,s){"use strict";Object.defineProperty(e,"__esModule",{value:!0});var n={render:function(){var t=this.$createElement,e=this._self._c||t;return e("vui-result",{attrs:{status:"comingsoon",title:"Oops...Coming soon!",description:"很抱歉，当前页面正在开发或维护中，敬请期待！"}},[e("template",{slot:"extra"},[e("vui-button",{attrs:{type:"primary",to:"/"}},[this._v("返回首页")])],1)],2)},staticRenderFns:[]},r=s("VU/8")({},n,!1,null,null,null);e.default=r.exports}});
-//# sourceMappingURL=20.2e3a8c9e19a4ac39ab35.js.map

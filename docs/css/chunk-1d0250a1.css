@@ -1,0 +1,253 @@
+
+.vui-pro-dashboard-analysis-shortcut { display:block; padding:20px; text-align:center;
+}
+.vui-pro-dashboard-analysis-shortcut .vui-icon { font-size:24px;
+}
+.vui-pro-dashboard-analysis-shortcut span { display:block; margin-top:10px; color:#595959; transition:color 0.2s;
+}
+.vui-pro-dashboard-analysis-shortcut:hover {
+}
+.vui-pro-dashboard-analysis-shortcut:hover .vui-icon { font-size:24px;
+}
+.vui-pro-dashboard-analysis-shortcut:hover span { color:currentColor;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* vui-pro-dashboard-analysis-tabs */
+.vui-pro-dashboard-analysis-tabs .vui-tabs-header { padding:0 20px;
+}
+.vui-pro-dashboard-analysis-tabs .vui-tabs-panel .vui-tabs-panel-content { padding:20px;
+}
+
+/* vui-pro-dashboard-analysis-trend */
+.vui-pro-dashboard-analysis-trend {
+}
+.vui-pro-dashboard-analysis-trend-title { margin-bottom:20px; color:#8c8c8c; font-size:14px; line-height:1.42857142;
+}
+.vui-pro-dashboard-analysis-trend-chart { width:100%; height:272px; overflow:hidden; font-size:0;
+}
+
+/* vui-pro-dashboard-analysis-rank */
+.vui-pro-dashboard-analysis-rank {
+}
+.vui-pro-dashboard-analysis-rank-title { margin-bottom:20px; color:#8c8c8c; font-size:14px; line-height:1.42857142;
+}
+.vui-pro-dashboard-analysis-rank-list {
+}
+.vui-pro-dashboard-analysis-rank-item { display:flex; align-items:center; margin-top:16px; font-size:14px; line-height:1.42857142;
+}
+.vui-pro-dashboard-analysis-rank-item .vui-pro-dashboard-analysis-rank-item-no { width:20px; height:20px; border-radius:20px; background-color:#fafafa; margin-right:10px; color:#595959; font-style:italic; text-align:center; line-height:20px;
+}
+.vui-pro-dashboard-analysis-rank-item .vui-pro-dashboard-analysis-rank-item-title { flex:1; color:#595959;
+}
+.vui-pro-dashboard-analysis-rank-item .vui-pro-dashboard-analysis-rank-item-extra { margin-left:10px; color:#8c8c8c;
+}
+.vui-pro-dashboard-analysis-rank-item:nth-child(1) {
+}
+.vui-pro-dashboard-analysis-rank-item:nth-child(1) .vui-pro-dashboard-analysis-rank-item-no { background-color:#eaf4fe; color:#2d8cf0;
+}
+.vui-pro-dashboard-analysis-rank-item:nth-child(1) .vui-pro-dashboard-analysis-rank-item-title {
+}
+.vui-pro-dashboard-analysis-rank-item:nth-child(1) .vui-pro-dashboard-analysis-rank-item-extra {
+}
+.vui-pro-dashboard-analysis-rank-item:nth-child(2) {
+}
+.vui-pro-dashboard-analysis-rank-item:nth-child(2) .vui-pro-dashboard-analysis-rank-item-no { background-color:#fef7ed; color:#faad14;
+}
+.vui-pro-dashboard-analysis-rank-item:nth-child(2) .vui-pro-dashboard-analysis-rank-item-title {
+}
+.vui-pro-dashboard-analysis-rank-item:nth-child(2) .vui-pro-dashboard-analysis-rank-item-extra {
+}
+.vui-pro-dashboard-analysis-rank-item:nth-child(3) {
+}
+.vui-pro-dashboard-analysis-rank-item:nth-child(3) .vui-pro-dashboard-analysis-rank-item-no { background-color:#fdeef0; color:#ed5565;
+}
+.vui-pro-dashboard-analysis-rank-item:nth-child(3) .vui-pro-dashboard-analysis-rank-item-title {
+}
+.vui-pro-dashboard-analysis-rank-item:nth-child(3) .vui-pro-dashboard-analysis-rank-item-extra {
+}
+
+
+.vui-pro-dashboard-analysis-sales-category-percentage { display:flex; justify-content:space-around; align-items:center; height:404px;
+}
+.vui-pro-dashboard-analysis-sales-category-percentage-chart { position:relative; width:220px; height:220px;
+}
+.vui-pro-dashboard-analysis-sales-category-percentage-chart-title { position:absolute; top:50%; left:50%; transform:translate(-50%,-50%);
+}
+.vui-pro-dashboard-analysis-sales-category-percentage-chart-title h1 { color:#8c8c8c; font-size:16px; text-align:center;
+}
+.vui-pro-dashboard-analysis-sales-category-percentage-chart-title p { margin-top:8px; color:#595959; font-size:24px; text-align:center;
+}
+.vui-pro-dashboard-analysis-sales-category-percentage-chart-main { position:absolute; top:50%; left:50%; transform:translate(-50%,-50%);
+}
+.vui-pro-dashboard-analysis-sales-category-percentage-legend { width:220px; height:220px;
+}
+.vui-pro-dashboard-analysis-sales-category-percentage-legend-item { display:flex; align-items:center; cursor:pointer; margin-bottom:20px; color:#595959; font-size:14px; line-height:1.42857142;
+}
+.vui-pro-dashboard-analysis-sales-category-percentage-legend-item-marker { display:block; width:8px; height:8px; border-radius:8px; margin-right:10px;
+}
+.vui-pro-dashboard-analysis-sales-category-percentage-legend-item-title { flex:1; display:block;
+}
+.vui-pro-dashboard-analysis-sales-category-percentage-legend-item-percentage { display:block; width:70px; color:#8c8c8c; text-align:right;
+}
+.vui-pro-dashboard-analysis-sales-category-percentage-legend-item-value { display:block; width:60px; text-align:right;
+}
+

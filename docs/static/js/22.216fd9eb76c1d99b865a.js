@@ -1,2 +1,0 @@
-webpackJsonp([22],{nKPX:function(t,e,r){"use strict";Object.defineProperty(e,"__esModule",{value:!0});var s={render:function(){var t=this.$createElement,e=this._self._c||t;return e("vui-result",{attrs:{status:"403",title:"Oops...Unauthorized!",description:"很抱歉，您没有访问该页面的权限，请联系管理员！"}},[e("template",{slot:"extra"},[e("vui-button",{attrs:{type:"primary",to:"/"}},[this._v("返回首页")])],1)],2)},staticRenderFns:[]},n=r("VU/8")({},s,!1,null,null,null);e.default=n.exports}});
-//# sourceMappingURL=22.216fd9eb76c1d99b865a.js.map
