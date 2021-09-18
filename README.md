@@ -5,9 +5,9 @@
 ```
 - dist 生产环境目录文件
 
-- dist.release 预发布环境目录文件
-
 - dist.test 测试环境目录文件
+
+- dist.release 预发布环境目录文件
 
 - node_modules 项目依赖
 
@@ -15,7 +15,7 @@
   - favicon.ico 网站图标
   - index.html 页面入口文件
 
-- src 开发环境目录文件
+- src
   - assets 图片、CSS等资源目录
   - components 公共组件
   - config 系统配置
@@ -35,11 +35,11 @@
 
 - .env 默认环境配置，在所有的环境中被载入
 
-- .env.production 生产环境配置，只在production模式中被载入
+- .env.test 预发布环境配置，只在test模式中被载入
 
 - .env.release 预发布环境配置，只在release模式中被载入
 
-- .env.test 预发布环境配置，只在test模式中被载入
+- .env.production 生产环境配置，只在production模式中被载入
 
 - babel.config.js Babel插件配置
 
@@ -48,7 +48,7 @@
 
 ## 开发
 
-``` 
+``` bash
 # 克隆项目
 git clone https://github.com/vui-design/vui-design-pro.git
 
@@ -67,7 +67,7 @@ npm run dev
 
 ## 发布
 
-```
+```bash
 # 构建测试环境
 npm run build:test
 
@@ -83,10 +83,14 @@ npm run publish
 
 ## 其他
 
-```
+```bash
 # 启用本地开发服务，并进行打包文件分析
 npm run analyzer
 
 # 代码格式检查
 npm run lint
 ```
+
+## 在线预览
+
+[Demo](https://vui-design.github.io/vui-design-pro/)
