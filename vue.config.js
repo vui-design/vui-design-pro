@@ -21,6 +21,8 @@ module.exports = {
     // 禁用HOST检查
     disableHostCheck: true
   },
+  // 
+  publicPath: process.env.publicPath,
   // 根据环境变量自动切换项目打包目录
   outputDir: process.env.outputDir,
   // 去除编译时的 eslint 代码检查
