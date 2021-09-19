@@ -1,5 +1,9 @@
 # Vui Design Pro 后台前端解决方案
 
+## 在线预览
+
+[Demo](https://vui-design.github.io/vui-design-pro/)
+
 ## 目录结构
 
 ```
@@ -90,7 +94,3 @@ npm run analyzer
 # 代码格式检查
 npm run lint
 ```
-
-## 在线预览
-
-[Demo](https://vui-design.github.io/vui-design-pro/)
