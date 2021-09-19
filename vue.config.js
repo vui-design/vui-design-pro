@@ -1,35 +1,35 @@
 const path = require("path");
 
 const publicPath = process.env.VUE_APP_PUBLIC_PATH;
-const outputDir = process.env.VUE_APP_OUTPUR_DIR;
+const outputDir = process.env.VUE_APP_OUTPUT_DIR;
 const resolve = dir => path.join(__dirname, dir);
 
 module.exports = {
   // 本地开发服务器配置
   devServer: {
-    // HOST
+    // host
     host: "localhost",
     // 端口
     port: 80,
     // 编译完成自动打开浏览器
     open: true,
-    // 去除浏览器 overlay 警告和错误消息
+    // 禁用浏览器 overlay 警告和错误消息
     overlay: {
       warnings: false,
       errors: false
     },
-    // 禁用HOST检查
+    // 禁用 host 检查
     disableHostCheck: true
   },
-  // 
+  // 根据环境变量自动适配项目基础路径
   publicPath: publicPath,
-  // 根据环境变量自动切换项目打包目录
+  // 根据环境变量自动适配项目资源文件打包目录
   outputDir: outputDir,
-  // 去除编译时的 eslint 代码检查
+  // 禁用 eslint 代码检查
   lintOnSave: false,
   // 关闭哈希文件名
   filenameHashing: false,
-  // 去除生产环境的 Source Map
+  // 禁用生产环境的 Source Map
   productionSourceMap: false,
   // 
   configureWebpack: config => {
@@ -78,14 +78,14 @@ module.exports = {
   },
   // 
   chainWebpack: config => {
-    // 
+    // 禁用 prefetch 和 preload
     config.plugins.delete("prefetch");
     config.plugins.delete("preload");
 
-    // 为项目根目录下的 src 源码目录定义别名，方便模块引入
+    // 设置项目资源文件目录别名，方便模块引入
     config.resolve.alias.set("src", resolve("src"));
 
-    // 当环境变量 analyzer 为 true 启用打包文件分析工具
+    // 当环境变量 analyzer 为 true 进行打包文件分析
     if (process.env.analyzer) {
       config.plugin("webpack-bundle-analyzer").use(require("webpack-bundle-analyzer").BundleAnalyzerPlugin).end();
     }
