@@ -1,8 +1,8 @@
 const path = require("path");
 
-function resolve(dir) {
-  return path.join(__dirname, dir);
-}
+const publicPath = process.env.VUE_APP_PUBLIC_PATH;
+const outputDir = process.env.VUE_APP_OUTPUR_DIR;
+const resolve = dir => path.join(__dirname, dir);
 
 module.exports = {
   // 本地开发服务器配置
@@ -22,9 +22,9 @@ module.exports = {
     disableHostCheck: true
   },
   // 
-  publicPath: process.env.publicPath,
+  publicPath: publicPath,
   // 根据环境变量自动切换项目打包目录
-  outputDir: process.env.outputDir,
+  outputDir: outputDir,
   // 去除编译时的 eslint 代码检查
   lintOnSave: false,
   // 关闭哈希文件名
