@@ -90,6 +90,9 @@ module.exports = {
       config.plugin("webpack-bundle-analyzer").use(require("webpack-bundle-analyzer").BundleAnalyzerPlugin).end();
     }
 
+    // 测试环境
+    // 预发布环境
+    // 生产环境
     if (process.env.NODE_ENV === "production") {
       // JS 文件输出配置
       config.output.filename("js/[name].js?v=[chunkhash:8]").end();
@@ -104,6 +107,20 @@ module.exports = {
           }
         ];
       });
+
+      // 图片文件输出配置
+      config.module.rule("images").test(/\.(png|jpe?g|gif|webp)(\?.*)?$/).use("url-loader").loader("file-loader").options({
+        name: "images/[name].[ext]?v=[hash:8]"
+      });
+      config.module.rule("svg").test(/\.(svg)(\?.*)?$/).use("file-loader").loader("file-loader").options({
+        name: "images/[name].[ext]?v=[hash:8]"
+      });
+    }
+    // 开发环境
+    else {
+      // JS 文件输出配置
+      config.output.filename("js/[name].js?v=[hash:8]").end();
+      config.output.chunkFilename("js/[name].js?v=[hash:8]").end();
 
       // 图片文件输出配置
       config.module.rule("images").test(/\.(png|jpe?g|gif|webp)(\?.*)?$/).use("url-loader").loader("file-loader").options({

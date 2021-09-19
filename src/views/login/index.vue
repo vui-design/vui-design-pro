@@ -3,7 +3,7 @@
 		<vui-content class="vui-pro-login-body">
 			<div class="vui-pro-login-logo">
 				<router-link to="/">
-					<img src="/images/static/layout/logo.svg" />
+					<img src="~src/assets/images/logo.svg" />
 					<span>Vui Design Pro</span>
 				</router-link>
 			</div>
@@ -106,7 +106,7 @@
 </script>
 
 <style>
-	.vui-pro-login { height:100%; background:url("/images/static/layout/body.png") repeat 50% 0; overflow:auto; }
+	.vui-pro-login { height:100%; background:url("~src/assets/images/bg.png") repeat 50% 0; overflow:auto; }
 
 	/* body */
 	.vui-pro-login-body { padding:50px 0; }

@@ -3,7 +3,7 @@
 		<vui-sider v-model="collapsed" v-bind:width="220" collapsible breakpoint="lg" theme="dark" class="vui-pro-layout-sider">
 			<h1 class="logo" v-bind:class="collapsed ? 'collapsed' : ''">
 				<router-link to="/">
-					<img src="/images/static/layout/logo.svg" />
+					<img src="~src/assets/images/logo.svg" />
 					<label>Vui Design Pro</label>
 				</router-link>
 			</h1>
@@ -131,7 +131,7 @@
 					<vui-dropdown v-model="usermenu.visible" class="navbar-item" placement="bottom-end" trigger="click">
 						<div class="user" v-bind:class="usermenu.visible ? 'active' : ''">
 							<label>kiwi</label>
-							<vui-avatar size="small" src="/images/static/avatars/svg/1.svg" />
+							<vui-avatar size="small" v-bind:src="usermenu.avatar" />
 							<vui-icon type="chevron-down" />
 						</div>
 						<vui-dropdown-menu slot="menu" v-on:click="handleUsermenuClick">
@@ -165,6 +165,7 @@
 	import config from "src/config";
 	import utils from "src/libs/utils";
 	import authorization from "src/libs/authorization";
+	import avatar from "src/assets/images/avatar-svg1.svg";
 
 	export default {
 		provide() {
@@ -181,19 +182,19 @@
 				notice: {
 					count: 5,
 					data: [
-						{ id: 5, readed: false, icon: "/images/static/icon-notice/1.png", createdAt: "2020-08-02 12:00:00", title: "你收到了 20 分新的周报" },
-						{ id: 4, readed: false, icon: "/images/static/icon-notice/4.png", createdAt: "2020-08-02 06:00:00", title: "点击后设为已读状态" },
-						{ id: 3, readed: false, icon: "/images/static/icon-notice/3.png", createdAt: "2020-08-02 00:00:00", title: "你推荐的 张三丰 已通过第三轮面试" },
-						{ id: 2, readed: false, icon: "/images/static/icon-notice/2.png", createdAt: "2020-07-20 00:00:00", title: "左侧图标用于区分不同类型" },
-						{ id: 1, readed: false, icon: "/images/static/icon-notice/1.png", createdAt: "2020-02-02 00:00:00", title: "标题文本不易过长，超出部分将被自动截断" }
+						{ id: 5, readed: false, icon: require("src/assets/images/notice-icon1.png"), createdAt: "2020-08-02 12:00:00", title: "你收到了 20 分新的周报" },
+						{ id: 4, readed: false, icon: require("src/assets/images/notice-icon4.png"), createdAt: "2020-08-02 06:00:00", title: "点击后设为已读状态" },
+						{ id: 3, readed: false, icon: require("src/assets/images/notice-icon3.png"), createdAt: "2020-08-02 00:00:00", title: "你推荐的 张三丰 已通过第三轮面试" },
+						{ id: 2, readed: false, icon: require("src/assets/images/notice-icon2.png"), createdAt: "2020-07-20 00:00:00", title: "左侧图标用于区分不同类型" },
+						{ id: 1, readed: false, icon: require("src/assets/images/notice-icon1.png"), createdAt: "2020-02-02 00:00:00", title: "标题文本不易过长，超出部分将被自动截断" }
 					]
 				},
 				message: {
 					count: 3,
 					data: [
-						{ id: 3, readed: false, icon: "/images/static/avatars/svg/1.svg", createdAt: "2020-08-02 00:00:00", title: "张三丰 评论了你", description: "哇塞，你好厉害~" },
-						{ id: 2, readed: false, icon: "/images/static/avatars/svg/2.svg", createdAt: "2020-07-20 00:00:00", title: "张无忌 回复了你", description: "这种模板用于提醒谁与你发生了互动，左侧放互动人员头像" },
-						{ id: 1, readed: false, icon: "/images/static/avatars/svg/3.svg", createdAt: "2020-02-02 00:00:00", title: "标题文本不易过长，超出部分将被自动截断", description: "这种模板用于提醒谁与你发生了互动，左侧放互动人员头像" }
+						{ id: 3, readed: false, icon: require("src/assets/images/avatar-svg1.svg"), createdAt: "2020-08-02 00:00:00", title: "张三丰 评论了你", description: "哇塞，你好厉害~" },
+						{ id: 2, readed: false, icon: require("src/assets/images/avatar-svg2.svg"), createdAt: "2020-07-20 00:00:00", title: "张无忌 回复了你", description: "这种模板用于提醒谁与你发生了互动，左侧放互动人员头像" },
+						{ id: 1, readed: false, icon: require("src/assets/images/avatar-svg3.svg"), createdAt: "2020-02-02 00:00:00", title: "标题文本不易过长，超出部分将被自动截断", description: "这种模板用于提醒谁与你发生了互动，左侧放互动人员头像" }
 					]
 				},
 				todo: {
@@ -207,6 +208,7 @@
 				},
 				usermenu: {
 					visible: false,
+					avatar: avatar,
 					data: [
 						{ name: "profile", icon: "user", path: "/user/profile", title: "个人中心" },
 						{ name: "settings", icon: "settings", path: "/user/settings", title: "个人设置" },

@@ -2,68 +2,16 @@
 	<vui-card v-bind:bordered="false" shadow="always" class="margin-top-20">
 		<template slot="title">最新动态</template>
 		<vui-list class="vui-pro-dashboard-workplace-event-list">
-			<vui-list-item class="vui-pro-dashboard-workplace-event">
-				<vui-list-item-meta avatar="/images/static/avatars/svg/1.svg">
+			<vui-list-item v-for="event in events" v-bind:key="event.id" class="vui-pro-dashboard-workplace-event">
+				<vui-list-item-meta v-bind:avatar="event.avatar">
 					<div slot="title">
-						<a slot="title" href="javascript:;" class="username">阿波罗</a>
-						<span class="text">关注了项目</span>
-						<a slot="title" href="javascript:;" class="content">Vui Design Pro</a>
+						<a href="javascript:;" class="username">{{event.username}}</a>
+						<span class="text">{{event.action}}</span>
+						<a v-if="event.targetUsername" href="javascript:;" class="username">{{event.targetUsername}}</a>
+						<span v-if="event.targetContent" class="text">{{event.targetContent}}</span>
+						<a href="javascript:;" class="content">{{event.content}}</a>
 					</div>
-					<div slot="description" class="moment">刚刚</div>
-				</vui-list-item-meta>
-			</vui-list-item>
-			<vui-list-item class="vui-pro-dashboard-workplace-event">
-				<vui-list-item-meta avatar="/images/static/avatars/svg/2.svg">
-					<div slot="title">
-						<a slot="title" href="javascript:;" class="username">柳残阳</a>
-						<span class="text">发表了文章</span>
-						<a slot="title" href="javascript:;" class="content">SEO 页面优化之 Nuxt 服务器渲染</a>
-					</div>
-					<div slot="description" class="moment">6 小时前</div>
-				</vui-list-item-meta>
-			</vui-list-item>
-			<vui-list-item class="vui-pro-dashboard-workplace-event">
-				<vui-list-item-meta avatar="/images/static/avatars/svg/3.svg">
-					<div slot="title">
-						<a slot="title" href="javascript:;" class="username">萱子乔</a>
-						<span class="text">提出问题</span>
-						<a slot="title" href="javascript:;" class="content">Table 组件支持合并单元格吗？</a>
-					</div>
-					<div slot="description" class="moment">2 天前</div>
-				</vui-list-item-meta>
-			</vui-list-item>
-			<vui-list-item class="vui-pro-dashboard-workplace-event">
-				<vui-list-item-meta avatar="/images/static/avatars/svg/4.svg">
-					<div slot="title">
-						<a slot="title" href="javascript:;" class="username">萱子乔</a>
-						<span class="text">回复了</span>
-						<a slot="title" href="javascript:;" class="username">花满楼</a>
-						<span class="text">的问题</span>
-						<a slot="title" href="javascript:;" class="content">Vue 中如何实现大数据列表的虚拟滚动？</a>
-					</div>
-					<div slot="description" class="moment">4 天前</div>
-				</vui-list-item-meta>
-			</vui-list-item>
-			<vui-list-item class="vui-pro-dashboard-workplace-event">
-				<vui-list-item-meta avatar="/images/static/avatars/svg/5.svg">
-					<div slot="title">
-						<a slot="title" href="javascript:;" class="username">张无忌</a>
-						<span class="text">兑换了物品</span>
-						<a slot="title" href="javascript:;" class="content">《Vue.js 实战》</a>
-					</div>
-					<div slot="description" class="moment">2 周前</div>
-				</vui-list-item-meta>
-			</vui-list-item>
-			<vui-list-item class="vui-pro-dashboard-workplace-event">
-				<vui-list-item-meta avatar="/images/static/avatars/svg/6.svg">
-					<div slot="title">
-						<a slot="title" href="javascript:;" class="username">紫旭琳</a>
-						<span class="text">评论了</span>
-						<a slot="title" href="javascript:;" class="username">张三丰</a>
-						<span class="text">的文章</span>
-						<a slot="title" href="javascript:;" class="content">关于 Modal 对话框的异步关闭</a>
-					</div>
-					<div slot="description" class="moment">2 个月前</div>
+					<div slot="description" class="moment">{{event.moment}}</div>
 				</vui-list-item-meta>
 			</vui-list-item>
 		</vui-list>
@@ -74,7 +22,60 @@
 	export default {
 		data() {
 			return {
-
+				events: [
+					{
+						id: 6,
+						avatar: require("src/assets/images/avatar-svg1.svg"),
+						username: "阿波罗",
+						action: "关注了项目",
+						content: "Vui Design Pro",
+						moment: "刚刚"
+					},
+					{
+						id: 5,
+						avatar: require("src/assets/images/avatar-svg2.svg"),
+						username: "柳残阳",
+						action: "发表了文章",
+						content: "SEO 页面优化之 Nuxt 服务器渲染",
+						moment: "6 小时前"
+					},
+					{
+						id: 4,
+						avatar: require("src/assets/images/avatar-svg3.svg"),
+						username: "萱子乔",
+						action: "提出问题",
+						content: "Table 组件支持合并单元格吗？",
+						moment: "2 天前"
+					},
+					{
+						id: 3,
+						avatar: require("src/assets/images/avatar-svg4.svg"),
+						username: "花满楼",
+						action: "回复了",
+						targetUsername: "萱子乔",
+						targetContent: "的问题",
+						content: "Vue 中如何实现大数据列表的虚拟滚动？",
+						moment: "4 天前"
+					},
+					{
+						id: 2,
+						avatar: require("src/assets/images/avatar-svg5.svg"),
+						username: "张无忌",
+						action: "兑换了物品",
+						content: "《Vue.js 实战》",
+						moment: "2 周前"
+					},
+					{
+						id: 1,
+						avatar: require("src/assets/images/avatar-svg6.svg"),
+						username: "紫旭琳",
+						action: "评论了",
+						targetUsername: "张三丰",
+						targetContent: "的文章",
+						content: "关于 Modal 对话框的异步关闭",
+						moment: "2 个月前"
+					}
+				]
 			};
 		}
 	};

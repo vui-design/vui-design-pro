@@ -8,19 +8,19 @@
 			<vui-card v-bind:bordered="false" shadow="always">
 				<vui-row>
 					<vui-col v-bind:span="8">
-						<div class="vui-pro-list-standard-statistic">
+						<div class="vui-pro-app-statistic">
 							<h4>进行中的任务</h4>
 							<p><em style="color: #2d8cf0;">10</em>个任务</p>
 						</div>
 					</vui-col>
 					<vui-col v-bind:span="8">
-						<div class="vui-pro-list-standard-statistic">
+						<div class="vui-pro-app-statistic">
 							<h4>剩余任务</h4>
 							<p><em style="color: #faad14;">4</em>个任务</p>
 						</div>
 					</vui-col>
 					<vui-col v-bind:span="8">
-						<div class="vui-pro-list-standard-statistic">
+						<div class="vui-pro-app-statistic">
 							<h4>任务总耗时</h4>
 							<p><em style="color: #ed5565;">120</em>个小时</p>
 						</div>
@@ -49,16 +49,16 @@
 								<a slot="title" href="javascript:;">{{item.title}}</a>
 								<div slot="description" class="write-ellipsis">{{item.description}}</div>
 							</vui-list-item-meta>
-							<div class="vui-pro-list-standard-item-content">
-								<div class="vui-pro-list-standard-item-content-group">
+							<div class="vui-pro-app-item-content">
+								<div class="vui-pro-app-item-content-group">
 									<h4>负责人</h4>
 									<p>{{item.owner}}</p>
 								</div>
-								<div class="vui-pro-list-standard-item-content-group">
+								<div class="vui-pro-app-item-content-group">
 									<h4>开始时间</h4>
 									<p>{{item.startAt | dateformatter("yyyy-MM-dd HH:mm")}}</p>
 								</div>
-								<div class="vui-pro-list-standard-item-content-group">
+								<div class="vui-pro-app-item-content-group">
 									<vui-progress v-bind:stroke="6" v-bind:status="item.status" v-bind:percentage="item.progress" />
 								</div>
 							</div>
@@ -205,15 +205,15 @@
 </script>
 
 <style>
-	.vui-pro-list-standard-statistic { padding:8px 0; text-align:center; }
-	.vui-pro-list-standard-statistic h4 { color:#8c8c8c; font-size:14px; }
-	.vui-pro-list-standard-statistic p { margin-top:8px; color:#262626; font-size:24px; }
-	.vui-pro-list-standard-statistic p em { margin-right:8px; font-weight:600; }
+	.vui-pro-app-statistic { padding:8px 0; text-align:center; }
+	.vui-pro-app-statistic h4 { color:#8c8c8c; font-size:14px; }
+	.vui-pro-app-statistic p { margin-top:8px; color:#262626; font-size:24px; }
+	.vui-pro-app-statistic p em { margin-right:8px; font-weight:600; }
 
-	.vui-pro-list-standard-item-content { display:flex; align-items:center; margin:0 20px 0 40px; }
-	.vui-pro-list-standard-item-content-group {  }
-	.vui-pro-list-standard-item-content-group h4 { color:#8c8c8c; font-size:14px; }
-	.vui-pro-list-standard-item-content-group p { margin-top:8px; color:#595959; font-size:14px; }
-	.vui-pro-list-standard-item-content-group .vui-progress { width:180px; }
-	.vui-pro-list-standard-item-content-group + .vui-pro-list-standard-item-content-group { margin-left:40px; }
+	.vui-pro-app-item-content { display:flex; align-items:center; margin:0 20px 0 40px; }
+	.vui-pro-app-item-content-group {  }
+	.vui-pro-app-item-content-group h4 { color:#8c8c8c; font-size:14px; }
+	.vui-pro-app-item-content-group p { margin-top:8px; color:#595959; font-size:14px; }
+	.vui-pro-app-item-content-group .vui-progress { width:180px; }
+	.vui-pro-app-item-content-group + .vui-pro-app-item-content-group { margin-left:40px; }
 </style>
