@@ -109,10 +109,10 @@ module.exports = {
       });
 
       // 图片文件输出配置
-      config.module.rule("images").test(/\.(png|jpe?g|gif|webp)(\?.*)?$/).use("url-loader").loader("file-loader").options({
+      config.module.rule("images").use("url-loader").loader("file-loader").options({
         name: "images/[name].[ext]?v=[hash:8]"
       });
-      config.module.rule("svg").test(/\.(svg)(\?.*)?$/).use("file-loader").loader("file-loader").options({
+      config.module.rule("svg").use("file-loader").loader("file-loader").options({
         name: "images/[name].[ext]?v=[hash:8]"
       });
     }
@@ -123,10 +123,10 @@ module.exports = {
       config.output.chunkFilename("js/[name].js?v=[hash:8]").end();
 
       // 图片文件输出配置
-      config.module.rule("images").test(/\.(png|jpe?g|gif|webp)(\?.*)?$/).use("url-loader").loader("file-loader").options({
+      config.module.rule("images").use("url-loader").loader("file-loader").options({
         name: "images/[name].[ext]?v=[hash:8]"
       });
-      config.module.rule("svg").test(/\.(svg)(\?.*)?$/).use("file-loader").loader("file-loader").options({
+      config.module.rule("svg").use("file-loader").loader("file-loader").options({
         name: "images/[name].[ext]?v=[hash:8]"
       });
     }
