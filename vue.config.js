@@ -31,12 +31,12 @@ module.exports = {
   filenameHashing: false,
   // 禁用生产环境的 Source Map
   productionSourceMap: false,
-  // 
+  // 修改 webpack 配置
   configureWebpack: config => {
     config.optimization = {
-      // 
+      // 将 runtime 单独打包
       runtimeChunk: "single",
-      // 
+      // 分割 vendors 包，将第三依赖包单独打包
       splitChunks: {
         chunks: "all",
         minSize: 10000,
@@ -76,11 +76,15 @@ module.exports = {
       }
     };
   },
-  // 
+  // 修改 webpack 配置
   chainWebpack: config => {
-    // 禁用 prefetch 和 preload
-    config.plugins.delete("prefetch");
-    config.plugins.delete("preload");
+    // 禁用模块命名插件（建议启用）
+    // config.plugins.delete("named-chunks");
+    // config.plugins.delete("hash-module-ids");
+
+    // 禁用浏览器 preload 和 prefetch 资源优化指令（建议启用）
+    // config.plugins.delete("preload-main");
+    // config.plugins.delete("prefetch-main");
 
     // 设置项目资源文件目录别名，方便模块引入
     config.resolve.alias.set("src", resolve("src"));

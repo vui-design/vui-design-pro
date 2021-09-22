@@ -37,13 +37,13 @@
   - App.vue 根组件
   - main.js 系统入口
 
-- .env 默认环境配置，在所有的环境中被载入
+- .env.development 开发环境变量配置，只在dev模式中被载入
 
-- .env.test 预发布环境配置，只在test模式中被载入
+- .env.test 测试环境变量配置，只在test模式中被载入
 
-- .env.release 预发布环境配置，只在release模式中被载入
+- .env.release 预发布环境变量配置，只在release模式中被载入
 
-- .env.production 生产环境配置，只在production模式中被载入
+- .env.production 生产环境变量配置，只在production模式中被载入
 
 - babel.config.js Babel插件配置
 
@@ -76,7 +76,7 @@ npm run dev
 npm run build:test
 
 # 构建预发布环境
-npm run build.release
+npm run build:release
 
 # 构建生产环境
 npm run build
