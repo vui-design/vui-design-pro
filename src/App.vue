@@ -1,17 +1,17 @@
 <template>
-	<div id="root">
-		<router-view />
-	</div>
+  <div id="root">
+    <router-view />
+  </div>
 </template>
 
 <script>
-	export default {
+  export default {
 
-	};
+  };
 </script>
 
 <style>
-	html, body, #root {
-		min-height:100vh;
-	}
+  html, body, #root {
+    min-height:100vh;
+  }
 </style>

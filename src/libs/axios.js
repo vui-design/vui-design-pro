@@ -7,39 +7,35 @@ axios.defaults.baseURL = config.baseURL;
 axios.defaults.timeout = 10000;
 
 axios.interceptors.request.use(config => {
-	if (config.url === "/user/login") {
+  if (config.url === "/user/login") {
 
-	}
-	else if (authorization.getToken()) {
-		config.headers["Authorization"] = authorization.getToken();
-	}
+  }
+  else if (authorization.getToken()) {
+    config.headers["Authorization"] = authorization.getToken();
+  }
 
-	return config;
+  return config;
 }, e => {
-	console.log(e);
+  VuiDesign.Message.error(e.message);
 
-	VuiDesign.Message.error(e.message);
-
-	return Promise.reject(e);
+  return Promise.reject(e);
 });
 
 axios.interceptors.response.use(response => {
-	const data = response.data;
+  const data = response.data;
 
-	if (data.code !== 0) {
-		VuiDesign.Message.error(data.message);
+  if (data.code === 0) {
+    return data;
+  }
+  else {
+    VuiDesign.Message.error(data.message);
 
-		return Promise.reject(new Error(data.message));
-	}
-	else {
-		return data;
-	}
+    return Promise.reject(new Error(data.message));
+  }
 }, e => {
-	console.log(e);
+  VuiDesign.Message.error(e.message);
 
-	VuiDesign.Message.error(e.message);
-
-	return Promise.reject(e);
+  return Promise.reject(e);
 });
 
 export default axios;

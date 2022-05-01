@@ -10,15 +10,15 @@ Vue.use(VueI18n);
 
 const language = utils.getLanguage();
 const messages = {
-	"zh-CN": Object.assign(VuiDesignZhCN, LocaleZhCN),
-	"en-US": Object.assign(VuiDesignEnUS, LocaleEnUS)
+  "zh-CN": Object.assign(VuiDesignZhCN, LocaleZhCN),
+  "en-US": Object.assign(VuiDesignEnUS, LocaleEnUS)
 };
 
 Vue.config.language = language;
 
 const i18n = new VueI18n({
-	locale: language,
-	messages
+  locale: language,
+  messages
 });
 
 export default i18n;

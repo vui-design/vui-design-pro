@@ -315,14 +315,14 @@ export default [
 				component: () => import("src/views/result/success")
 			},
 			{
-				path: "/result/fail",
-				name: "result-fail",
+				path: "/result/error",
+				name: "result-error",
 				meta: {
 					addToMenu: true,
 					addToBreadcrumb: true,
 					title: "失败页面"
 				},
-				component: () => import("src/views/result/fail")
+				component: () => import("src/views/result/error")
 			}
 		]
 	},

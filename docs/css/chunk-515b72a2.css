@@ -1,0 +1,98 @@
+
+.vui-dashboard-workplace-details { display:flex; align-items:flex-start;
+}
+.vui-dashboard-workplace-details-profile { flex:1; display:flex; align-items:center;
+}
+.vui-dashboard-workplace-details-profile-header {
+}
+.vui-dashboard-workplace-details-profile-body { margin-left:16px;
+}
+.vui-dashboard-workplace-details-profile-body h4 { color:#262626; font-size:20px; font-weight:500; line-height:32px;
+}
+.vui-dashboard-workplace-details-profile-body span { display:block; color:#8c8c8c; font-size:14px; line-height:24px;
+}
+.vui-dashboard-workplace-details-profile-body .vui-space { margin-top:8px;
+}
+.vui-dashboard-workplace-details-extra { margin-left:32px;
+}
+.vui-dashboard-workplace-details-extra-statistic {
+}
+.vui-dashboard-workplace-details-extra-statistic .vui-statistic-title { text-align:right;
+}
+.vui-dashboard-workplace-details-extra-statistic .vui-statistic-body { justify-content:flex-end;
+}
+
+
+.vui-dashboard-workplace-project { display:block; padding:20px; transition:all 0.2s cubic-bezier(0.23,1,0.32,1);
+}
+.vui-dashboard-workplace-project .vui-dashboard-workplace-project-header { display:flex; height:32px; overflow:hidden; white-space:nowrap;
+}
+.vui-dashboard-workplace-project .vui-dashboard-workplace-project-body { display:-webkit-box; min-height:40px; margin-top:12px; overflow:hidden; color:#8c8c8c; line-height:20px; white-space:normal; word-break:break-all; word-wrap:break-word; text-overflow:ellipsis; -webkit-line-clamp:2; -webkit-box-orient:vertical;
+}
+.vui-dashboard-workplace-project .vui-dashboard-workplace-project-footer { height:20px; margin-top:12px; font-size:12px; line-height:20px;
+}
+.vui-dashboard-workplace-project .vui-dashboard-workplace-project-avatar { display:block; margin-right:16px;
+}
+.vui-dashboard-workplace-project .vui-dashboard-workplace-project-name { flex:1; cursor:inherit; display:block; overflow:hidden; color:#262626; font-size:16px; line-height:30px; white-space:nowrap; text-overflow:ellipsis;
+}
+.vui-dashboard-workplace-project .vui-dashboard-workplace-project-tag { float:left; cursor:inherit; color:#8c8c8c;
+}
+.vui-dashboard-workplace-project .vui-dashboard-workplace-project-moment { float:right; cursor:inherit; color:#bfbfbf;
+}
+.vui-dashboard-workplace-project:hover { background-color:rgba(0,0,0,0.01);
+}
+.vui-dashboard-workplace-project:hover .vui-dashboard-workplace-project-header {
+}
+.vui-dashboard-workplace-project:hover .vui-dashboard-workplace-project-body {
+}
+.vui-dashboard-workplace-project:hover .vui-dashboard-workplace-project-footer {
+}
+.vui-dashboard-workplace-project:hover .vui-dashboard-workplace-project-avatar {
+}
+.vui-dashboard-workplace-project:hover .vui-dashboard-workplace-project-name {
+}
+.vui-dashboard-workplace-project:hover .vui-dashboard-workplace-project-tag {
+}
+.vui-dashboard-workplace-project:hover .vui-dashboard-workplace-project-moment {
+}
+
+
+.vui-dashboard-workplace-event-list { min-height:488px;
+}
+.vui-dashboard-workplace-event {
+}
+.vui-dashboard-workplace-event .username { color:#262626;
+}
+.vui-dashboard-workplace-event .text { margin:0 4px; color:#8c8c8c;
+}
+.vui-dashboard-workplace-event .content { color:#2090d8;
+}
+.vui-dashboard-workplace-event .moment { color:#bfbfbf;
+}
+
+
+.vui-dashboard-workplace-shortcut { display:block; padding:20px 0; transition:all 0.2s;
+}
+.vui-dashboard-workplace-shortcut .vui-icon { display:block; width:24px; height:24px; margin:0 auto; font-size:20px; text-align:center; line-height:24px;
+}
+.vui-dashboard-workplace-shortcut h4 { display:block; margin-top:10px; color:#595959; text-align:center; line-height:1.42857143;
+}
+.vui-dashboard-workplace-shortcut:hover { background-color:rgba(0,0,0,0.01);
+}
+.vui-dashboard-workplace-shortcut:hover .vui-icon {
+}
+.vui-dashboard-workplace-shortcut:hover h4 {
+}
+
+
+.vui-pro-dashboard-workplace-todo-list .vui-table-body tr:last-child td { border-bottom:none;
+}
+
+
+.vui-dashboard-workplace-radar-statistic {
+}
+.vui-dashboard-workplace-radar-statistic .vui-statistic-title { display:flex; justify-content:center; align-items:center;
+}
+.vui-dashboard-workplace-radar-statistic .vui-statistic-body { justify-content:center;
+}
+

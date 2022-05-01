@@ -1,0 +1,14 @@
+
+.vui-result-error-content {
+}
+.vui-result-error-content h4 { margin-bottom:24px; color:#262626; font-size:16px;
+}
+.vui-result-error-content p { color:#595959;
+}
+.vui-result-error-content p .vui-icon { margin-right:8px; color:#ed5565;
+}
+.vui-result-error-content p a { margin-left:8px;
+}
+.vui-result-error-content p + p { margin-top:16px;
+}
+

@@ -1,9 +1,9 @@
 <template>
-	<div>高级详情页面</div>
+  <div>高级详情页面</div>
 </template>
 
 <script>
-	export default {
+  export default {
 
-	};
+  };
 </script>

@@ -12,26 +12,26 @@ export const removeToken = () => localStorage.removeItem(tokenKey);
 
 // 跳转至 AMS 登录页面
 export function amsLogin(to, location) {
-	if (location) {
-		localStorage.setItem("location", location);
-	}
+  if (location) {
+    localStorage.setItem("location", location);
+  }
 
-	window.location.replace(to + "&url=" + encodeURIComponent(window.location.origin + "/login"));
+  window.location.replace(to + "&url=" + encodeURIComponent(window.location.origin + "/login"));
 };
 
 // 跳转至 AMS 退出页面
 export function amsLogout(to, location) {
-	if (location) {
-		localStorage.setItem("location", location);
-	}
+  if (location) {
+    localStorage.setItem("location", location);
+  }
 
-	window.location.replace(to + "&url=" + encodeURIComponent(window.location.origin + "/login"));
+  window.location.replace(to + "&url=" + encodeURIComponent(window.location.origin + "/login"));
 };
 
 export default {
-	getToken,
-	setToken,
-	removeToken,
-	amsLogin,
-	amsLogout
+  getToken,
+  setToken,
+  removeToken,
+  amsLogin,
+  amsLogout
 };

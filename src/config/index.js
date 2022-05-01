@@ -37,10 +37,10 @@ export const whiteList = ["/login"];
 * @description 异步请求的基础路径
 */
 const apiPaths = {
-	development: "//www.easy-mock.com/mock/5dd110849a4da91d9ad9446c/vui",
-	test: "//www.test.com/api",
-	release: "//www.release.com/api",
-	production: "//www.production.com/api"
+  development: "//www.fastmock.site/mock/4dac551bb65d2c54d3b7c6eeabb0f2da/api",
+  test: "//www.test.com/api",
+  release: "//www.release.com/api",
+  production: "//www.production.com/api"
 };
 
 export const baseURL = apiPaths[appMode];
@@ -61,12 +61,12 @@ export const colors = ["#2d8cf0", "#faad14", "#ed5565", "#52c41a", "#b381f1", "#
 * @description Export all configurations by default
 */
 export default {
-	appMode,
-	title,
-	useI18n,
-	rootRoute,
-	whiteList,
-	baseURL,
-	cookieExpires,
-	colors
+  appMode,
+  title,
+  useI18n,
+  rootRoute,
+  whiteList,
+  baseURL,
+  cookieExpires,
+  colors
 };
