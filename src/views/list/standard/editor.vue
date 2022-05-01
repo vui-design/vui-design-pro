@@ -121,11 +121,11 @@
           let message = "";
 
           if (this.modal.type == 1) {
-            action = "example/addListStandardDatasource";
+            action = "list/addStandard";
             message = "提交成功";
           }
           else if (this.modal.type == 2) {
-            action = "example/editListStandardDatasource";
+            action = "list/editStandard";
             message = "保存成功";
           }
 

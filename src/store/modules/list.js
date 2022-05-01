@@ -6,76 +6,22 @@ export default {
     async getStandardPageList(context, payload) {
       let response = await services.list.getStandardPageList(payload);
 
-      return response.data;
+      return response;
     },
-    async addListStandardDatasource(context, payload) {
-      // let response = await services.example.addListStandardDatasource(payload);
-      // let data = response.data;
+    async addStandard(context, payload) {
+      let response = await services.list.addStandard(payload);
 
-      const ajax = payload => {
-        return new Promise((resolve, reject) => {
-          setTimeout(() => {
-            const response = {
-              code: 0,
-              data: null,
-              message: "success"
-            };
-
-            resolve(response);
-          }, 1000);
-        })
-      };
-
-      const response = await ajax(payload);
-      const data = response.data;
-
-      return data;
+      return response;
     },
-    async editListStandardDatasource(context, payload) {
-      // let response = await services.example.editListStandardDatasource(payload);
-      // let data = response.data;
+    async editStandard(context, payload) {
+      let response = await services.list.editStandard(payload);
 
-      const ajax = payload => {
-        return new Promise((resolve, reject) => {
-          setTimeout(() => {
-            const response = {
-              code: 0,
-              data: null,
-              message: "success"
-            };
-
-            resolve(response);
-          }, 1000);
-        })
-      };
-
-      const response = await ajax(payload);
-      const data = response.data;
-
-      return data;
+      return response;
     },
-    async deleteListStandardDatasource(context, payload) {
-      // let response = await services.example.deleteListStandardDatasource(payload);
-      // let data = response.data;
+    async deleteStandard(context, payload) {
+      let response = await services.list.deleteStandard(payload);
 
-      const ajax = payload => {
-        return new Promise((resolve, reject) => {
-          setTimeout(() => {
-            const response = {
-              code: 0,
-              data: null,
-              message: "success"
-            };
-
-            resolve(response);
-          }, 1000);
-        })
-      };
-
-      const response = await ajax(payload);
-      const data = response.data;
-
-      return data;
+      return response;
     }
   }
 };

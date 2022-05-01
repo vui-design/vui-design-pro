@@ -5,24 +5,24 @@ export const getStandardPageList = payload => {
     params: payload
   };
 
-  return axios.get("/getStandardPageList", settings);
+  return axios.get("/list/getStandardPageList", settings);
 };
 
-export const addListStandardDatasource = payload => {
-  return axios.post("/example/addListStandardDatasource", payload);
+export const addStandard = payload => {
+  return axios.post("/list/addStandard", payload);
 };
 
-export const editListStandardDatasource = payload => {
-  return axios.put("/example/editListStandardDatasource/" + payload.id, payload);
+export const editStandard = payload => {
+  return axios.put("/list/editStandard/" + payload.id, payload);
 };
 
-export const deleteListStandardDatasource = payload => {
-  return axios.delete("/example/deleteListStandardDatasource/" + payload.id);
+export const deleteStandard = payload => {
+  return axios.delete("/list/deleteStandard/" + payload.id);
 };
 
 export default {
   getStandardPageList,
-  addListStandardDatasource,
-  editListStandardDatasource,
-  deleteListStandardDatasource
+  addStandard,
+  editStandard,
+  deleteStandard
 };

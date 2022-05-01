@@ -127,10 +127,10 @@
         };
 
         this.list.loading = true;
-        this.$store.dispatch("list/getStandardPageList", payload).then(data => {
+        this.$store.dispatch("list/getStandardPageList", payload).then(response => {
           this.list.loading = false;
-          this.list.data = data.content;
-          this.pagination.total = data.total;
+          this.list.data = response.data.content;
+          this.pagination.total = response.data.total;
         }).catch(e => {
           this.list.loading = false;
         });
@@ -172,7 +172,7 @@
           content: "正在删除，请稍后..."
         });
 
-        this.$store.dispatch("example/deleteListTableDatasource", payload).then(data => {
+        this.$store.dispatch("list/deleteStandard", payload).then(response => {
           loading.close();
           this.$message.success("删除成功");
           // 删除成功后刷新列表
