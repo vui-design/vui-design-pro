@@ -157,10 +157,10 @@
         };
 
         this.list.loading = true;
-        this.$store.dispatch("list/getTablePageList", payload).then(data => {
+        this.$store.dispatch("list/getTablePageList", payload).then(response => {
           this.list.loading = false;
-          this.list.data = data.content;
-          this.pagination.total = data.total;
+          this.list.data = response.data.content;
+          this.pagination.total = response.data.total;
         }).catch(e => {
           this.list.loading = false;
         });
