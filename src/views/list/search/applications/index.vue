@@ -129,7 +129,7 @@
         };
 
         this.list.loading = true;
-        this.$store.dispatch("example/getApplicationList", payload).then(response => {
+        this.$store.dispatch("list/getApplicationList", payload).then(response => {
           this.list.loading = false;
           this.list.data = response.data;
         }).catch(e => {

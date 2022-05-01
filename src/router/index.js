@@ -9,7 +9,7 @@ import authorization from "src/libs/authorization";
 Vue.use(VueRouter);
 
 const router =  new VueRouter({
-  mode: config.appMode === "production" ? "hash" : "history",
+  mode: "hash",
   scrollBehavior: () => ({ y: 0 }),
   routes
 });

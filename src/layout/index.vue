@@ -1,11 +1,11 @@
 <template>
   <vui-layout class="vui-design-pro">
-    <vui-sider v-model="collapsed" v-bind:width="220" collapsible breakpoint="lg" theme="dark" class="vui-design-pro-sider">
+    <vui-sider v-model="collapsed" v-bind:width="220" collapsible breakpoint="lg" color="dark" class="vui-design-pro-sider">
       <vui-logo v-bind:collapsed="collapsed" />
       <vui-navigation v-bind:collapsed="collapsed"/>
     </vui-sider>
     <vui-layout class="vui-design-pro-main" v-bind:class="collapsed ? 'collapsed' : ''">
-      <vui-header theme="light" class="vui-design-pro-main-header">
+      <vui-header color="light" class="vui-design-pro-main-header">
         <vui-space v-bind:size="0" class="pull-left">
           <vui-sider-collapser v-bind:collapsed="collapsed" v-on:click="handleCollapse" />
           <vui-breadcrumbs class="pull-left" />
@@ -39,11 +39,7 @@
   import VuiUser from "./user";
   import VuiLinks from "./links";
   import VuiCopyright from "./copyright";
-  import routes from "src/routes";
-  import config from "src/config";
   import utils from "src/libs/utils";
-  import authorization from "src/libs/authorization";
-  import avatar from "src/images/avatar-svg1.svg";
 
   export default {
     components: {

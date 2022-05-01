@@ -1,7 +1,7 @@
 <template>
   <h1 class="vui-logo" v-bind:class="collapsed ? 'collapsed' : ''">
     <router-link to="/">
-      <img src="~src/images/logo.svg" />
+      <img src="images/logo.svg" />
       <span>Vui Design Pro</span>
     </router-link>
   </h1>

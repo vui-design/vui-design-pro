@@ -21,7 +21,7 @@
           </vui-form-item>
         </vui-form>
       </vui-card>
-      <vui-card v-bind:bordered="false" shadow="always" style="margin-top: 16px;" bodyStyle="padding: 0;">
+      <vui-card v-bind:bordered="false" shadow="always" style="margin-top: 16px;" bodyStyle="padding: 0; overflow: hidden;">
       	<template slot="title">查询表格</template>
         <vui-space slot="extra" divider v-bind:size="16">
           <vui-space>
@@ -42,8 +42,8 @@
             <vui-dropdown v-if="selection.count > 0">
               <vui-button type="primary" icon="list-settings">批量操作</vui-button>
               <vui-dropdown-menu slot="menu" v-on:click="handleBatchOperate">
-                <vui-dropdown-menu-item name="delete" title="批量删除" />
-                <vui-dropdown-menu-item name="approve" title="批量审批" />
+                <vui-dropdown-menu-item value="approve" title="批量审批" />
+                <vui-dropdown-menu-item value="delete" danger title="批量删除" />
               </vui-dropdown-menu>
             </vui-dropdown>
           </vui-space>
@@ -51,7 +51,7 @@
         <vui-alert type="warning" showIcon banner style="border-bottom: 1px solid #f0f0f0">
           <template>已选择 <em style="color: #faad14; font-weight: 600;">{{selection.count}}</em> 项，服务调用次数总计 <em>{{selection.times}}</em> 万</template>
         </vui-alert>
-        <vui-table ref="table" rowKey="id" v-bind="list" v-on:rowSelect="handleRowSelect">
+        <vui-table ref="table" v-bind="list" v-on:rowSelect="handleRowSelect" style="max-width: unset; margin: -1px;">
           <template slot="count" slot-scope="{ row }">{{row.count | numerical}} 万</template>
           <template slot="state" slot-scope="{ row }">
             <vui-badge v-if="row.state === 1" status="default" text="未启用" />
@@ -107,6 +107,8 @@
         // 存放列表的状态，例如是否处于加载中、列配置、是否可选择、数据源
         list: {
           loading: false,
+          bordered: true,
+          rowKey: "id",
           rowSelection: {
             width: 60,
             multiple: true,
@@ -118,7 +120,7 @@
             { key: "count", dataIndex: "count", sorter: true, slot: "count", title: "服务调用次数" },
             { key: "state", dataIndex: "state", slot: "state", title: "状态" },
             { key: "datetime", dataIndex: "datetime", sorter: true, title: "上次调度时间" },
-            { key: "action", width: 120, slot: "action", title: "操作" }
+            { key: "action", width: 116, slot: "action", title: "操作" }
           ],
           data: []
         }
@@ -206,7 +208,10 @@
       },
       // 批量操作
       handleBatchOperate(value) {
-        if (value === "delete") {
+        if (value === "approve") {
+          this.$message.info("您点击了批量审批");
+        }
+        else if (value === "delete") {
           this.$modal.confirm({
             title: "友情提示",
             description: "您确定要批量删除所选记录吗？",
@@ -218,9 +223,6 @@
             },
             ok: () => this.$message.info("您点击了确定"),
           });
-        }
-        else {
-          this.$message.info("您点击了批量审批");
         }
       },
       // 新增

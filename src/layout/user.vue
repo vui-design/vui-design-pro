@@ -2,7 +2,7 @@
   <vui-dropdown v-model="usermenu.visible" trigger="hover" placement="bottom-end" style="display: block;">
     <div class="vui-user" v-bind:class="usermenu.visible ? 'active' : ''">
       <span>kiwi</span>
-      <vui-avatar size="small" v-bind:src="usermenu.avatar" />
+      <vui-avatar size="small" src="images/avatars/svg1.svg" />
       <vui-icon type="chevron-down" />
     </div>
     <vui-dropdown-menu slot="menu" v-on:click="handleUsermenuClick">
@@ -16,14 +16,12 @@
 
 <script>
   import authorization from "src/libs/authorization";
-  import avatar from "src/images/avatar-svg1.svg";
 
   export default {
     data() {
       return {
         usermenu: {
-          visible: false,
-          avatar: avatar
+          visible: false
         }
       };
     },

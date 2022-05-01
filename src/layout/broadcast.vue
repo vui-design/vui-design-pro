@@ -104,19 +104,19 @@
         notice: {
           count: 5,
           data: [
-            { id: 5, readed: false, icon: require("src/images/notice-icon1.png"), createdAt: "2020-08-02 12:00:00", title: "你收到了 20 分新的周报" },
-            { id: 4, readed: false, icon: require("src/images/notice-icon4.png"), createdAt: "2020-08-02 06:00:00", title: "点击后设为已读状态" },
-            { id: 3, readed: false, icon: require("src/images/notice-icon3.png"), createdAt: "2020-08-02 00:00:00", title: "你推荐的 张三丰 已通过第三轮面试" },
-            { id: 2, readed: false, icon: require("src/images/notice-icon2.png"), createdAt: "2020-07-20 00:00:00", title: "左侧图标用于区分不同类型" },
-            { id: 1, readed: false, icon: require("src/images/notice-icon1.png"), createdAt: "2020-02-02 00:00:00", title: "标题文本不易过长，超出部分将被自动截断" }
+            { id: 5, readed: false, icon: "images/notices/icon1.png", createdAt: "2020-08-02 12:00:00", title: "你收到了 20 分新的周报" },
+            { id: 4, readed: false, icon: "images/notices/icon4.png", createdAt: "2020-08-02 06:00:00", title: "点击后设为已读状态" },
+            { id: 3, readed: false, icon: "images/notices/icon3.png", createdAt: "2020-08-02 00:00:00", title: "你推荐的 张三丰 已通过第三轮面试" },
+            { id: 2, readed: false, icon: "images/notices/icon2.png", createdAt: "2020-07-20 00:00:00", title: "左侧图标用于区分不同类型" },
+            { id: 1, readed: false, icon: "images/notices/icon1.png", createdAt: "2020-02-02 00:00:00", title: "标题文本不易过长，超出部分将被自动截断" }
           ]
         },
         message: {
           count: 3,
           data: [
-            { id: 3, readed: false, icon: require("src/images/avatar-svg1.svg"), createdAt: "2020-08-02 00:00:00", title: "张三丰 评论了你", description: "哇塞，你好厉害~" },
-            { id: 2, readed: false, icon: require("src/images/avatar-svg2.svg"), createdAt: "2020-07-20 00:00:00", title: "张无忌 回复了你", description: "这种模板用于提醒谁与你发生了互动，左侧放互动人员头像" },
-            { id: 1, readed: false, icon: require("src/images/avatar-svg3.svg"), createdAt: "2020-02-02 00:00:00", title: "标题文本不易过长，超出部分将被自动截断", description: "这种模板用于提醒谁与你发生了互动，左侧放互动人员头像" }
+            { id: 3, readed: false, icon: "images/avatars/svg1.svg", createdAt: "2020-08-02 00:00:00", title: "张三丰 评论了你", description: "哇塞，你好厉害~" },
+            { id: 2, readed: false, icon: "images/avatars/svg2.svg", createdAt: "2020-07-20 00:00:00", title: "张无忌 回复了你", description: "这种模板用于提醒谁与你发生了互动，左侧放互动人员头像" },
+            { id: 1, readed: false, icon: "images/avatars/svg3.svg", createdAt: "2020-02-02 00:00:00", title: "标题文本不易过长，超出部分将被自动截断", description: "这种模板用于提醒谁与你发生了互动，左侧放互动人员头像" }
           ]
         },
         todo: {

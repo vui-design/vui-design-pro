@@ -2,7 +2,7 @@
   <div class="vui-dashboard-workplace-details">
     <div class="vui-dashboard-workplace-details-profile">
       <div class="vui-dashboard-workplace-details-profile-header">
-        <vui-avatar v-bind:src="avatar" v-bind:size="72" />
+        <vui-avatar src="images/avatars/svg1.svg" v-bind:size="72" />
       </div>
       <div class="vui-dashboard-workplace-details-profile-body">
         <h4>早安，Ding Wei，祝你开心每一天！</h4>
@@ -24,11 +24,7 @@
 
 <script>
   export default {
-    data() {
-      return {
-        avatar: require("src/images/avatar-svg1.svg")
-      };
-    }
+
   };
 </script>
 

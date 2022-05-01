@@ -19,7 +19,15 @@ module.exports = {
       errors: false
     },
     // 禁用 host 检查
-    disableHostCheck: true
+    disableHostCheck: true,
+    // 
+    proxy: {
+      "/api": {
+        target: "http://www.fastmock.site/mock/4dac551bb65d2c54d3b7c6eeabb0f2da",
+        secure: true,
+        changeOrigin: true
+      }
+    }
   },
   // 根据环境变量自动适配项目基础路径
   publicPath: publicPath,

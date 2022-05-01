@@ -2,13 +2,13 @@
   <vui-card v-bind:bordered="false" shadow="always">
     <template slot="title">我的项目</template>
     <router-link slot="extra" to="/list/search/projects">全部项目</router-link>
-    <vui-empty v-if="data.length === 0" style="padding: 53px 0;">
-      <img slot="image" src="~src/images/empty-projects.png" style="height: 80px;" />
+    <vui-empty v-if="list.data.length === 0" style="padding: 53px 0;">
+      <img slot="image" src="images/empty/projects.png" style="height: 80px;" />
       <template slot="description">Sorry，暂无项目记录！点击下方按钮立即创建</template>
       <vui-button type="primary" to="/list/search/projects">立即创建</vui-button>
     </vui-empty>
     <template v-else>
-      <vui-card-grid v-for="(item, index) in data" v-bind:key="item.id" style="width: 33.33333333%; padding: 0;">
+      <vui-card-grid v-for="(item, index) in list.data" v-bind:key="item.id" style="width: 33.33333333%; padding: 0;">
         <router-link  class="vui-dashboard-workplace-project" to="/list/search/projects">
           <div class="vui-dashboard-workplace-project-header">
             <div class="vui-dashboard-workplace-project-avatar">
@@ -33,15 +33,29 @@
   export default {
     data() {
       return {
-        data: [
-          { id: 6, logo: require("src/images/app-lodash.png"), createdAt: "2020-08-08 12:40:00", title: "Lodash", tag: "JavaScript 工具包", description: "一个一致性、模块化、高性能的 JavaScript 实用工具库" },
-          { id: 5, logo: require("src/images/app-isjs.png"), createdAt: "2020-08-08 12:40:00", title: "Is.js", tag: "数据验证包", description: "Is.js 是一个微型通用性数据检查验证包" },
-          { id: 4, logo: require("src/images/app-vue.png"), createdAt: "2020-08-08 12:40:00", title: "Vue", tag: "渐进式 UI 框架", description: "渐进式 JavaScript 框架" },
-          { id: 3, logo: require("src/images/app-react.png"), createdAt: "2020-08-08 12:40:00", title: "React", tag: "UI 框架", description: "起源于 Facebook 的内部项目，用来架设 Instagram 的网站，并于 2013 年 5 月开源" },
-          { id: 2, logo: require("src/images/app-angular.png"), createdAt: "2020-08-08 12:40:00", title: "Angular", tag: "UI 框架", description: "应用设计框架与开发平台，用于创建高效、复杂、精致的单页面应用" },
-          { id: 1, logo: require("src/images/app-bootstrap.png"), createdAt: "2020-08-08 12:40:00", title: "Bootstrap", tag: "开源工具包", description: "Bootstrap 是 Twitter 推出的一个用于前端开发的开源工具包" },
-        ]
+        list: {
+          loading: false,
+          data: []
+        }
       };
+    },
+    methods: {
+      getList() {
+        const payload = {
+
+        };
+
+        this.list.loading = true;
+        this.$store.dispatch("dashboard/getProjectList", payload).then(response => {
+          this.list.loading = false;
+          this.list.data = response.data;
+        }).catch(e => {
+          this.list.loading = false;
+        });
+      }
+    },
+    created() {
+      this.getList();
     }
   };
 </script>

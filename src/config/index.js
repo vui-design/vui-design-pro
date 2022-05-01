@@ -37,7 +37,7 @@ export const whiteList = ["/login"];
 * @description 异步请求的基础路径
 */
 const apiPaths = {
-  development: "//www.fastmock.site/mock/4dac551bb65d2c54d3b7c6eeabb0f2da/api",
+  development: "//localhost/api",
   test: "//www.fastmock.site/mock/4dac551bb65d2c54d3b7c6eeabb0f2da/api",
   release: "//www.fastmock.site/mock/4dac551bb65d2c54d3b7c6eeabb0f2da/api",
   production: "//www.fastmock.site/mock/4dac551bb65d2c54d3b7c6eeabb0f2da/api"

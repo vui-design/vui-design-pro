@@ -3,7 +3,7 @@
     <vui-content class="vui-design-pro-login-body">
       <div class="vui-design-pro-login-logo">
         <router-link to="/">
-          <img src="~src/images/logo.svg" />
+          <img src="images/logo.svg" />
           <span>Vui Design Pro</span>
         </router-link>
       </div>
@@ -140,7 +140,7 @@
 
 <style>
   /* vui-design-pro-login */
-  .vui-design-pro-login { background:url("~src/images/bg.png") repeat 50% 0; }
+  .vui-design-pro-login { background:url("/images/bg.png") repeat 50% 0; }
 
   /* vui-design-pro-login-body */
   .vui-design-pro-login-body { min-height:calc(100vh - 96px); padding:48px 0; }
