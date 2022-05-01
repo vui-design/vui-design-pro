@@ -38,9 +38,9 @@ export const whiteList = ["/login"];
 */
 const apiPaths = {
   development: "//www.fastmock.site/mock/4dac551bb65d2c54d3b7c6eeabb0f2da/api",
-  test: "//www.test.com/api",
-  release: "//www.release.com/api",
-  production: "//www.production.com/api"
+  test: "//www.fastmock.site/mock/4dac551bb65d2c54d3b7c6eeabb0f2da/api",
+  release: "//www.fastmock.site/mock/4dac551bb65d2c54d3b7c6eeabb0f2da/api",
+  production: "//www.fastmock.site/mock/4dac551bb65d2c54d3b7c6eeabb0f2da/api"
 };
 
 export const baseURL = apiPaths[appMode];
