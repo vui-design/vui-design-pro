@@ -5,7 +5,7 @@
       <p>将一个冗长或用户不熟悉的表单任务分成多个步骤，指导用户完成</p>
     </vui-page-header>
     <div class="vui-design-pro-page-body">
-      <vui-card v-bind:bordered="false" shadow="always" bodyStyle="padding: 40px;">
+      <vui-card v-bind:bordered="false" bodyStyle="padding: 40px;">
         <vui-steps v-bind:step="page.step" type="dot" style="width: 800px; margin: 0 auto;">
           <vui-step title="填写转账信息" />
           <vui-step title="确认转账信息" />

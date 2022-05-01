@@ -5,7 +5,7 @@
       <p>表单页用于向用户收集或验证信息，基础表单常见于数据项较少的表单场景</p>
     </vui-page-header>
     <div class="vui-design-pro-page-body">
-      <vui-card v-bind:bordered="false" shadow="always" bodyStyle="padding: 40px 20%;">
+      <vui-card v-bind:bordered="false" bodyStyle="padding: 40px 20%;">
         <vui-form ref="form" v-bind:model="form" v-bind:rules="rules" v-bind:labelWidth="86">
           <vui-form-item prop="name" label="姓名">
             <vui-input v-model="form.name" clearable style="width: 50%;" placeholder="请输入您的姓名" />

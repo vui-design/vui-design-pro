@@ -1,5 +1,5 @@
 <template>
-  <vui-card v-bind:bordered="false" shadow="always" title="销售额类型占比">
+  <vui-card v-bind:bordered="false" title="销售额类型占比">
     <vui-radio-group v-model="category" slot="extra" type="button" size="small">
       <vui-radio v-bind:value="1" label="线上" />
       <vui-radio v-bind:value="2" label="门店" />

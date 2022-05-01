@@ -1,5 +1,5 @@
 <template>
-  <vui-card v-bind:bordered="false" shadow="always">
+  <vui-card v-bind:bordered="false">
     <template slot="title">我的项目</template>
     <router-link slot="extra" to="/list/search/projects">全部项目</router-link>
     <vui-empty v-if="list.data.length === 0" style="padding: 53px 0;">

@@ -9,7 +9,7 @@
         <vui-empty v-if="list.data.length === 0" style="padding: calc((100vh - 278px) / 2) 0;" />
         <vui-list v-else v-bind:grid="list.grid" v-bind:data="list.data">
           <vui-list-item slot="item" slot-scope="item, index">
-            <vui-card v-bind:bordered="false" shadow="always">
+            <vui-card v-bind:bordered="false">
               <vui-card-meta v-bind:title="item.title">
                 <vui-avatar slot="avatar" v-bind:src="item.logo" v-bind:size="48" />
                 <div slot="description" style="height: 40px;">{{item.description}}</div>

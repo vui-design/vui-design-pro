@@ -1,5 +1,5 @@
 <template>
-  <vui-card v-bind:bordered="false" shadow="always" bodyStyle="padding: 0;">
+  <vui-card v-bind:bordered="false" bodyStyle="padding: 0;">
     <div style="min-height: calc(100vh - 96px);">
       <vui-result v-bind:status="status" v-bind:title="title" v-bind:description="description">
         <template slot="extra">

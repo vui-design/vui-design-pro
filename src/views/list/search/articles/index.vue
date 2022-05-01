@@ -1,7 +1,7 @@
 <template>
   <div>
     <vui-filter v-model="filter.value" v-bind:options="filter.options" v-on:change="handleFilterChange" />
-    <vui-card v-bind:bordered="false" shadow="always" style="margin-top: 16px;" title="文章列表">
+    <vui-card v-bind:bordered="false" style="margin-top: 16px;" title="文章列表">
       <vui-space slot="extra">
         <vui-select v-model="searcher.evaluation" searchable clearable style="width: 160px;" placeholder="按好评度查询">
           <vui-option v-bind:value="0">全部</vui-option>

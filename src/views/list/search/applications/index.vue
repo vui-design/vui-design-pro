@@ -5,7 +5,7 @@
       <vui-empty v-if="list.data.length === 0" style="padding: 160px 0;" />
       <vui-list v-else v-bind:grid="list.grid" v-bind:data="list.data">
         <vui-list-item slot="item" slot-scope="item, index">
-          <vui-card v-bind:bordered="false" shadow="always">
+          <vui-card v-bind:bordered="false">
             <vui-card-meta v-bind:title="item.title">
               <vui-avatar slot="avatar" v-bind:src="item.logo" />
             </vui-card-meta>

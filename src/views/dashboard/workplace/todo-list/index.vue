@@ -1,5 +1,5 @@
 <template>
-  <vui-card v-bind:bordered="false" shadow="always" style="margin-top: 16px;" bodyStyle="padding: 0;">
+  <vui-card v-bind:bordered="false" style="margin-top: 16px;" bodyStyle="padding: 0;">
     <template slot="title">待办事项</template>
     <vui-table v-bind="list" class="vui-pro-dashboard-workplace-todo-list">
       <template slot="no" slot-scope="{ row, rowIndex }">{{rowIndex + 1}}</template>

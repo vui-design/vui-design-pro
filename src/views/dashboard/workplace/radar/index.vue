@@ -1,5 +1,5 @@
 <template>
-  <vui-card v-bind:bordered="false" shadow="always" style="margin-top: 16px;">
+  <vui-card v-bind:bordered="false" style="margin-top: 16px;">
     <template slot="title">XX 指数</template>
     <vui-empty v-if="dataSource.length === 0" style="padding: 127px 0;">
       <img slot="image" style="height: 60px;" src="https://gw.alipayobjects.com/zos/antfincdn/ZHrcdLPrvN/empty.svg" />

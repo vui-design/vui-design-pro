@@ -38,7 +38,7 @@
 </script>
 
 <style>
-  .vui-user { cursor:pointer; display:flex; align-items:center; height:64px; padding:0 16px; color:#595959; transition:all 0.2s cubic-bezier(0.23,1,0.32,1); }
+  .vui-user { cursor:pointer; display:flex; align-items:center; height:64px; padding:0 8px; color:#595959; transition:all 0.2s cubic-bezier(0.23,1,0.32,1); }
   .vui-user span {  }
   .vui-user .vui-avatar { margin:0 4px; }
   .vui-user .vui-icon { font-size:12px; transform:scale(0.85); }

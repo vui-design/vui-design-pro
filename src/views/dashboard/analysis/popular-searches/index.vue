@@ -1,5 +1,5 @@
 <template>
-  <vui-card v-bind:bordered="false" shadow="always" title="线上热门搜索">
+  <vui-card v-bind:bordered="false" title="线上热门搜索">
     <vui-row v-bind:gutter="16">
       <vui-col v-bind:span="12">
         <vui-statistic-users />

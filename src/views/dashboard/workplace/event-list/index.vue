@@ -1,5 +1,5 @@
 <template>
-  <vui-card v-bind:bordered="false" shadow="always" style="margin-top: 16px;">
+  <vui-card v-bind:bordered="false" style="margin-top: 16px;">
     <template slot="title">最新动态</template>
     <vui-empty v-if="list.data.length === 0" style="padding: 188px 0;">
       <img slot="image" src="images/empty/events.png" style="height: 80px;" />

@@ -6,11 +6,11 @@
     </vui-sider>
     <vui-layout class="vui-design-pro-main" v-bind:class="collapsed ? 'collapsed' : ''">
       <vui-header color="light" class="vui-design-pro-main-header">
-        <vui-space v-bind:size="0" class="pull-left">
+        <vui-space v-bind:size="8" class="pull-left">
           <vui-sider-collapser v-bind:collapsed="collapsed" v-on:click="handleCollapse" />
           <vui-breadcrumbs class="pull-left" />
         </vui-space>
-        <vui-space v-bind:size="0" class="pull-right">
+        <vui-space v-bind:size="8" class="pull-right">
           <vui-broadcast />
           <vui-language />
           <vui-helper />
@@ -84,7 +84,7 @@
   /* vui-design-pro-main */
   .vui-design-pro-main { position:relative; z-index:1; min-height:100%; padding-left:220px; transition:all 0.2s cubic-bezier(0.23,1,0.32,1); }
   .vui-design-pro-main.collapsed { padding-left:80px; }
-  .vui-design-pro-main-header { position:relative; z-index:2; box-shadow:0 1px 0 #f3f3f3; padding:0; }
+  .vui-design-pro-main-header { position:relative; z-index:2; box-shadow:0 1px 0 #f3f3f3; padding:0 8px; }
   .vui-design-pro-main-body { position:relative; z-index:1; padding:16px; }
   .vui-design-pro-main-footer { padding:16px; text-align:center; }
 

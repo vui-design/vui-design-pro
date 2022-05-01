@@ -5,7 +5,7 @@
       <p>标准的列表，包含增删改查等基础操作</p>
     </vui-page-header>
     <div class="vui-design-pro-page-body">
-      <vui-card v-bind:bordered="false" shadow="always">
+      <vui-card v-bind:bordered="false">
         <vui-row>
           <vui-col v-bind:span="8">
             <div class="vui-list-standard-statistic">
@@ -27,7 +27,7 @@
           </vui-col>
         </vui-row>
       </vui-card>
-      <vui-card v-bind:bordered="false" shadow="always" style="margin-top: 16px;" headerStyle="padding: 16px 16px 16px 20px;" title="标准列表">
+      <vui-card v-bind:bordered="false" style="margin-top: 16px;" headerStyle="padding: 16px 16px 16px 20px;" title="标准列表">
         <vui-space slot="extra">
           <vui-radio-group v-model="searcher.status" type="button">
             <vui-radio v-bind:value="0">全部</vui-radio>

@@ -1,1 +1,0 @@
-(window.webpackJsonp=window.webpackJsonp||[]).push([["chunk-2d0aeb74"],{"0af3":function(n,e,t){"use strict";t.r(e);var s={},u=t("2877"),a=Object(u.a)(s,(function(){var n=this.$createElement;return(this._self._c||n)("div",[this._v("高级详情页面")])}),[],!1,null,null,null);e.default=a.exports}}]);

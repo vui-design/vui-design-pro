@@ -5,7 +5,7 @@
       <p>表格查询的复杂示例，包含增删改查、批量操作、导出、全屏和刷新等功能</p>
     </vui-page-header>
     <vui-fullscreen v-model="page.fullscreen" class="vui-design-pro-page-body">
-      <vui-card v-bind:bordered="false" shadow="always">
+      <vui-card v-bind:bordered="false">
         <vui-form ref="searcher" layout="inline" v-bind:model="searcher">
           <vui-form-item prop="name">
             <vui-input v-model="searcher.name" clearable placeholder="按规则名称查询" />
@@ -21,7 +21,7 @@
           </vui-form-item>
         </vui-form>
       </vui-card>
-      <vui-card v-bind:bordered="false" shadow="always" style="margin-top: 16px;" bodyStyle="padding: 0; overflow: hidden;">
+      <vui-card v-bind:bordered="false" style="margin-top: 16px;" bodyStyle="padding: 0; overflow: hidden;">
       	<template slot="title">查询表格</template>
         <vui-space slot="extra" divider v-bind:size="16">
           <vui-space>

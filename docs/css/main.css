@@ -1,6 +1,3 @@
-/* Vui Design 框架样式重写 */
-.vui-card-shadow-always { box-shadow:0 0 6px rgba(0,0,0,0.02); }
-
 /* Viser 图表 tooltip 提示 */
 .g2-tooltip { position:absolute; top:0; left:0; border-radius:2px; box-shadow:0 1px 6px rgba(0,0,0,0.1); background-color:rgba(255,255,255,0.95); padding:10px; color:#565656; font-size:12px; line-height:20px; }
 .g2-tooltip .g2-tooltip-title { margin-bottom:4px; font-size:12px; }
@@ -50,7 +47,7 @@ html, body, #root {
 }
 
 
-.vui-sider-collapser { cursor:pointer; display:flex; align-items:center; height:64px; padding:0 16px; color:#595959; transition:all 0.2s cubic-bezier(0.23,1,0.32,1);
+.vui-sider-collapser { cursor:pointer; display:flex; align-items:center; height:64px; padding:0 8px; color:#595959; transition:all 0.2s cubic-bezier(0.23,1,0.32,1);
 }
 .vui-sider-collapser:hover { background-color:rgba(0,0,0,0.02); color:#4298f2;
 }
@@ -62,7 +59,7 @@ html, body, #root {
 }
 
 
-.vui-broadcast { cursor:pointer; display:flex; align-items:center; height:64px; padding:0 16px; color:#595959; transition:all 0.2s cubic-bezier(0.23,1,0.32,1);
+.vui-broadcast { cursor:pointer; display:flex; align-items:center; height:64px; padding:0 8px; color:#595959; transition:all 0.2s cubic-bezier(0.23,1,0.32,1);
 }
 .vui-broadcast:hover { background-color:rgba(0,0,0,0.02); color:#4298f2;
 }
@@ -132,7 +129,7 @@ html, body, #root {
 }
 
 
-.vui-language { cursor:pointer; display:flex; align-items:center; height:64px; padding:0 16px; color:#595959; transition:all 0.2s cubic-bezier(0.23,1,0.32,1);
+.vui-language { cursor:pointer; display:flex; align-items:center; height:64px; padding:0 8px; color:#595959; transition:all 0.2s cubic-bezier(0.23,1,0.32,1);
 }
 .vui-language:hover { background-color:rgba(0,0,0,0.02); color:#4298f2;
 }
@@ -140,7 +137,7 @@ html, body, #root {
 }
 
 
-.vui-helper { cursor:pointer; display:flex; align-items:center; height:64px; padding:0 16px; color:#595959; transition:all 0.2s cubic-bezier(0.23,1,0.32,1);
+.vui-helper { cursor:pointer; display:flex; align-items:center; height:64px; padding:0 8px; color:#595959; transition:all 0.2s cubic-bezier(0.23,1,0.32,1);
 }
 .vui-helper:hover { background-color:rgba(0,0,0,0.02); color:#4298f2;
 }
@@ -148,7 +145,7 @@ html, body, #root {
 }
 
 
-.vui-user { cursor:pointer; display:flex; align-items:center; height:64px; padding:0 16px; color:#595959; transition:all 0.2s cubic-bezier(0.23,1,0.32,1);
+.vui-user { cursor:pointer; display:flex; align-items:center; height:64px; padding:0 8px; color:#595959; transition:all 0.2s cubic-bezier(0.23,1,0.32,1);
 }
 .vui-user span {
 }
@@ -263,7 +260,7 @@ html, body, #root {
 }
 .vui-design-pro-main.collapsed { padding-left:80px;
 }
-.vui-design-pro-main-header { position:relative; z-index:2; box-shadow:0 1px 0 #f3f3f3; padding:0;
+.vui-design-pro-main-header { position:relative; z-index:2; box-shadow:0 1px 0 #f3f3f3; padding:0 8px;
 }
 .vui-design-pro-main-body { position:relative; z-index:1; padding:16px;
 }
