@@ -172,7 +172,7 @@
           content: "正在删除，请稍后..."
         });
 
-        this.$store.dispatch("list/deleteStandard", payload).then(response => {
+        this.$store.dispatch("list/deleteStandardItem", payload).then(response => {
           loading.close();
           this.$message.success("删除成功");
           // 删除成功后刷新列表

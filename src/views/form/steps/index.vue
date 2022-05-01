@@ -188,7 +188,7 @@
           };
 
           this.page.submitting = true;
-          this.$store.dispatch("example/submitFormSteps", payload).then(data => {
+          this.$store.dispatch("form/submitSteps", payload).then(data => {
             this.result = data;
             this.page.step++;
             this.page.submitting = false;

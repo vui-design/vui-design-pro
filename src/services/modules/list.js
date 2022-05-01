@@ -8,21 +8,81 @@ export const getStandardPageList = payload => {
   return axios.get("/list/getStandardPageList", settings);
 };
 
-export const addStandard = payload => {
-  return axios.post("/list/addStandard", payload);
+export const addStandardItem = payload => {
+  return axios.post("/list/addStandardItem", payload);
 };
 
-export const editStandard = payload => {
-  return axios.put("/list/editStandard/" + payload.id, payload);
+export const editStandardItem = payload => {
+  return axios.put("/list/editStandardItem/" + payload.id, payload);
 };
 
-export const deleteStandard = payload => {
-  return axios.delete("/list/deleteStandard/" + payload.id);
+export const deleteStandardItem = payload => {
+  return axios.delete("/list/deleteStandardItem/" + payload.id);
+};
+
+export const getCardList = payload => {
+  const settings = {
+    params: payload
+  };
+
+  return axios.get("/list/getCardList", settings);
+};
+
+export const getTablePageList = payload => {
+  const settings = {
+    params: payload
+  };
+
+  return axios.get("/list/getStandardPageList", settings);
+};
+
+export const addTableItem = payload => {
+  return axios.post("/list/addTableItem", payload);
+};
+
+export const editTableItem = payload => {
+  return axios.put("/list/editTableItem/" + payload.id, payload);
+};
+
+export const deleteTableItem = payload => {
+  return axios.delete("/list/deleteTableItem/" + payload.id);
+};
+
+export const getArticlePageList = payload => {
+  const settings = {
+    params: payload
+  };
+
+  return axios.get("/list/getArticlePageList", settings);
+};
+
+export const getProjectList = payload => {
+  const settings = {
+    params: payload
+  };
+
+  return axios.get("/list/getProjectList", settings);
+};
+
+export const getApplicationList = payload => {
+  const settings = {
+    params: payload
+  };
+
+  return axios.get("/list/getApplicationList", settings);
 };
 
 export default {
   getStandardPageList,
-  addStandard,
-  editStandard,
-  deleteStandard
+  addStandardItem,
+  editStandardItem,
+  deleteStandardItem,
+  getCardList,
+  getTablePageList,
+  addTableItem,
+  editTableItem,
+  deleteTableItem,
+  getArticlePageList,
+  getProjectList,
+  getApplicationList
 };

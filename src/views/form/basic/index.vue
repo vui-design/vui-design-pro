@@ -135,7 +135,7 @@
           };
 
           this.submitting = true;
-          this.$store.dispatch("example/submitFormBasic", payload).then(data => {
+          this.$store.dispatch("form/submitBasic", payload).then(data => {
             this.submitting = false;
             this.$message.success("提交成功");
           }).catch(e => {

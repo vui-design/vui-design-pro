@@ -142,11 +142,11 @@
           let message = "";
 
           if (this.modal.type == 1) {
-            action = "example/addListTableDatasource";
+            action = "list/addTableItem";
             message = "提交成功";
           }
           else if (this.modal.type == 2) {
-            action = "example/editListTableDatasource";
+            action = "list/editTableItem";
             message = "保存成功";
           }
 

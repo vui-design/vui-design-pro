@@ -64,9 +64,9 @@
         };
 
         this.list.loading = true;
-        this.$store.dispatch("example/getListCardDatasource", payload).then(data => {
+        this.$store.dispatch("list/getCardList", payload).then(response => {
           this.list.loading = false;
-          this.list.data = data.content;
+          this.list.data = response.data;
         }).catch(e => {
           this.list.loading = false;
         });

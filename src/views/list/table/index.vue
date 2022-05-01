@@ -157,7 +157,7 @@
         };
 
         this.list.loading = true;
-        this.$store.dispatch("example/getListTableDatasource", payload).then(data => {
+        this.$store.dispatch("list/getTablePageList", payload).then(data => {
           this.list.loading = false;
           this.list.data = data.content;
           this.pagination.total = data.total;
@@ -245,7 +245,7 @@
           content: "正在删除，请稍后..."
         });
 
-        this.$store.dispatch("example/deleteListTableDatasource", payload).then(data => {
+        this.$store.dispatch("list/deleteTableItem", payload).then(data => {
           loading.close();
           this.$message.success("删除成功");
           // 删除成功后刷新列表
