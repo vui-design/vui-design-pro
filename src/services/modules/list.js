@@ -33,7 +33,7 @@ export const getTablePageList = payload => {
     params: payload
   };
 
-  return axios.get("/list/getStandardPageList", settings);
+  return axios.get("/list/getTablePageList", settings);
 };
 
 export const addTableItem = payload => {
