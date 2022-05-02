@@ -1,7 +1,7 @@
 <template>
   <div>
     <vui-filter v-model="filter.value" v-bind:options="filter.options" v-on:change="handleFilterChange" />
-    <vui-spin v-bind:spinning="list.loading"  style="margin-top: 16px;">
+    <vui-spin v-bind:spinning="list.loading" style="margin-top: 16px;">
       <vui-empty v-if="list.data.length === 0" style="padding: 160px 0;" />
       <vui-list v-else v-bind:grid="list.grid" v-bind:data="list.data">
         <vui-list-item slot="item" slot-scope="item, index">

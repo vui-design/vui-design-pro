@@ -16,8 +16,7 @@
             <vui-form ref="form1" v-bind:model="form" v-bind:rules="rules" v-bind:labelWidth="100">
               <vui-form-item prop="payer" label="付款账户">
                 <vui-select v-model="form.payer" searchable clearable style="width: 50%;" placeholder="请选择付款账户">
-                  <vui-option value="kiwi@dianhun.cn">kiwi@dianhun.cn</vui-option>
-                  <vui-option value="dingwei@qq.com">dingwei@qq.com</vui-option>
+                  <vui-option value="example@example.com">example@example.com</vui-option>
                 </vui-select>
               </vui-form-item>
               <vui-form-item prop="payee" label="收款账户">
@@ -130,7 +129,7 @@
           submitting: false
         },
         form: {
-          payer: "kiwi@dianhun.cn",
+          payer: "example@example.com",
           type: "alipay",
           payee: "zhangsan@example.com",
           name: "Zhang San",

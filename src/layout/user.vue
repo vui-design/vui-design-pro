@@ -1,7 +1,7 @@
 <template>
   <vui-dropdown v-model="usermenu.visible" trigger="hover" placement="bottom-end" style="display: block;">
     <div class="vui-user" v-bind:class="usermenu.visible ? 'active' : ''">
-      <span>kiwi</span>
+      <span>Ding Wei</span>
       <vui-avatar size="small" src="images/avatars/svg1.svg" />
       <vui-icon type="chevron-down" />
     </div>

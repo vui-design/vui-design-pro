@@ -1,0 +1,56 @@
+
+.vui-avatar-uploader { width:120px;
+}
+.vui-avatar-uploader .vui-avatar-uploader-image { cursor:pointer; display:block; width:120px; height:120px; border-radius:2px; overflow:hidden;
+}
+.vui-avatar-uploader .vui-avatar-uploader-image img { display:block; width:100%; height:100%; -o-object-fit:cover; object-fit:cover; -o-object-position:center; object-position:center;
+}
+.vui-avatar-uploader .vui-avatar-uploader-action { cursor:pointer; display:block; margin-top:12px;
+}
+.vui-avatar-uploader-disabled {
+}
+.vui-avatar-uploader-disabled .vui-avatar-uploader-image { cursor:default;
+}
+.vui-avatar-uploader-disabled .vui-avatar-uploader-image img {
+}
+.vui-avatar-uploader-disabled .vui-avatar-uploader-action { cursor:default; display:none;
+}
+
+
+.vui-user-settings-basic {
+}
+.vui-user-settings-basic-header { margin-bottom:24px; color:#262626; font-weight:500; font-size:20px;
+}
+.vui-user-settings-basic-body {
+}
+.vui-user-settings-basic-body .form { display:flex; justify-content:flex-start; align-items:flex-start;
+}
+.vui-user-settings-basic-body .form-sider { padding-left:32px;
+}
+.vui-user-settings-basic-body .form-content { flex:1; border-right:1px solid #f3f3f3; -o-border-image:linear-gradient(to bottom, #f3f3f3, transparent) 0 10; border-image:linear-gradient(to bottom, #f3f3f3, transparent) 0 10; padding-right:32px;
+}
+
+
+.vui-user-settings-security {
+}
+.vui-user-settings-security-header { margin-bottom:24px; color:#262626; font-weight:500; font-size:20px;
+}
+.vui-user-settings-security-body {
+}
+
+
+.vui-user-settings-account {
+}
+.vui-user-settings-account-header { margin-bottom:24px; color:#262626; font-weight:500; font-size:20px;
+}
+.vui-user-settings-account-body {
+}
+
+
+.vui-user-settings-message {
+}
+.vui-user-settings-message-header { margin-bottom:24px; color:#262626; font-weight:500; font-size:20px;
+}
+.vui-user-settings-message-body {
+}
+

@@ -20,11 +20,11 @@
   - index.html 页面入口文件
 
 - src
-  - assets 图片、CSS等资源目录
   - components 公共组件
   - config 系统配置
   - directives Vue指令
   - filters Vue过滤器
+  - images 图片文件目录
   - layout 系统布局组件
   - libs 公共业务方法或第三方工具库
   - locale 系统语言包配置
@@ -33,6 +33,7 @@
   - routes 系统路由菜单配置
   - services 请求接口
   - store 状态管理
+  - styles 样式文件目录
   - views 系统页面目录，对应 routes 配置
   - App.vue 根组件
   - main.js 系统入口

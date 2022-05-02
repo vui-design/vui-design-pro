@@ -1,71 +1,72 @@
 <template>
-	<div class="vui-pro-filter">
-		<vui-pro-filter-group
-			v-for="(item, index) in options"
-			v-bind:key="item.key"
-			v-bind:class="index % 2 == 0 ? 'even' : 'odd'"
-			v-bind:data="item"
-			v-bind:value="state[item.key]"
-			v-on:change="handleGroupChange"
-		/>
-	</div>
+  <div class="vui-filter">
+    <vui-filter-group
+      v-for="(item, index) in options"
+      v-bind:key="item.key"
+      v-bind:class="index % 2 == 0 ? 'even' : 'odd'"
+      v-bind:label="item.label"
+      v-bind:name="item.key"
+      v-bind:value="state.value[item.key]"
+      v-bind:options="item.options"
+      v-on:change="handleGroupChange"
+    />
+  </div>
 </template>
 
 <script>
-	import VuiProFilterGroup from "../filter-group";
+  import VuiFilterGroup from "./filter-group";
 
-	export default {
-		components: {
-			VuiProFilterGroup
-		},
-		props: {
-			value: {
-				type: Object,
-				default: () => ({})
-			},
-			options: {
-				type: Array,
-				default: () => []
-			}
-		},
-		data() {
-			let state = this.getDerivedStateFromProps(this.value);
+  export default {
+    components: {
+      VuiFilterGroup
+    },
+    props: {
+      value: {
+        type: Object,
+        default: () => ({})
+      },
+      options: {
+        type: Array,
+        default: () => []
+      }
+    },
+    data() {
+      return {
+        state: {
+          value: {}
+        }
+      };
+    },
+    watch: {
+      value: {
+        immediate: true,
+        deep: true,
+        handler(value) {
+          this.state.value = this.getValueFromProps(value, this.options);
+        }
+      }
+    },
+    methods: {
+      getValueFromProps(value, options) {
+        let stateValue = {};
 
-			return {
-				state
-			};
-		},
-		watch: {
-			value: {
-				deep: true,
-				handler(value) {
-					let state = this.getDerivedStateFromProps(value);
+        options.forEach(option => {
+          const selection = value[option.key];
 
-					this.state = state;
-				}
-			}
-		},
-		methods: {
-			getDerivedStateFromProps(value) {
-				let state = {};
+          stateValue[option.key] = selection ? [...selection] : [];
+        });
 
-				Object.keys(value).forEach(key => {
-					let selected = value[key];
-
-					state[key] = [...selected];
-				});
-
-				return state;
-			},
-			handleGroupChange(key, value) {
-				this.state[key] = value;
-				this.$emit("input", this.state);
-				this.$emit("change", this.state);
-			}
-		}
-	};
+        return stateValue;
+      },
+      handleGroupChange(key, value) {
+        this.state.value[key] = value;
+        this.$emit("input", this.state.value);
+        this.$emit("change", this.state.value);
+      }
+    }
+  };
 </script>
 
 <style>
-	.vui-pro-filter { border-radius:2px; overflow:hidden; }
+  .vui-filter { border-radius:2px; overflow:hidden; }
 </style>

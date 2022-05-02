@@ -10,8 +10,8 @@
           <vui-form-item prop="name" label="姓名">
             <vui-input v-model="form.name" clearable style="width: 50%;" placeholder="请输入您的姓名" />
           </vui-form-item>
-          <vui-form-item prop="email" label="电子邮箱">
-            <vui-input v-model="form.email" clearable placeholder="请输入您的电子邮箱地址" />
+          <vui-form-item prop="email" label="邮箱地址">
+            <vui-input v-model="form.email" clearable placeholder="请输入您的邮箱地址" />
           </vui-form-item>
           <vui-form-item prop="city" label="城市">
             <vui-select v-model="form.city" searchable clearable style="width: 25%;" placeholder="请选择所在城市">

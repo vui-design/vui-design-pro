@@ -72,7 +72,7 @@
         <vui-link block to="/" target="_blank">Other Link</vui-link>
         <vui-link block to="/" target="_blank">Other Link</vui-link>
       </vui-space>
-      <p>Copyright © {{year}} Coding by kiwi</p>
+      <p>Copyright © {{year}} Coding by Ding Wei</p>
     </vui-footer>
   </vui-layout>
 </template>

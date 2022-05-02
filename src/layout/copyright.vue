@@ -1,5 +1,5 @@
 <template>
-  <div style="margin-top: 8px;">Copyright © {{year}} Coding by kiwi</div>
+  <div style="margin-top: 8px;">Copyright © {{year}} Coding by Ding Wei</div>
 </template>
 
 <script>
