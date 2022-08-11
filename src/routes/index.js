@@ -18,7 +18,7 @@ export default [
 			title: "首页"
 		},
 		component: Layout,
-		redirect: "/login"
+		redirect: "/dashboard"
 	},
 
 	{
@@ -30,5 +30,378 @@ export default [
 			title: "登录"
 		},
 		component: () => import("src/views/login")
+	},
+
+	{
+		path: "/dashboard",
+		name: "dashboard",
+		meta: {
+			addToMenu: true,
+			addToBreadcrumb: true,
+			icon: "apps",
+			title: "控制面板"
+		},
+		component: Layout,
+		redirect: "/dashboard/workplace",
+		children: [
+			{
+				path: "/dashboard/workplace",
+				name: "dashboard-workplace",
+				meta: {
+					addToMenu: true,
+					addToBreadcrumb: true,
+					title: "工作台"
+				},
+				component: () => import("src/views/dashboard/workplace")
+			},
+			{
+				path: "/dashboard/analysis",
+				name: "dashboard-analysis",
+				meta: {
+					addToMenu: true,
+					addToBreadcrumb: true,
+					title: "分析页"
+				},
+				component: () => import("src/views/dashboard/analysis")
+			},
+			/*
+			{
+				path: "/dashboard/monitor",
+				name: "dashboard-monitor",
+				meta: {
+					addToMenu: true,
+					addToBreadcrumb: true,
+					title: "监控页"
+				},
+				component: () => import("src/views/dashboard/monitor")
+			}
+			*/
+		]
+	},
+
+	{
+		path: "/form",
+		name: "form",
+		meta: {
+			addToMenu: true,
+			addToBreadcrumb: true,
+			icon: "edit-square",
+			title: "表单"
+		},
+		component: Layout,
+		redirect: "/form/basic",
+		children: [
+			{
+				path: "/form/basic",
+				name: "form-basic",
+				meta: {
+					addToMenu: true,
+					addToBreadcrumb: true,
+					title: "基础表单"
+				},
+				component: () => import("src/views/form/basic")
+			},
+			{
+				path: "/form/steps",
+				name: "form-steps",
+				meta: {
+					addToMenu: true,
+					addToBreadcrumb: true,
+					title: "分步表单"
+				},
+				component: () => import("src/views/form/steps")
+			}
+		]
+	},
+
+	{
+		path: "/list",
+		name: "list",
+		meta: {
+			addToMenu: true,
+			addToBreadcrumb: true,
+			icon: "table",
+			title: "列表"
+		},
+		component: Layout,
+		redirect: "/list/standard",
+		children: [
+			{
+				path: "/list/standard",
+				name: "list-standard",
+				meta: {
+					addToMenu: true,
+					addToBreadcrumb: true,
+					title: "标准列表"
+				},
+				component: () => import("src/views/list/standard")
+			},
+			{
+				path: "/list/card",
+				name: "list-card",
+				meta: {
+					addToMenu: true,
+					addToBreadcrumb: true,
+					title: "卡片列表"
+				},
+				component: () => import("src/views/list/card")
+			},
+			{
+				path: "/list/table",
+				name: "list-table",
+				meta: {
+					addToMenu: true,
+					addToBreadcrumb: true,
+					title: "查询表格"
+				},
+				component: () => import("src/views/list/table")
+			},
+			{
+				path: "/list/search",
+				name: "list-search",
+				meta: {
+					addToMenu: true,
+					addToBreadcrumb: true,
+					title: "搜索列表"
+				},
+				component: () => import("src/views/list/search"),
+				redirect: "/list/search/articles",
+				children: [
+					{
+						path: "/list/search/articles",
+						name: "list-search-articles",
+						meta: {
+							addToMenu: true,
+							addToBreadcrumb: true,
+							title: "文章列表"
+						},
+						component: () => import("src/views/list/search/articles")
+					},
+					{
+						path: "/list/search/projects",
+						name: "list-search-projects",
+						meta: {
+							addToMenu: true,
+							addToBreadcrumb: true,
+							title: "项目列表"
+						},
+						component: () => import("src/views/list/search/projects")
+					},
+					{
+						path: "/list/search/applications",
+						name: "list-search-applications",
+						meta: {
+							addToMenu: true,
+							addToBreadcrumb: true,
+							title: "应用列表"
+						},
+						component: () => import("src/views/list/search/applications")
+					}
+				]
+			}
+		]
+	},
+
+	{
+		path: "/details",
+		name: "details",
+		meta: {
+			addToMenu: true,
+			addToBreadcrumb: true,
+			icon: "profile",
+			title: "详情页面"
+		},
+		component: Layout,
+		redirect: "/details/basic",
+		children: [
+			{
+				path: "/details/basic",
+				name: "details-basic",
+				meta: {
+					addToMenu: true,
+					addToBreadcrumb: true,
+					title: "基础详情页面"
+				},
+				component: () => import("src/views/details/basic")
+			},
+			{
+				path: "/details/advanced",
+				name: "details-advanced",
+				meta: {
+					addToMenu: true,
+					addToBreadcrumb: true,
+					title: "高级详情页面"
+				},
+				component: () => import("src/views/details/advanced")
+			}
+		]
+	},
+
+	{
+		path: "/user",
+		name: "user",
+		meta: {
+			addToMenu: true,
+			addToBreadcrumb: true,
+			icon: "user",
+			title: "个人页面"
+		},
+		component: Layout,
+		redirect: "/user/profile",
+		children: [
+			{
+				path: "/user/profile",
+				name: "user-profile",
+				meta: {
+					addToMenu: true,
+					addToBreadcrumb: true,
+					title: "个人中心"
+				},
+				component: () => import("src/views/user/profile")
+			},
+			{
+				path: "/user/settings",
+				name: "user-settings",
+				meta: {
+					addToMenu: true,
+					addToBreadcrumb: true,
+					title: "个人设置"
+				},
+				component: () => import("src/views/user/settings")
+			}
+		]
+	},
+
+	{
+		path: "/result",
+		name: "result",
+		meta: {
+			addToMenu: true,
+			addToBreadcrumb: true,
+			icon: "info",
+			title: "结果页面"
+		},
+		component: Layout,
+		redirect: "/result/info",
+		children: [
+			{
+				path: "/result/info",
+				name: "result-info",
+				meta: {
+					addToMenu: true,
+					addToBreadcrumb: true,
+					title: "消息页面"
+				},
+				component: () => import("src/views/result/info")
+			},
+			{
+				path: "/result/warning",
+				name: "result-warning",
+				meta: {
+					addToMenu: true,
+					addToBreadcrumb: true,
+					title: "警告页面"
+				},
+				component: () => import("src/views/result/warning")
+			},
+			{
+				path: "/result/success",
+				name: "result-success",
+				meta: {
+					addToMenu: true,
+					addToBreadcrumb: true,
+					title: "成功页面"
+				},
+				component: () => import("src/views/result/success")
+			},
+			{
+				path: "/result/error",
+				name: "result-error",
+				meta: {
+					addToMenu: true,
+					addToBreadcrumb: true,
+					title: "失败页面"
+				},
+				component: () => import("src/views/result/error")
+			}
+		]
+	},
+
+	{
+		path: "/exception",
+		name: "exception",
+		meta: {
+			addToMenu: true,
+			addToBreadcrumb: true,
+			icon: "alert",
+			title: "异常页面"
+		},
+		component: Layout,
+		redirect: "/exception/403",
+		children: [
+			{
+				path: "/exception/403",
+				name: "exception-403",
+				meta: {
+					addToMenu: true,
+					addToBreadcrumb: true,
+					title: "403"
+				},
+				component: () => import("src/views/exception/403")
+			},
+			{
+				path: "/exception/404",
+				name: "exception-404",
+				meta: {
+					addToMenu: true,
+					addToBreadcrumb: true,
+					title: "404"
+				},
+				component: () => import("src/views/exception/404")
+			},
+			{
+				path: "/exception/500",
+				name: "exception-500",
+				meta: {
+					addToMenu: true,
+					addToBreadcrumb: true,
+					title: "500"
+				},
+				component: () => import("src/views/exception/500")
+			},
+			{
+				path: "/exception/comingsoon",
+				name: "exception-comingsoon",
+				meta: {
+					addToMenu: true,
+					addToBreadcrumb: true,
+					title: "敬请期待"
+				},
+				component: () => import("src/views/exception/comingsoon")
+			}
+		]
+	},
+
+	{
+		path: "/*",
+		meta: {
+			addToMenu: false,
+			addToBreadcrumb: true,
+			title: "访问异常"
+		},
+		component: Layout,
+		redirect: "/404",
+		children: [
+			{
+				path: "/404",
+				name: "404",
+				meta: {
+					addToMenu: true,
+					addToBreadcrumb: true,
+					title: "404"
+				},
+				component: () => import("src/views/exception/404")
+			}
+		]
 	}
 ];
