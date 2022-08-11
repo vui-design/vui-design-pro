@@ -1,14 +1,14 @@
-const path = require("path");
-
 const publicPath = process.env.VUE_APP_PUBLIC_PATH;
 const outputDir = process.env.VUE_APP_OUTPUT_DIR;
+
+const path = require("path");
 const resolve = dir => path.join(__dirname, dir);
 
 module.exports = {
   // 本地开发服务器配置
   devServer: {
     // host
-    host: "localhost",
+    host: "0.0.0.0",
     // 端口
     port: 80,
     // 编译完成自动打开浏览器
@@ -39,6 +39,11 @@ module.exports = {
   filenameHashing: false,
   // 禁用生产环境的 Source Map
   productionSourceMap: false,
+  // 若在 vue-cli 3 脚手架环境中使用 babel-plugin-import 插件开启按需加载 Vui Design 组件，需启用下列 transpileDependencies 配置
+  // 详情请查看 https://vui-design.github.io/vui-design-doc/#/guide/use-with-vue-cli
+  // transpileDependencies: [
+  //   /[\\/]node_modules[\\/]vui-design[\\/]/
+  // ],
   // 修改 webpack 配置
   configureWebpack: config => {
     config.optimization = {
