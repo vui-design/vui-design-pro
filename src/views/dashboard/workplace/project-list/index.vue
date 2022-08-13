@@ -8,7 +8,7 @@
       <vui-button type="primary" to="/list/search/projects">立即创建</vui-button>
     </vui-empty>
     <template v-else>
-      <vui-card-grid v-for="(item, index) in list.data" v-bind:key="item.id" style="width: 33.33333333%; padding: 0;">
+      <vui-card-grid v-for="item in list.data" v-bind:key="item.id" style="width: 33.33333333%; padding: 0;">
         <router-link  class="vui-dashboard-workplace-project" to="/list/search/projects">
           <div class="vui-dashboard-workplace-project-header">
             <div class="vui-dashboard-workplace-project-avatar">
@@ -61,7 +61,7 @@
 </script>
 
 <style>
-  .vui-dashboard-workplace-project { display:block; padding:20px; transition:all 0.2s cubic-bezier(0.23,1,0.32,1); }
+  .vui-dashboard-workplace-project { display:block; padding:20px; transition:background-color 0.2s cubic-bezier(0.23,1,0.32,1); }
   .vui-dashboard-workplace-project .vui-dashboard-workplace-project-header { display:flex; height:32px; overflow:hidden; white-space:nowrap; }
   .vui-dashboard-workplace-project .vui-dashboard-workplace-project-body { display:-webkit-box; min-height:40px; margin-top:12px; overflow:hidden; color:#8c8c8c; line-height:20px; white-space:normal; word-break:break-all; word-wrap:break-word; text-overflow:ellipsis; -webkit-line-clamp:2; -webkit-box-orient:vertical; }
   .vui-dashboard-workplace-project .vui-dashboard-workplace-project-footer { height:20px; margin-top:12px; font-size:12px; line-height:20px; }
@@ -71,11 +71,4 @@
   .vui-dashboard-workplace-project .vui-dashboard-workplace-project-moment { float:right; cursor:inherit; color:#bfbfbf; }
 
   .vui-dashboard-workplace-project:hover { background-color:rgba(0,0,0,0.01); }
-  .vui-dashboard-workplace-project:hover .vui-dashboard-workplace-project-header {  }
-  .vui-dashboard-workplace-project:hover .vui-dashboard-workplace-project-body {  }
-  .vui-dashboard-workplace-project:hover .vui-dashboard-workplace-project-footer {  }
-  .vui-dashboard-workplace-project:hover .vui-dashboard-workplace-project-avatar {  }
-  .vui-dashboard-workplace-project:hover .vui-dashboard-workplace-project-name {  }
-  .vui-dashboard-workplace-project:hover .vui-dashboard-workplace-project-tag {  }
-  .vui-dashboard-workplace-project:hover .vui-dashboard-workplace-project-moment {  }
 </style>

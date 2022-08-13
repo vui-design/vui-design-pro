@@ -23,7 +23,7 @@
 }
 
 
-.vui-dashboard-workplace-project { display:block; padding:20px; transition:all 0.2s cubic-bezier(0.23,1,0.32,1);
+.vui-dashboard-workplace-project { display:block; padding:20px; transition:background-color 0.2s cubic-bezier(0.23,1,0.32,1);
 }
 .vui-dashboard-workplace-project .vui-dashboard-workplace-project-header { display:flex; height:32px; overflow:hidden; white-space:nowrap;
 }
@@ -40,20 +40,6 @@
 .vui-dashboard-workplace-project .vui-dashboard-workplace-project-moment { float:right; cursor:inherit; color:#bfbfbf;
 }
 .vui-dashboard-workplace-project:hover { background-color:rgba(0,0,0,0.01);
-}
-.vui-dashboard-workplace-project:hover .vui-dashboard-workplace-project-header {
-}
-.vui-dashboard-workplace-project:hover .vui-dashboard-workplace-project-body {
-}
-.vui-dashboard-workplace-project:hover .vui-dashboard-workplace-project-footer {
-}
-.vui-dashboard-workplace-project:hover .vui-dashboard-workplace-project-avatar {
-}
-.vui-dashboard-workplace-project:hover .vui-dashboard-workplace-project-name {
-}
-.vui-dashboard-workplace-project:hover .vui-dashboard-workplace-project-tag {
-}
-.vui-dashboard-workplace-project:hover .vui-dashboard-workplace-project-moment {
 }
 
 
